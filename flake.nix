@@ -1,15 +1,30 @@
-            {
+{
   inputs = {
-    # This is pointing to an unstable release.
-    # If you prefer a stable release instead, you can this to the latest number shown here: https://nixos.org/download
+    # This is pointing to release 25.05
+    # If you prefer another release instead, you can set this to the latest number shown here: https://nixos.org/download
     # i.e. nixos-24.11
+    # You can also use unstable for the unstable channel.
     # Use `nix flake update` to update the flake to the latest revision of the chosen release channel.
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.05";
+
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs@{ self, nixpkgs, ... }: {
     # NOTE: 'nixos' is the default hostname
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      modules = [ ./configuration.nix ];
+      modules = [
+        ./configuration.nix
+
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+        }      
+      ];
     };
   };
 }
