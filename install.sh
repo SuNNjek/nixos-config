@@ -32,4 +32,7 @@ fi
 
 echo "Installing host config \"$HOST\" on $DEVICE..."
 
-nix run 'github:nix-community/disko/latest#disko-install' -- --write-efi-boot-entries --flake ".#$HOST" --disk main $DEVICE
+nix \
+    --experimental-features "nix-command flakes" \
+    run 'github:nix-community/disko/latest#disko-install' -- \
+    --write-efi-boot-entries --flake ".#$HOST" --disk main $DEVICE
