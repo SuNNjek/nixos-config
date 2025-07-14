@@ -15,16 +15,12 @@
   };
   outputs = inputs@{ self, nixpkgs, ... }: {
     # NOTE: 'nixos' is the default hostname
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      modules = [
-        ./configuration.nix
-
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-        }      
-      ];
+    nixosConfigurations = {
+      nixosVm = nixpkgs.lib.nixosSystem {
+        modules = [
+          ./hosts/vm/configuration.nix
+        ];
+      }
     };
   };
 }
