@@ -8,4 +8,5 @@
     ];
 
     # TODO: Add more stuff here
+    networking.hostName = "nixosVm";
 }
