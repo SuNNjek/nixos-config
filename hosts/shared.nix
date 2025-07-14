@@ -1,12 +1,16 @@
 { lib, pkgs, ... }: {
   boot.loader = {
     # Use the GRUB boot loader.
-    grub = {
-      enable = true;
-      efiSupport = true;
-      device = "nodev";
+    #grub = {
+    #  enable = true;
+    #  efiSupport = true;
+    #  devices = [ "nodev" ];
+    #
+    #  useOSProber = lib.mkDefault false;
+    #};
 
-      useOSProber = lib.mkDefault false;
+    systemd-boot = {
+      enable = true;
     };
 
     efi.canTouchEfiVariables = true;
