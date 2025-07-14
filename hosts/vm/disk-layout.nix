@@ -1,8 +1,9 @@
-{ disk ? "/dev/sda", ... }: {
+{
     disko.devices = {
         disk.main = {
             type = "disk";
-            device = disk;
+            # TODO: Find a way to not have this be hardcoded
+            device = "/dev/sda";
             content = {
                 type = "gpt";
                 partitions = {

@@ -4,13 +4,10 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-while getopts "h:d:" opt; do
+while getopts "h:" opt; do
     case "$opt" in
         h)
             HOST=$OPTARG
-            ;;
-        d)
-            DEVICE=$OPTARG
             ;;
 
         ?)
@@ -25,18 +22,12 @@ if [[ -z $HOST ]]; then
    exit 1
 fi
 
-if [[ -z $DEVICE ]]; then
-   echo "You must specify a device to install to" 
-   exit 1
-fi
-
-echo "Installing host config \"$HOST\" on $DEVICE..."
+echo "Installing host config \"$HOST\"..."
 
 # Format the drive
-nix \
-    --experimental-features "nix-command flakes" \
+nix --experimental-features "nix-command flakes" \
     run 'github:nix-community/disko/latest' -- \
-    --mode destroy,format,mount --flake ".#$HOST" --arg disk "$DEVICE"
+    --mode destroy,format,mount --flake ".#$HOST"
 
 # Install system
 nixos-install --flake ".#$HOST" --root /mnt
