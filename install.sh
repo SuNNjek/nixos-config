@@ -32,7 +32,11 @@ fi
 
 echo "Installing host config \"$HOST\" on $DEVICE..."
 
+# Format the drive
 nix \
     --experimental-features "nix-command flakes" \
-    run 'github:nix-community/disko/latest#disko-install' -- \
-    --write-efi-boot-entries --flake ".#$HOST" --disk main $DEVICE
+    run 'github:nix-community/disko/latest' -- \
+    --mode destroy,format,mount --flake ".#$HOST" --arg disk "$DEVICE"
+
+# Install system
+nixos-install --flake ".#$HOST" --root /mnt

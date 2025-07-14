@@ -1,8 +1,8 @@
-{
+{ disk ? "/dev/sda", ... }: {
     disko.devices = {
         disk.main = {
             type = "disk";
-            device = "/dev/sda";
+            device = disk;
             content = {
                 type = "gpt";
                 partitions = {
