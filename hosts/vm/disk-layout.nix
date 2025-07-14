@@ -1,4 +1,4 @@
-{ lib, disko, ... }: {
+{
     disko.devices = {
         disk.main = {
             type = "disk";
@@ -57,7 +57,7 @@
                                 };
 
                                 "@cache" = {
-                                    mountpoint: "/var/cache";
+                                    mountpoint = "/var/cache";
                                     mountOptions = [
                                         "compress=zstd"
                                         "noatime"

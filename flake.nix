@@ -22,7 +22,7 @@
     nixosConfigurations = {
       nixosVm = nixpkgs.lib.nixosSystem {
         modules = [
-          ./hosts/vm/configuration.nix
+          (import ./hosts/vm/configuration.nix {inherit inputs;})
         ];
       };
     };
