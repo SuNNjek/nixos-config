@@ -3,6 +3,8 @@
 	  ../shared.nix
 
 	  ../../modules/git.nix
+	  ../../modules/firefox.nix
+	  ../../modules/vscode.nix
 	];
 
 	home = {

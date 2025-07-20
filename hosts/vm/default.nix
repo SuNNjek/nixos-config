@@ -15,13 +15,6 @@
 	# TODO: Add more stuff here
 	networking.hostName = "nixosVm";
 
-	environment = {
-		systemPackages = with pkgs; [
-			gh
-			vscode
-		];
-	};
-
 	users.users.${username} = {
 	  isNormalUser = true;
 	  extraGroups = [ "wheel" ];
