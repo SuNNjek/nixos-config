@@ -10,6 +10,7 @@
 
 		../../modules/kde.nix
 		../../modules/home-manager.nix
+		../../modules/zsh.nix
 	];
 
 	# TODO: Add more stuff here

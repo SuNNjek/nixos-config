@@ -5,6 +5,7 @@
 	  ../../modules/git.nix
 	  ../../modules/firefox.nix
 	  ../../modules/vscode.nix
+	  ../../modules/zsh.nix
 	];
 
 	home = {
