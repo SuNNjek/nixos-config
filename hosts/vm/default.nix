@@ -1,31 +1,31 @@
 { pkgs, inputs, username, ... }: {
-    imports = [
-        ../shared.nix
-        ./hardware-configuration.nix
+	imports = [
+		../shared.nix
+		./hardware-configuration.nix
 
-        inputs.disko.nixosModules.disko
-        ./disk-layout.nix
+		inputs.disko.nixosModules.disko
+		./disk-layout.nix
 
-        inputs.home-manager.nixosModules.home-manager
+		inputs.home-manager.nixosModules.home-manager
 
-        ../../modules/kde.nix
-        ../../modules/home-manager.nix
-    ];
+		../../modules/kde.nix
+		../../modules/home-manager.nix
+	];
 
-    # TODO: Add more stuff here
-    networking.hostName = "nixosVm";
+	# TODO: Add more stuff here
+	networking.hostName = "nixosVm";
 
-    environment = {
-        systemPackages = with pkgs; [
-            gh
-            vscode
-        ];
-    };
+	environment = {
+		systemPackages = with pkgs; [
+			gh
+			vscode
+		];
+	};
 
-    users.users.${username} = {
-      isNormalUser = true;
-      extraGroups = [ "wheel" ];
-    };
+	users.users.${username} = {
+	  isNormalUser = true;
+	  extraGroups = [ "wheel" ];
+	};
 
-    home-manager.users.${username} = import ../../home/users/${username};
+	home-manager.users.${username} = import ../../home/users/${username};
 }

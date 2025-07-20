@@ -1,8 +1,8 @@
 { lib, pkgs, username, ... }: {
-    home-manager = {
-        useGlobalPkgs = true;
-        useUserPackages = true;
+	home-manager = {
+		useGlobalPkgs = true;
+		useUserPackages = true;
 
-        extraSpecialArgs = { inherit username; };
-    };
+		extraSpecialArgs = { inherit username; };
+	};
 }
