@@ -20,11 +20,14 @@
   outputs = inputs@{ self, nixpkgs, ... }: {
     # NOTE: 'nixos' is the default hostname
     nixosConfigurations = {
-      nixosVm = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/vm
-        ];
+      nixosVm = let
+        username = "robin";
+      in
+        nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs username; };
+          modules = [
+            ./hosts/vm
+          ];
       };
     };
   };
