@@ -27,5 +27,5 @@
       extraGroups = [ "wheel" ];
     };
 
-    home-manager.users.${username} = import ../../users/${username};
+    home-manager.users.${username} = import ../../home/users/${username};
 }

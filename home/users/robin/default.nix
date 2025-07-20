@@ -1,6 +1,8 @@
 { lib, pkgs, ... }: {
     imports = [
-      ../shared.nix  
+      ../shared.nix
+
+      ../../modules/git.nix
     ];
 
     home = {
@@ -13,7 +15,6 @@
 
     programs = {
         git = {
-            enable = true;
             userName = "Sunner";
             userEmail = "sunnerlp@gmail.com";
         };
