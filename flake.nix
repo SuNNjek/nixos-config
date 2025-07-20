@@ -23,7 +23,7 @@
       nixosVm = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/vm/configuration.nix
+          ./hosts/vm
         ];
       };
     };
