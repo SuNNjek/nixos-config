@@ -21,8 +21,9 @@
     # NOTE: 'nixos' is the default hostname
     nixosConfigurations = {
       nixosVm = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
         modules = [
-          (import ./hosts/vm/configuration.nix {inherit inputs;})
+          ./hosts/vm/configuration.nix
         ];
       };
     };

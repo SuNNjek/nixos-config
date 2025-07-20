@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ pkgs, inputs, ... }: {
     imports = [
         ../shared.nix
         ./hardware-configuration.nix
@@ -9,4 +9,10 @@
 
     # TODO: Add more stuff here
     networking.hostName = "nixosVm";
+
+    environment = {
+        systemPackages = with pkgs; [
+            gh
+        ];
+    };
 }
