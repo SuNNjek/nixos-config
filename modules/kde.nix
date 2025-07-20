@@ -8,8 +8,14 @@
     };
   };
 
-  environment.variables = {
-    # Use Wayland in Chromium/Electron based applications
-    NIXOS_OZONE_WL = "1";
+  environment = {
+    variables = {
+      # Use Wayland in Chromium/Electron based applications
+      NIXOS_OZONE_WL = "1";
+    };
+
+    systemPackages = with pkgs; [
+      firefox
+    ];
   };
 }
