@@ -1,4 +1,4 @@
-{ lib, pkgs, inputs, username, root-dev ? "/dev/sda", ... }: {
+{ lib, pkgs, inputs, username, rootDev ? "/dev/sda", ... }: {
 	imports = [
 		../shared.nix
 		./hardware-configuration.nix
@@ -14,7 +14,7 @@
 
     boot.loader.grub = {
         efiSupport = lib.mkForce false;
-        device = lib.mkForce root-dev;
+        device = lib.mkForce rootDev;
     };
 
 	networking.hostName = "school-laptop";

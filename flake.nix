@@ -26,10 +26,10 @@
 		nixosConfigurations = {
 			nixosVm = let
 				username = "robin";
-				root-dev = "/dev/sda";
+				rootDev = "/dev/sda";
 			in
 				nixpkgs.lib.nixosSystem {
-					specialArgs = { inherit inputs username root-dev; };
+					specialArgs = { inherit inputs username rootDev; };
 					modules = [
 						./hosts/vm
 					];
@@ -37,10 +37,11 @@
 
 			school-laptop = let
 				username = "robin";
-				root-dev = "/dev/sda";
+				rootDev = "/dev/sda";
+				isEfi = false;
 			in
 				nixpkgs.lib.nixosSystem {
-					specialArgs = { inherit inputs username root-dev; };
+					specialArgs = { inherit inputs username rootDev isEfi; };
 					modules = [
 						./hosts/school-laptop
 					];

@@ -1,26 +1,33 @@
-{ root-dev ? "/dev/sda", ... }: {
+{
+	rootDev ? "/dev/sda",
+	isEfi ? true,
+	...
+}: let
+	ESP = {
+		priority = 1;
+		name = "ESP";
+		size = "512M";
+		type = "EF00";
+		content = {
+			type = "filesystem";
+			format = "vfat";
+			mountpoint = "/boot";
+			mountOptions = [ "umask=0077" ];
+		};
+	};
+	MBR = {
+		size = "1M";
+		type = "EF02";
+	};
+in
+{
 	disko.devices = {
 		disk.main = {
 			type = "disk";
-			# TODO: Find a way to not have this be hardcoded
-			device = root-dev;
+			device = rootDev;
 			content = {
 				type = "gpt";
-				partitions = {
-					ESP = {
-						priority = 1;
-						name = "ESP";
-						start = "1M";
-						end = "1G";
-						type = "EF00";
-						content = {
-							type = "filesystem";
-							format = "vfat";
-							mountpoint = "/boot";
-							mountOptions = [ "umask=0077" ];
-						};
-					};
-
+				partitions = (if isEfi then ESP else MBR) // {
 					root = {
 						size = "100%";
 						name = "root";
