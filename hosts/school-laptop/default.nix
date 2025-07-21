@@ -17,6 +17,8 @@
         device = lib.mkForce rootDev;
     };
 
+	boot.loader.efi.canTouchEfiVariables = lib.mkForce false;
+
 	networking.hostName = "school-laptop";
     networking.networkmanager.enable = true;
 

@@ -9,7 +9,7 @@
 			useOSProber = lib.mkDefault false;
 		};
 
-		efi.canTouchEfiVariables = true;
+		efi.canTouchEfiVariables = lib.mkDefault true;
 	};
 
 	# Use latest kernel.
