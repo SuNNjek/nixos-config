@@ -3,7 +3,7 @@
 		# Use the GRUB boot loader.
 		grub = {
 			enable = true;
-			efiSupport = true;
+			efiSupport = lib.mkDefault true;
 			device = "nodev";
 		
 			useOSProber = lib.mkDefault false;
