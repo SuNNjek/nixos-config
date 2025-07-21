@@ -8,7 +8,8 @@
 
 		inputs.home-manager.nixosModules.home-manager
 
-		../../modules/kde.nix
+		../../modules/hyprland.nix
+		../../modules/pipewire.nix
 		../../modules/home-manager.nix
 		../../modules/zsh.nix
 	];
@@ -20,6 +21,8 @@
 	  isNormalUser = true;
 	  extraGroups = [ "wheel" ];
 	};
+
+	nix.settings.trusted-users = [ username ];
 
 	home-manager.users.${username} = import ../../home/users/${username};
 }

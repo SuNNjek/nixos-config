@@ -41,6 +41,10 @@
 		keyMap = "de-latin1-nodeadkeys";
 	};
 
+	services.xserver = {
+		xkb.layout = "de";
+	};
+
 	# List packages installed in system profile.
 	# You can use https://search.nixos.org/ to find more packages (and options).
 	environment = {
