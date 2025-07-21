@@ -27,7 +27,7 @@ in
 			device = rootDev;
 			content = {
 				type = "gpt";
-				partitions = (if isEfi then ESP else MBR) // {
+				partitions = (if isEfi then { inherit ESP; } else { inherit MBR; }) // {
 					root = {
 						size = "100%";
 						name = "root";
