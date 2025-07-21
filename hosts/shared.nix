@@ -4,7 +4,7 @@
 		grub = {
 			enable = true;
 			efiSupport = lib.mkDefault true;
-			device = "nodev";
+			device = lib.mkDefault "nodev";
 		
 			useOSProber = lib.mkDefault false;
 		};
