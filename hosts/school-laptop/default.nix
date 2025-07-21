@@ -12,15 +12,21 @@
 		../../modules/zsh.nix
 	];
 
-    boot.loader.grub = {
-        efiSupport = lib.mkForce false;
-        device = lib.mkForce rootDev;
-    };
+	boot.loader.grub = {
+		efiSupport = lib.mkForce false;
+
+		mirroredBoots = [
+			{
+				path = "/nix/boot";
+				devices = [ rootDev ];
+			}
+		];
+	};
 
 	boot.loader.efi.canTouchEfiVariables = lib.mkForce false;
 
 	networking.hostName = "school-laptop";
-    networking.networkmanager.enable = true;
+	networking.networkmanager.enable = true;
 
 	users.users.${username} = {
 	  isNormalUser = true;
