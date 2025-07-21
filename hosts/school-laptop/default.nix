@@ -8,13 +8,12 @@
 
 		inputs.home-manager.nixosModules.home-manager
 
-		../../modules/kde.nix
 		../../modules/home-manager.nix
 		../../modules/zsh.nix
 	];
 
-	# TODO: Add more stuff here
-	networking.hostName = "nixosVm";
+	networking.hostName = "school-laptop";
+    networking.networkmanager.enable = true;
 
 	users.users.${username} = {
 	  isNormalUser = true;

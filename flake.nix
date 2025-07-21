@@ -16,19 +16,35 @@
 			url = "github:nix-community/disko/latest";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		nixos-hardware = {
+			url = "github:NixOS/nixos-hardware/master";
+		};
 	};
 	outputs = inputs@{ self, nixpkgs, ... }: {
 		# NOTE: 'nixos' is the default hostname
 		nixosConfigurations = {
 			nixosVm = let
 				username = "robin";
+				root-dev = "/dev/sda";
 			in
 				nixpkgs.lib.nixosSystem {
-					specialArgs = { inherit inputs username; };
+					specialArgs = { inherit inputs username root-dev; };
 					modules = [
 						./hosts/vm
 					];
-			};
+				};
+
+			school-laptop = let
+				username = "robin";
+				root-dev = "/dev/sda";
+			in
+				nixpkgs.lib.nixosSystem {
+					specialArgs = { inherit inputs username root-dev; };
+					modules = [
+						./hosts/school-laptop
+					];
+				};
 		};
 	};
 }
