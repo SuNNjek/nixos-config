@@ -16,6 +16,11 @@
 			url = "github:nix-community/disko/latest";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		walker = {
+			url = "github:abenz1267/walker";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 	outputs = inputs@{ self, nixpkgs, ... }: {
 		# NOTE: 'nixos' is the default hostname

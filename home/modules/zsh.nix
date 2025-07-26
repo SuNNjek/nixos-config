@@ -5,6 +5,8 @@
 		autosuggestion.enable = true;
 		syntaxHighlighting.enable = true;
 
+		defaultKeymap = "emacs";
+
 		plugins = [
 			{
 				name = "powerlevel10k";
