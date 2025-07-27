@@ -7,16 +7,12 @@
 		kdePackages,
 		qt6,
 
-		version,
 		rev,
 		sha256,
 		...
 }: stdenv.mkDerivation {
-		inherit version;
-
 		pname = "klassy";
-
-		vendorHash = null;
+		version = rev;
 
 		src = fetchFromGitHub {
 			inherit rev sha256;
