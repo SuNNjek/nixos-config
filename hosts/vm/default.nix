@@ -4,12 +4,13 @@
 		./hardware-configuration.nix
 
 		inputs.disko.nixosModules.disko
-		./disk-layout.nix
+		../btrfs-layout.nix
 
 		inputs.home-manager.nixosModules.home-manager
+		../../modules/home-manager.nix
 
 		../../modules/kde.nix
-		../../modules/home-manager.nix
+		../../modules/flatpak.nix
 		../../modules/zsh.nix
 	];
 

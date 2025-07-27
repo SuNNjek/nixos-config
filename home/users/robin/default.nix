@@ -13,9 +13,16 @@
 	home = {
 		packages = with pkgs; [
 			neofetch
+			krabby
 		];
 
 		stateVersion = "25.05";
+	};
+
+	xdg = {
+		systemDirs.data = [
+			"/home/robin/.local/share/flatpak/exports/share"
+		];
 	};
 
 	programs = {
