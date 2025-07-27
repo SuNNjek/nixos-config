@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, username, ... }: {
 	boot.loader = {
 		# Use the GRUB boot loader.
 		grub = {
@@ -57,6 +57,18 @@
 			wget
 		];
 	};
+
+	security.sudo.extraRules = [
+		{
+			users = [ username ];
+			commands = [
+				{
+					command = "ALL";
+					options = [ "NOPASSWD" ];
+				}
+			];
+		}
+	];
 
 	# This option defines the first version of NixOS you have installed on this particular machine,
 	# and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

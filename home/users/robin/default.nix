@@ -13,6 +13,7 @@
 	home = {
 		packages = with pkgs; [
 			neofetch
+			krabby
 			webcord
 
 			nautilus
@@ -37,6 +38,12 @@
 			package = pkgs.fluent-icon-theme;
 			name = "Fluent-dark";
 		};
+	};
+
+	xdg = {
+		systemDirs.data = [
+			"/home/robin/.local/share/flatpak/exports/share"
+		];
 	};
 
 	programs = {

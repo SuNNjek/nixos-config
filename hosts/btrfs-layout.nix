@@ -1,9 +1,8 @@
-{
+{ root-device ? "/dev/sda", ... }: {
 	disko.devices = {
 		disk.main = {
 			type = "disk";
-			# TODO: Find a way to not have this be hardcoded
-			device = "/dev/sda";
+			device = root-device;
 			content = {
 				type = "gpt";
 				partitions = {
@@ -11,7 +10,7 @@
 						priority = 1;
 						name = "ESP";
 						start = "1M";
-						end = "1G";
+						end = "512M";
 						type = "EF00";
 						content = {
 							type = "filesystem";
@@ -28,6 +27,14 @@
 							type = "btrfs";
 
 							subvolumes = {
+								"@" = {
+									mountpoint = "/";
+									mountOptions = [
+										"compress=zstd"
+										"noatime"
+									];
+								};
+
 								"@nix" = {
 									mountpoint = "/nix";
 									mountOptions = [
@@ -36,8 +43,8 @@
 									];
 								};
 
-								"@etc" = {
-									mountpoint = "/etc";
+								"@var" = {
+									mountpoint = "/var";
 									mountOptions = [
 										"compress=zstd"
 										"noatime"
@@ -48,22 +55,6 @@
 									mountpoint = "/home";
 									mountOptions = [ "compress=zstd" ];
 								};
-
-								"@log" = {
-									mountpoint = "/var/log";
-									mountOptions = [
-										"compress=zstd"
-										"noatime"
-									];
-								};
-
-								"@cache" = {
-									mountpoint = "/var/cache";
-									mountOptions = [
-										"compress=zstd"
-										"noatime"
-									];
-								};
 							};
 						};
 					};
@@ -72,7 +63,7 @@
 		};
 
 		nodev = {
-			"/" = {
+			"/tmp" = {
 				fsType = "tmpfs";
 				mountOptions = [
 					"size=2G"
