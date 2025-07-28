@@ -21,6 +21,8 @@
 			url = "github:abenz1267/walker";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		hypotd.url = "github:SuNNjek/hypotd";
 	};
 	outputs = inputs@{ self, nixpkgs, ... }: {
 		# NOTE: 'nixos' is the default hostname

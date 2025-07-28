@@ -3,12 +3,6 @@
 		inputs.walker.homeManagerModules.default
 	];
 
-	home = {
-		packages = with pkgs; [
-			walker
-		];
-	};
-
 	programs.walker = {
 		enable = true;
 		package = pkgs.walker;

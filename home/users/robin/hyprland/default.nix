@@ -1,8 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
 	imports = [
 		./binds.nix
 		./rules.nix
 
+		./hypotd.nix
 		./waybar.nix
 		./walker.nix
 		./mako.nix
