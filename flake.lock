@@ -66,11 +66,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1753724703,
-        "narHash": "sha256-+F6SJC9bSa3osSKEX/CTU75Wd0OUckpaWNq6PQ5F2/w=",
+        "lastModified": 1753732388,
+        "narHash": "sha256-WFAgzvrLBWvMEYWkuQU7+w+OKjuHFUShROlN8bn4qWo=",
         "owner": "SuNNjek",
         "repo": "hypotd",
-        "rev": "ecff830cf725906fc815a94c9c5040e9073c23c0",
+        "rev": "52eeccde21f92dd4cf8e63b2e613f7df7316f03d",
         "type": "github"
       },
       "original": {

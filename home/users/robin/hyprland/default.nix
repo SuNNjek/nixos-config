@@ -21,6 +21,12 @@
 			};
 
 			monitor = ",highres,auto,1";
+
+			misc = {
+				# Begone, anime girl
+				disable_hyprland_logo = true;
+				background_color = "0x0094de";
+			};
 		};
 
 		plugins = with pkgs; [

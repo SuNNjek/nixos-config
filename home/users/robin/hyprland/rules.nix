@@ -14,7 +14,8 @@
 			"blur, notifications"
 			"ignorezero, notifications"
 
-			"blurpopups, walker"
+			"dimaround, walker"
+			"blur, walker"
 		];
 
 		workspace = [
