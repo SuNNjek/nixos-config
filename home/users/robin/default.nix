@@ -14,9 +14,10 @@
 		packages = with pkgs; [
 			neofetch
 			krabby
-			webcord
 
 			nautilus
+
+			nil
 		];
 
 		stateVersion = "25.05";
@@ -47,6 +48,8 @@
 	};
 
 	programs = {
+		vesktop.enable = true;
+
 		git = {
 			userName = "Sunner";
 			userEmail = "sunnerlp@gmail.com";
@@ -63,5 +66,9 @@
 			shellIntegration.enableZshIntegration = true;
 			font.name = "MesloLGS NF";
 		};
+	};
+
+	services = {
+		network-manager-applet.enable = true;
 	};
 }

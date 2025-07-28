@@ -3,9 +3,7 @@
 		lib,
 		stdenv,
 		cmake,
-		extra-cmake-modules,
 		kdePackages,
-		qt6,
 
 		rev,
 		sha256,

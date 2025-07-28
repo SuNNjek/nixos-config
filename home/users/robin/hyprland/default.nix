@@ -5,6 +5,7 @@
 
 		./waybar.nix
 		./walker.nix
+		./mako.nix
 		./wlogout.nix
 	];
 
@@ -20,6 +21,10 @@
 
 			monitor = ",highres,auto,1";
 		};
+
+		plugins = with pkgs; [
+			(callPackage ./titlebar-move.nix {})
+		];
 	};
 
 	services.hyprpaper = {
@@ -27,6 +32,23 @@
 
 		settings = {
 			ipc = "on";
+		};
+	};
+
+	home = {
+		packages = with pkgs; [
+			bibata-cursors
+		];
+
+		pointerCursor = {
+			package = pkgs.bibata-cursors;
+			name = "Bibata-Modern-Ice";
+			size = 24;
+
+			hyprcursor = {
+				enable = true;
+				size = 24;
+			};
 		};
 	};
 

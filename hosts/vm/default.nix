@@ -14,6 +14,7 @@
 		../../modules/home-manager.nix
 		../../modules/flatpak.nix
 		../../modules/zsh.nix
+		../../modules/nh.nix
 	];
 
 	# TODO: Add more stuff here
@@ -27,4 +28,6 @@
 	nix.settings.trusted-users = [ username ];
 
 	home-manager.users.${username} = import ../../home/users/${username};
+
+	programs.nh.flake = "/home/${username}/git/nixos-config";
 }

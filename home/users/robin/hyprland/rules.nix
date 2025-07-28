@@ -10,6 +10,10 @@
 
 		layerrule = [
 			"blur, waybar"
+			
+			"blur, notifications"
+			"ignorezero, notifications"
+
 			"blurpopups, walker"
 		];
 
