@@ -38,5 +38,10 @@ in {
 		bindc = [
 			"$mod, mouse:274, togglefloating"
 		];
+
+		bindl = [
+			", switch:on:Lid Switch, exec, hyprctl keyword monitor \"eDP-1,disable\""
+			", switch:off:Lid Switch, exec, hyprctl keyword monitor \"eDP-1,highres,auto,1\""
+		];
 	};
 }

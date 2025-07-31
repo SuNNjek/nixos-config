@@ -17,10 +17,15 @@
 				modules-right = [
 					"tray"
 					"network"
+					"pulseaudio"
 					"cpu"
 					"memory"
 					"clock"
 				];
+
+				pulseaudio = {
+					on-click = "pavucontrol";
+				};
 			};
 		};
 	};

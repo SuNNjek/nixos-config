@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ lib, config, ... }: {
 	programs.nh = {
 		enable = true;
 
@@ -9,6 +9,6 @@
 	};
 
 	environment.variables = {
-		"HOSTNAME" = config.networking.hostName;
+		"HOSTNAME" = lib.mkDefault config.networking.hostName;
 	};
 }

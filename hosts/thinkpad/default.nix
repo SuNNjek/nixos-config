@@ -31,6 +31,10 @@
 		networkmanager.enable = true;
 	};
 
+	environment.variables = {
+		"HOSTNAME" = "thinkpad";
+	};
+
 	users.users.${username} = {
 	  isNormalUser = true;
 	  extraGroups = [ "wheel" ];

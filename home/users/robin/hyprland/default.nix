@@ -20,7 +20,11 @@
 				kb_layout = "de";
 			};
 
-			monitor = ",highres,auto,1";
+			monitor = [
+				"desc:Dell Inc. DELL U2724DE 6QZ59P3,highres,auto,1"
+				"desc:Dell Inc. DELL P2225H DNWN504,highres,auto,1,transform,3"
+				",highres,auto,1"
+			];
 
 			misc = {
 				# Begone, anime girl
