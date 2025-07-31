@@ -6,6 +6,7 @@
 		# You can also use unstable for the unstable channel.
 		# Use `nix flake update` to update the flake to the latest revision of the chosen release channel.
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+		nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
 		home-manager = {
 			url = "github:nix-community/home-manager/release-25.05";
@@ -25,7 +26,6 @@
 		hypotd.url = "github:SuNNjek/hypotd";
 	};
 	outputs = inputs@{ self, nixpkgs, ... }: {
-		# NOTE: 'nixos' is the default hostname
 		nixosConfigurations = {
 			nixosVm = let
 				username = "robin";
@@ -34,6 +34,16 @@
 					specialArgs = { inherit inputs username; };
 					modules = [
 						./hosts/vm
+					];
+			};
+
+			thinkpad = let
+				username = "robin";
+			in
+				nixpkgs.lib.nixosSystem {
+					specialArgs = { inherit inputs username; };
+					modules = [
+						./hosts/thinkpad
 					];
 			};
 		};
