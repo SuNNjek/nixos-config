@@ -21,4 +21,5 @@
 	# networking.interfaces.eth0.useDHCP = lib.mkDefault true;
 
 	nixpkgs.hostPlatform = "x86_64-linux";
+	hardware.enableRedistributableFirmware = true;
 }
