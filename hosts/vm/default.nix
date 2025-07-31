@@ -1,10 +1,9 @@
-{ pkgs, inputs, username, ... }: {
+{ inputs, username, ... }: {
 	imports = [
 		../shared.nix
 		./hardware-configuration.nix
 
-		inputs.disko.nixosModules.disko
-		../btrfs-layout.nix
+		../../modules/disk-layouts
 
 		inputs.home-manager.nixosModules.home-manager
 		../../modules/home-manager.nix
@@ -16,6 +15,15 @@
 		../../modules/zsh.nix
 		../../modules/nh.nix
 	];
+
+	diskLayout = {
+		btrfs = {
+			enable = true;
+			device = "/dev/sda";
+		};
+
+		tmp.enable = true;
+	};
 
 	# TODO: Add more stuff here
 	networking.hostName = "nixosVm";

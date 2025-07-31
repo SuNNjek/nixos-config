@@ -1,8 +1,26 @@
-{ root-device ? "/dev/sda", ... }: {
-	disko.devices = {
-		disk.main = {
+{ lib, config, ... }:
+with lib;
+let 
+	cfg = config.diskLayout.btrfs;
+in
+{
+	options = {
+		diskLayout.btrfs = {
+			enable = mkEnableOption "btrfs";
+
+			device = mkOption {
+				type = types.str;
+				default = "/dev/sda";
+				defaultText = "/dev/sda";
+				description = "Path of the root device";
+			};
+		};
+	};
+
+	config = mkIf cfg.enable {
+		disko.devices.disk.main = {
 			type = "disk";
-			device = root-device;
+			device = cfg.device;
 			content = {
 				type = "gpt";
 				partitions = {
@@ -59,17 +77,6 @@
 						};
 					};
 				};
-			};
-		};
-
-		nodev = {
-			"/tmp" = {
-				fsType = "tmpfs";
-				mountOptions = [
-					"size=2G"
-					"defaults"
-					"mode=755"
-				];
 			};
 		};
 	};

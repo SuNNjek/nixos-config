@@ -29,10 +29,9 @@
 		nixosConfigurations = {
 			nixosVm = let
 				username = "robin";
-				root-device = "/dev/sda";
 			in
 				nixpkgs.lib.nixosSystem {
-					specialArgs = { inherit inputs username root-device; };
+					specialArgs = { inherit inputs username; };
 					modules = [
 						./hosts/vm
 					];
