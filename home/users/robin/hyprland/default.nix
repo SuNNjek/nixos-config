@@ -18,6 +18,10 @@
 
 			input = {
 				kb_layout = "de";
+
+				touchpad = {
+					natural_scroll = true;
+				};
 			};
 
 			monitor = [

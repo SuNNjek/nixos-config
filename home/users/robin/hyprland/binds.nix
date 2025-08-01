@@ -10,7 +10,7 @@ in {
 			
 			"$mod, Q, killactive"
 			"$mod SHIFT, Q, exec, wlogout"
-			"ALT, SPACE, exec, walker"
+			"$mod, SPACE, exec, walker"
 
 			"$mod, k, swapwindow, u"
 			"$mod, j, swapwindow, d"
@@ -42,6 +42,13 @@ in {
 		bindl = [
 			", switch:on:Lid Switch, exec, hyprctl keyword monitor \"eDP-1,disable\""
 			", switch:off:Lid Switch, exec, hyprctl keyword monitor \"eDP-1,highres,auto,1\""
+
+			", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+		];
+
+		bindle = [
+			", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
+			", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
 		];
 	};
 }
