@@ -17,7 +17,7 @@
 
 			nautilus
 
-			nil
+			nixd
 		];
 
 		stateVersion = "25.05";

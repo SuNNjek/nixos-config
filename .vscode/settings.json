@@ -1,0 +1,16 @@
+{
+    // Settings currently use "thinkpad" host. Edit this if you want to target a different host
+    "nix.serverSettings": {
+        "nixd": {
+            "options": {
+                "nixos": {
+                    "expr": "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.thinkpad.options"
+                },
+
+                "home-manager": {
+                    "expr": "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.thinkpad.options.home-manager.users.type.getSubOptions []"
+                }
+            }
+        }
+    }
+}
