@@ -1,4 +1,4 @@
-{ inputs, username, ... }: {
+{ inputs, pkgs, username, ... }: {
 	imports = [
 		../shared.nix
 		./hardware-configuration.nix
@@ -8,6 +8,7 @@
 		inputs.home-manager.nixosModules.home-manager
 		../../modules/home-manager.nix
 
+		../../modules/stylix.nix
 		../../modules/hyprland.nix
 		../../modules/pipewire.nix
 		../../modules/home-manager.nix

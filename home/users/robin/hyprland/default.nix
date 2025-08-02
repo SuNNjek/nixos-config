@@ -33,7 +33,7 @@
 			misc = {
 				# Begone, anime girl
 				disable_hyprland_logo = true;
-				background_color = "0x0094de";
+				#background_color = "0x0094de";
 			};
 		};
 

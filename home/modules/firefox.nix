@@ -1,5 +1,13 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, username, ... }: {
 	programs.firefox = {
 		enable = true;
+
+		profiles = {
+			"${username}" = {
+
+			};
+		};
 	};
+
+	stylix.targets.firefox.profileNames = [ username ];
 }

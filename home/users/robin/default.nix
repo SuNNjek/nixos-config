@@ -27,13 +27,15 @@
 		};
 	};
 
+	stylix.enable = true;
+
 	gtk = {
 		enable = true;
 
-		theme = {
-			package = pkgs.fluent-gtk-theme;
-			name = "Fluent-Dark";
-		};
+		# theme = {
+		# 	package = pkgs.fluent-gtk-theme;
+		# 	name = "Fluent-Dark";
+		# };
 
 		iconTheme = {
 			package = pkgs.fluent-icon-theme;
