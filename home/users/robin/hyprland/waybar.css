@@ -1,5 +1,5 @@
 #waybar {
-    background: alpha(@base00, 0.25);
+    background: alpha(@base00, 0.75);
 }
 
 #window,

@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ lib, pkgs, ... }: {
 	imports = [
 		./binds.nix
 		./rules.nix
@@ -57,28 +57,36 @@
 		];
 	};
 
-	services.hyprpaper = {
-		enable = true;
+	stylix.targets.hyprpaper.enable = lib.mkForce false;
+	services = {
+		hyprpaper = {
+			enable = true;
 
-		settings = {
-			ipc = "on";
-		};
-	};
-
-	home = {
-		packages = with pkgs; [
-			bibata-cursors
-		];
-
-		pointerCursor = {
-			package = pkgs.bibata-cursors;
-			name = "Bibata-Modern-Ice";
-			size = 24;
-
-			hyprcursor = {
-				enable = true;
-				size = 24;
+			settings = {
+				ipc = "on";
 			};
+		};
+
+		hyprpolkitagent.enable = true;
+
+		# Update this when hyprsunset 0.3 hits Nix stable
+		hyprsunset = {
+			enable = true;
+			transitions = {
+			  sunrise = {
+				calendar = "*-*-* 06:00:00";
+				requests = [
+				  [ "temperature" "6500" ]
+				  [ "gamma 100" ]
+				];
+			  };
+			  sunset = {
+				calendar = "*-*-* 19:00:00";
+				requests = [
+				  [ "temperature" "3500" ]
+				];
+			  };
+			};	
 		};
 	};
 
@@ -90,10 +98,4 @@
 		# According to the docs, you should install the GTK one as well.
 		extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 	};
-
-	programs.zsh.initContent = ''
-		if uwsm check may-start && uwsm select; then
-			exec uwsm start default
-		fi
-	'';
 }

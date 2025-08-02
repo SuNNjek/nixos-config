@@ -57,11 +57,11 @@ in {
 				};
 
 				cpu = {
-					format = "<span font_family=\"Font Awesome 6 Free\"></span>  {usage}% ({load})";
+					format = "<span font_family=\"Font Awesome 6 Free\"></span>  {usage}%";
 				};
 
 				memory = {
-					format = "<span font_family=\"Font Awesome 6 Free\"></span>  {}%";
+					format = "<span font_family=\"Font Awesome 6 Free\"></span>  {percentage}%  ({swapPercentage}%)";
 				};
 
 				tray = {

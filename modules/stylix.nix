@@ -9,6 +9,11 @@
 		base16Scheme = "${pkgs.base16-schemes}/share/themes/material.yaml";
 		polarity = "dark";
 
+    # https://unsplash.com/photos/seashore-DA_tplYgTow
+    image = ./wallpaper.jpg;
+
+    targets.grub.useWallpaper = true;
+
     fonts = {
       sansSerif = {
         package = pkgs.roboto;
@@ -24,6 +29,12 @@
         package = pkgs.nerd-fonts.roboto-mono;
         name = "RobotoMono Nerd Font Mono";
       };
+    };
+
+    cursor = {
+			package = pkgs.bibata-cursors;
+			name = "Bibata-Modern-Ice";
+			size = 24;
     };
 	};
 }
