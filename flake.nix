@@ -23,7 +23,10 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-		hypotd.url = "github:SuNNjek/hypotd";
+		hypotd = {
+			url = "github:SuNNjek/hypotd";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 	outputs = inputs@{ self, nixpkgs, ... }: {
 		nixosConfigurations = {

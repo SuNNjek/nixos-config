@@ -31,13 +31,28 @@
 		networkmanager.enable = true;
 	};
 
+	services.zram-generator = {
+		enable = true;
+		settings.zram0 = {
+			compression-algorithm = "zstd";
+			zram-size = "min(ram / 2, 8192)";
+		};
+	};
+
+	boot.kernel.sysctl = {
+		"vm.swappiness" = 180;
+		"vm.watermark_boost_factor" = 0;
+		"vm.watermark_scale_factor" = 125;
+		"vm.page-cluster" = 0;
+	};
+
 	environment.variables = {
 		"HOSTNAME" = "thinkpad";
 	};
 
 	users.users.${username} = {
-	  isNormalUser = true;
-	  extraGroups = [ "wheel" ];
+		isNormalUser = true;
+		extraGroups = [ "wheel" ];
 	};
 
 	nix.settings.trusted-users = [ username ];
