@@ -1,4 +1,5 @@
 {
+    "nix.serverPath": "nixd",
     // Settings currently use "thinkpad" host. Edit this if you want to target a different host
     "nix.serverSettings": {
         "nixd": {
@@ -12,5 +13,6 @@
                 }
             }
         }
-    }
+    },
+    "nix.enableLanguageServer": true
 }

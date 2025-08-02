@@ -1,17 +1,28 @@
-{
+{ lib, pkgs, ... }:
+let 
+	inherit (lib) mkAfter;
+in {
 	stylix.targets.waybar = {
 		font = "sansSerif";
+
+		addCss = false;
 	};
+
+	home.packages = with pkgs; [
+		font-awesome
+	];
 
 	programs.waybar = {
 		enable = true;
 		systemd.enable = true;
 
+		style = mkAfter (builtins.readFile ./waybar.css);
+
 		settings = {
 			mainBar = {
 				layer = "top";
 				position = "bottom";
-				height = 40;
+				height = 48;
 
 				modules-left = [
 					"hyprland/workspaces"
@@ -29,7 +40,7 @@
 				];
 
 				battery = {
-					format = "{icon} {capacity}%";
+					format = "<span font_family=\"Font Awesome 6 Free\">{icon}</span>  {capacity}%";
 					format-icons = [
 						"" # Icon: battery-full
 						"" # Icon: battery-three-quarters
@@ -41,16 +52,16 @@
 
 				wireplumber = {
 					on-click = "pavucontrol";
-					format = "{volume}% {icon}";
+					format = "<span font_family=\"Font Awesome 6 Free\">{icon}</span>  {volume}%";
 					format-icons = ["" "" ""];
 				};
 
 				cpu = {
-					format = "  {usage}% ({load})";
+					format = "<span font_family=\"Font Awesome 6 Free\"></span>  {usage}% ({load})";
 				};
 
 				memory = {
-					format = "  {}%";
+					format = "<span font_family=\"Font Awesome 6 Free\"></span>  {}%";
 				};
 
 				tray = {

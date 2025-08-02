@@ -12,17 +12,17 @@
     fonts = {
       sansSerif = {
         package = pkgs.roboto;
-        name = "Roboto Regular";
+        name = "Roboto";
       };
 
       serif = {
         package = pkgs.roboto-slab;
-        name = "Roboto Slab Regular";
+        name = "Roboto Slab";
       };
 
       monospace = {
         package = pkgs.nerd-fonts.roboto-mono;
-        name = "Roboto Mono NF";
+        name = "RobotoMono Nerd Font Mono";
       };
     };
 	};

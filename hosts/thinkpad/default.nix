@@ -1,4 +1,4 @@
-{ inputs, pkgs, username, ... }: {
+{ inputs, lib, pkgs, username, ... }: {
 	imports = [
 		../shared.nix
 		./hardware-configuration.nix
@@ -16,6 +16,8 @@
 		../../modules/zsh.nix
 		../../modules/nh.nix
 	];
+
+	boot.kernelPackages = lib.mkForce pkgs.linuxPackages_zen;
 
 	diskLayout = {
 		btrfs = {

@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, ... }: {
 	imports = [
 		./binds.nix
 		./rules.nix
@@ -16,11 +16,26 @@
 		settings = {
 			"$terminal" = "kitty";
 
+			general = {
+				gaps_out = 8;
+				gaps_in = 4;
+			};
+
 			input = {
 				kb_layout = "de";
+				# Focus window when clicking on it, not when hovering over it
+				follow_mouse = 2;
 
 				touchpad = {
 					natural_scroll = true;
+				};
+			};
+
+			decoration = {
+				rounding = 8;
+
+				blur = {
+					passes = 2;
 				};
 			};
 
@@ -65,6 +80,15 @@
 				size = 24;
 			};
 		};
+	};
+
+	xdg.portal = {
+		enable = true;
+		xdgOpenUsePortal = true;
+
+		# xdg-desktop-portal-hyprland doesn't implement a file picker.
+		# According to the docs, you should install the GTK one as well.
+		extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 	};
 
 	programs.zsh.initContent = ''

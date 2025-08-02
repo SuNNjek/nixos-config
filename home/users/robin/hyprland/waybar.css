@@ -1,0 +1,53 @@
+#waybar {
+    background: alpha(@base00, 0.25);
+}
+
+#window,
+#tray,
+#network,
+#wireplumber,
+#pulseaudio,
+#cpu,
+#memory,
+#clock,
+#battery {
+    padding: 0 8px;
+}
+
+.modules-left,
+.modules-right {
+    background: @base00;
+    border: 1px solid alpha(@base05, 0.2);
+    border-radius: 8px;
+    margin: 4px;
+}
+
+#worspaces button {
+    border-radius: 8px;
+}
+
+#workspaces button.focused,
+#workspaces button.active {
+    background-color: @base02;
+}
+
+#network {
+    background-color: alpha(@base09, 0.2);
+}
+
+#battery {
+    background-color: alpha(@base0A, 0.2);
+}
+
+#cpu {
+    background-color: alpha(@base0B, 0.2);
+}
+
+#memory {
+    background-color: alpha(@base0C, 0.2);
+}
+
+#wireplumber,
+#pulseaudio {
+    background-color: alpha(@base0D, 0.2);
+}

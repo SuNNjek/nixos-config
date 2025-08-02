@@ -7,6 +7,7 @@
 			# Launch Firefox PiP in floating mode
 			"float, class:firefox, title:Picture-in-Picture"
 			"float, class:org.pulseaudio.pavucontrol"
+			"move 100%-w-8 100%-w-56, class:org.pulseaudio.pavucontrol"
 
 			"bordersize 0, floating:0, onworkspace:w[tv1]"
 			"rounding 0, floating:0, onworkspace:w[tv1]"
