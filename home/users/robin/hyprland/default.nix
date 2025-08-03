@@ -48,7 +48,6 @@
 			misc = {
 				# Begone, anime girl
 				disable_hyprland_logo = true;
-				#background_color = "0x0094de";
 			};
 		};
 
@@ -70,23 +69,9 @@
 		hyprpolkitagent.enable = true;
 
 		# Update this when hyprsunset 0.3 hits Nix stable
-		hyprsunset = {
+		gammastep = {
 			enable = true;
-			transitions = {
-			  sunrise = {
-				calendar = "*-*-* 06:00:00";
-				requests = [
-				  [ "temperature" "6500" ]
-				  [ "gamma 100" ]
-				];
-			  };
-			  sunset = {
-				calendar = "*-*-* 19:00:00";
-				requests = [
-				  [ "temperature" "3500" ]
-				];
-			  };
-			};	
+			provider = "geoclue2";
 		};
 
 		udiskie.enable = true;
