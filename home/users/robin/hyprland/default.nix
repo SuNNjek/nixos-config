@@ -88,6 +88,8 @@
 			  };
 			};	
 		};
+
+		udiskie.enable = true;
 	};
 
 	xdg.portal = {
