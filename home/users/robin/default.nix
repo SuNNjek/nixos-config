@@ -42,6 +42,11 @@
 		systemDirs.data = [
 			"/home/robin/.local/share/flatpak/exports/share"
 		];
+
+		userDirs = {
+			enable = true;
+			createDirectories = true;
+		};
 	};
 
 	programs = {

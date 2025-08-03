@@ -22,9 +22,10 @@ in {
 			mainBar = {
 				layer = "top";
 				position = "bottom";
-				height = 48;
+				height = 40;
 
 				modules-left = [
+					"custom/launcher"
 					"hyprland/workspaces"
 					"hyprland/window"
 				];
@@ -38,6 +39,12 @@ in {
 					"memory"
 					"clock"
 				];
+
+				"custom/launcher" = {
+					format = "  <span font_family=\"Font Awesome 6 Free\"></span>  ";
+					tooltip = false;
+					on-click = "walker";
+				};
 
 				battery = {
 					format = "<span font_family=\"Font Awesome 6 Free\">{icon}</span>  {capacity}%";

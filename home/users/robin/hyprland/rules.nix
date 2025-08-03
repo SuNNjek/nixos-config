@@ -1,3 +1,6 @@
+{ config, ... }: let
+	waybarHeight = config.programs.waybar.settings.mainBar.height;
+in
 {
 	wayland.windowManager.hyprland.settings = {
 		windowrule = [
@@ -11,7 +14,7 @@
 			# to the bottom right corner
 			"tag +tray, class:org.pulseaudio.pavucontrol"
 			"float, tag:tray"
-			"move 100%-w-8 100%-w-56, tag:tray"
+			"move 100%-w-8 100%-w-${toString (waybarHeight + 8)}, tag:tray"
 
 			"bordersize 0, floating:0, onworkspace:w[tv1]"
 			"rounding 0, floating:0, onworkspace:w[tv1]"
