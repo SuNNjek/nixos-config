@@ -28,6 +28,7 @@ slider,
   font-size: 1.2em;
 }
 
+
 #window {
   color: @foreground;
 }
@@ -35,9 +36,9 @@ slider,
 #box {
   border-radius: 8px;
   background: @background;
-  padding: 32px;
-  border: 1px solid @base0D;
-  box-shadow:
+  padding: 16px;
+  border: 1px solid @base0D;	
+	box-shadow:
     0 19px 38px rgba(0, 0, 0, 0.3),
     0 15px 12px rgba(0, 0, 0, 0.22);
 }

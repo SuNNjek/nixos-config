@@ -19,6 +19,8 @@ in {
 		};
 
 		theme = {
+			layout = import ./layout.nix;
+
 			style = with colors.withHashtag; ''
 @define-color base00 ${base00}; @define-color base01 ${base01};
 @define-color base02 ${base02}; @define-color base03 ${base03};
@@ -30,36 +32,11 @@ in {
 @define-color base0C ${base0C}; @define-color base0D ${base0D};
 @define-color base0E ${base0E}; @define-color base0F ${base0F};
 
-@define-color background ${base00};
-@define-color foreground ${base05};
-		'' + (builtins.readFile ./walker.css);
+@define-color background alpha(@base00, 0.98);
+@define-color foreground alpha(@base05, 0.8);
 
-			layout = {
-				ui = {
-					anchors = {
-						bottom = true;
-						left = true;
-						right = true;
-						top = true;
-					};
-
-					window = {
-						h_align = "fill";
-						v_align = "fill";
-
-						box = {
-							h_align = "center";
-							v_align = "center";
-							width = 450;
-
-							scroll.list = {
-								item.icon.pixel_size = 24;
-								margins.top = 8;
-							};
-						};
-					};
-				};
-			};
+''
+	 		+ (builtins.readFile ./walker.css);
 		};
 	};
 }

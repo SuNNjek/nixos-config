@@ -3,9 +3,9 @@
 		./binds.nix
 		./rules.nix
 
+		../walker
 		./hypotd.nix
 		./waybar.nix
-		./walker.nix
 		./mako.nix
 		./wlogout.nix
 	];
