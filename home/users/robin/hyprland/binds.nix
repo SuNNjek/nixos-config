@@ -12,10 +12,7 @@ in {
 			"$mod SHIFT, Q, exec, wlogout"
 			"$mod, SPACE, exec, walker"
 
-			"$mod, k, swapwindow, u"
-			"$mod, j, swapwindow, d"
-			"$mod, h, swapwindow, l"
-			"$mod, l, swapwindow, r"
+			"$mod, l, exec, hyprlock"
 
 			"$mod, left, workspace, r-1"
 			"$mod, right, workspace, r+1"
