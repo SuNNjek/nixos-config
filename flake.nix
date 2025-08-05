@@ -31,21 +31,21 @@
 	};
 
 	outputs = inputs@{ nixpkgs, ... }:
-		let
-			defineHost = username: definition: nixpkgs.lib.nixosSystem {
-				specialArgs = { inherit inputs username; };
-				modules = [
-					./overlays
-					definition
-				];
-			};
-
-			robinHost = defineHost "robin";
-		in {
-			nixosConfigurations = {
-				nixosVm = robinHost ./hosts/vm;
-				thinkpad = robinHost ./hosts/thinkpad;
-			};
+	let
+		defineHost = username: definition: nixpkgs.lib.nixosSystem {
+			specialArgs = { inherit inputs username; };
+			modules = [
+				./overlays
+				definition
+			];
 		};
+
+		robinHost = defineHost "robin";
+	in {
+		nixosConfigurations = {
+			nixosVm = robinHost ./hosts/desktop/vm;
+			robin-thinkpad = robinHost ./hosts/desktop/thinkpad;
+		};
+	};
 }
 

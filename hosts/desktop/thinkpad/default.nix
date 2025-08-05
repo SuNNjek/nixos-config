@@ -1,0 +1,38 @@
+{
+	imports = [
+		../.
+		./hardware-configuration.nix
+
+		../modules/hyprland.nix
+	];
+
+	diskLayout = {
+		btrfs = {
+			enable = true;
+			device = "/dev/nvme0n1";
+		};
+
+		tmp.enable = true;
+	};
+
+	networking = {
+		hostName = "robin-thinkpad";
+
+		networkmanager.enable = true;
+	};
+
+	services.zram-generator = {
+		enable = true;
+		settings.zram0 = {
+			compression-algorithm = "zstd";
+			zram-size = "min(ram / 2, 8192)";
+		};
+	};
+
+	boot.kernel.sysctl = {
+		"vm.swappiness" = 180;
+		"vm.watermark_boost_factor" = 0;
+		"vm.watermark_scale_factor" = 125;
+		"vm.page-cluster" = 0;
+	};
+}

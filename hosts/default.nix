@@ -1,4 +1,14 @@
-{ lib, pkgs, username, ... }: {
+{ lib, pkgs, ... }:
+let
+	inherit (lib) mkDefault;
+in {
+	imports = [
+		./modules/disk-layouts
+		./modules/home-manager.nix
+		./modules/zsh.nix
+		./modules/nh.nix
+	];
+
 	boot.loader = {
 		# Use the GRUB boot loader.
 		grub = {
@@ -6,19 +16,19 @@
 			efiSupport = true;
 			device = "nodev";
 		
-			useOSProber = lib.mkDefault false;
+			useOSProber = mkDefault false;
 		};
 
 		efi.canTouchEfiVariables = true;
 	};
 
 	# Use latest kernel.
-	boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+	boot.kernelPackages = mkDefault pkgs.linuxPackages_latest;
 
 	nixpkgs = {
 		config = {
 			# Allow unfree packages by default
-			allowUnfree = lib.mkDefault true;
+			allowUnfree = mkDefault true;
 		};
 	};
 
@@ -47,35 +57,22 @@
 		keyMap = "de-latin1-nodeadkeys";
 	};
 
-	services.xserver = {
-		xkb.layout = "de";
-	};
-
 	# List packages installed in system profile.
 	# You can use https://search.nixos.org/ to find more packages (and options).
 	environment = {
-		variables = {
-			EDITOR = "vim";
-		};
-
 		systemPackages = with pkgs; [
-			vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
 			wget
-			htop
 		];
 	};
 
-	security.sudo.extraRules = [
-		{
-			users = [ username ];
-			commands = [
-				{
-					command = "ALL";
-					options = [ "NOPASSWD" ];
-				}
-			];
-		}
-	];
+	programs = {
+		htop.enable = true;
+
+		vim = {
+			enable = true;
+			defaultEditor = true;
+		};
+	};
 
 	# This option defines the first version of NixOS you have installed on this particular machine,
 	# and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
