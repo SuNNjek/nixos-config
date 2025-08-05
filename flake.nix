@@ -29,28 +29,23 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 	};
-	outputs = inputs@{ self, nixpkgs, ... }: {
-		nixosConfigurations = {
-			nixosVm = let
-				username = "robin";
-			in
-				nixpkgs.lib.nixosSystem {
-					specialArgs = { inherit inputs username; };
-					modules = [
-						./hosts/vm
-					];
+
+	outputs = inputs@{ nixpkgs, ... }:
+		let
+			defineHost = username: definition: nixpkgs.lib.nixosSystem {
+				specialArgs = { inherit inputs username; };
+				modules = [
+					./overlays
+					definition
+				];
 			};
 
-			thinkpad = let
-				username = "robin";
-			in
-				nixpkgs.lib.nixosSystem {
-					specialArgs = { inherit inputs username; };
-					modules = [
-						./hosts/thinkpad
-					];
+			robinHost = defineHost "robin";
+		in {
+			nixosConfigurations = {
+				nixosVm = robinHost ./hosts/vm;
+				thinkpad = robinHost ./hosts/thinkpad;
 			};
 		};
-	};
 }
 

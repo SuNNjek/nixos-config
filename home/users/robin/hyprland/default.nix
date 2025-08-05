@@ -52,7 +52,7 @@
 		};
 
 		plugins = with pkgs; [
-			(callPackage ./titlebar-move.nix {})
+			csd-titlebar-move
 		];
 	};
 
