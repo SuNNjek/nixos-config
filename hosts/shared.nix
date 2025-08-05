@@ -35,7 +35,13 @@
 	time.timeZone = "Europe/Berlin";
 
 	# Select internationalisation properties.
-	i18n.defaultLocale = "de_DE.UTF-8";
+	i18n = {
+		defaultLocale = "de_DE.UTF-8";
+		extraLocaleSettings = {
+			LC_ALL = "de_DE.UTF-8";
+		};
+	};
+
 	console = {
 		font = "Lat2-Terminus16";
 		keyMap = "de-latin1-nodeadkeys";

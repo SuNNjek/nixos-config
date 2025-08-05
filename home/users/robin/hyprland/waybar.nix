@@ -1,6 +1,21 @@
 { lib, pkgs, ... }:
 let 
 	inherit (lib) mkAfter;
+	inherit (lib.strings) trim concatLines;
+
+	# Trims each line of the input string and also trims the result
+	trimFormat = let
+		inherit (builtins) filter split;
+		removeEmptyLines = filter (line: line != [] || line == "");
+		trimLines = map trim;
+	in s:
+		trim (
+			concatLines (
+				trimLines (
+					removeEmptyLines (split "\n" s)
+				)
+			)
+		);
 in {
 	stylix.targets.waybar = {
 		font = "sansSerif";
@@ -40,6 +55,16 @@ in {
 					"clock"
 				];
 
+				clock = {
+					format = trimFormat ''
+						{0:%H:%M}
+						<span size="small" alpha="60%">{0:%x}</span>
+					'';
+					tooltip-format = "{:%c}";
+					tooltip = true;
+					justify = "center";
+				};
+
 				"custom/launcher" = {
 					format = "  <span font_family=\"Font Awesome 6 Free\"></span>  ";
 					tooltip = false;
@@ -47,7 +72,7 @@ in {
 				};
 
 				battery = {
-					format = "<span font_family=\"Font Awesome 6 Free\">{icon}</span>  {capacity}%";
+					format = ''<span font_family="Font Awesome 6 Free">{icon}</span>  {capacity}%'';
 					format-icons = [
 						"" # Icon: battery-full
 						"" # Icon: battery-three-quarters
@@ -59,16 +84,16 @@ in {
 
 				wireplumber = {
 					on-click = "pavucontrol";
-					format = "<span font_family=\"Font Awesome 6 Free\">{icon}</span>  {volume}%";
+					format = ''<span font_family="Font Awesome 6 Free">{icon}</span>  {volume}%'';
 					format-icons = ["" "" ""];
 				};
 
 				cpu = {
-					format = "<span font_family=\"Font Awesome 6 Free\"></span>  {usage}%";
+					format = ''<span font_family="Font Awesome 6 Free"></span>  {usage}%'';
 				};
 
 				memory = {
-					format = "<span font_family=\"Font Awesome 6 Free\"></span>  {percentage}%  ({swapPercentage}%)";
+					format = ''<span font_family="Font Awesome 6 Free"></span>  {percentage}%  ({swapPercentage}%)'';
 				};
 
 				tray = {
