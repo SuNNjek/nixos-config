@@ -78,6 +78,8 @@ in {
 
 				"hyprland/window" = {
 					separate-outputs = true;
+					icon = true;
+					icon-size = 20;
 				};
 			};
 		};
