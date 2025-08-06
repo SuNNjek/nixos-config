@@ -15,7 +15,10 @@
 			neofetch
 			krabby
 
-			nautilus
+			nemo
+			mpc-qt
+			image-roll
+			gimp3
 
 			nixd
 		];
