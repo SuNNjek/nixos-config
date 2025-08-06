@@ -4,23 +4,13 @@ let
 in {
 	imports = [
 		./modules/disk-layouts
+		./modules/boot-loaders.nix
 		./modules/home-manager.nix
 		./modules/zsh.nix
 		./modules/nh.nix
 	];
 
-	boot.loader = {
-		# Use the GRUB boot loader.
-		grub = {
-			enable = true;
-			efiSupport = true;
-			device = "nodev";
-		
-			useOSProber = mkDefault false;
-		};
-
-		efi.canTouchEfiVariables = true;
-	};
+	boot.loader.grub.enable = mkDefault true;
 
 	# Use latest kernel.
 	boot.kernelPackages = mkDefault pkgs.linuxPackages_latest;

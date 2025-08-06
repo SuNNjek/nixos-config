@@ -1,4 +1,7 @@
-{
+{ lib, pkgs, ... }:
+let 
+	inherit (lib) mkForce;
+in {
 	imports = [
 		../.
 		./hardware-configuration.nix
@@ -6,6 +9,15 @@
 		../../modules/zram.nix
 
 		../modules/hyprland.nix
+	];
+
+	boot.loader = {
+		grub.enable = mkForce false;
+		limine.enable = true;
+	};
+
+	environment.systemPackages = with pkgs; [
+		limine
 	];
 
 	diskLayout = {
