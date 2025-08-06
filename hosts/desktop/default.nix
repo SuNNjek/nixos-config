@@ -11,8 +11,14 @@ in {
 		./modules/stylix.nix
 	];
 
-	# Use Zen kernel on desktop. Can still be forced with lib.mkForce if other kernel is required/desired.
-	boot.kernelPackages = mkForceSoft pkgs.linuxPackages_zen;
+	boot = {
+		# Use Zen kernel on desktop. Can still be forced with lib.mkForce if other kernel is required/desired.
+		kernelPackages = mkForceSoft pkgs.linuxPackages_zen;
+
+		plymouth.enable = true;
+	};
+
+	stylix.targets.plymouth.logoAnimated = false;
 
 	# Use NetworkManager on desktop
 	networking.networkmanager.enable = true;
