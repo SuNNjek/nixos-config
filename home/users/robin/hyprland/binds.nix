@@ -1,12 +1,20 @@
+{ pkgs, ... }: 
 let
 	workspaceCount = 9;
 	forWorkspace = f: builtins.concatLists (builtins.genList (ws: f (ws + 1)) workspaceCount);
 in {
+	home.packages = with pkgs; [
+		grimblast
+	];
+
 	wayland.windowManager.hyprland.settings = {
 		"$mod" = "SUPER";
 
 		bind = [
 			"$mod, T, exec, $terminal"
+			
+			", print, exec, grimblast --notify copy area"
+			"CTRL, print, exec, grimblast --notify copy screen"
 			
 			"$mod, Q, killactive"
 			"$mod SHIFT, Q, exec, wlogout"
