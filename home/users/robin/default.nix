@@ -12,7 +12,7 @@
 
 	home = {
 		packages = with pkgs; [
-			neofetch
+			fastfetch
 			krabby
 
 			nemo
