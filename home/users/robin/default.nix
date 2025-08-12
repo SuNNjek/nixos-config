@@ -15,7 +15,7 @@
 			fastfetch
 			krabby
 
-			nemo
+			nemo-with-extensions
 			mpc-qt
 			image-roll
 			gimp3
@@ -71,9 +71,16 @@
 			shellIntegration.enableZshIntegration = true;
 			font.name = "MesloLGS NF";
 		};
+
+		gpg.enable = true;
 	};
 
 	services = {
 		network-manager-applet.enable = true;
+
+		gpg-agent = {
+			enable = true;
+			pinentry.package = pkgs.pinentry-curses;
+		};
 	};
 }
