@@ -1,5 +1,9 @@
-{ pkgs, username, ... }: {
+{ pkgs, ... }: {
 	services.flatpak.enable = true;
+
+	environment.systemPackages = with pkgs; [
+		steam-devices-udev-rules
+	];
 
 	systemd.services.flatpak-repo = {
 		enable = true;
