@@ -45,6 +45,7 @@
 		nixosConfigurations = {
 			nixosVm = robinHost ./hosts/desktop/vm;
 			robin-thinkpad = robinHost ./hosts/desktop/thinkpad;
+			robin-pc = robinHost ./hosts/desktop/pc;
 		};
 	};
 }
