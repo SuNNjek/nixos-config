@@ -8,20 +8,26 @@
 		inputs.nixos-hardware.nixosModules.common-pc-ssd
 	];
 
-	boot.initrd.availableKernelModules = [
-		"xhci_pci"
-		"nvme"
-		"ahci"
-		"thunderbolt"
-		"usb_storage"
-		"usbhid"
-		"sd_mod"
-		"sr_mod"
-	];
+	boot = {
+		kernelModules = [ "kvm-amd" ];
+		kernelParams = [ "module_blacklist=amdgpu" ];
+		extraModulePackages = [ ];
 
-	boot.initrd.kernelModules = [ ];
-	boot.kernelModules = [ "kvm-amd" ];
-	boot.extraModulePackages = [ ];
+		initrd = {
+			availableKernelModules = [
+				"xhci_pci"
+				"nvme"
+				"ahci"
+				"thunderbolt"
+				"usb_storage"
+				"usbhid"
+				"sd_mod"
+				"sr_mod"
+			];
+
+			kernelModules = [ ];
+		};
+	};
 
 	nixpkgs.hostPlatform = "x86_64-linux";
 
