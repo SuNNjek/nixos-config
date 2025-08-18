@@ -1,35 +1,44 @@
 { lib, pkgs, ... }:
 let 
-	inherit (lib) mkForce;
+  inherit (lib) mkForce;
 in {
-	imports = [
-		../.
-		./hardware-configuration.nix
+  imports = [
+    ../.
+    ./hardware-configuration.nix
 
-		../../modules/zram.nix
+    ../../modules/zram.nix
 
-		../modules/hyprland.nix
-	];
+    ../modules/hyprland.nix
+  ];
 
-	boot.loader = {
-		grub.enable = mkForce false;
-		limine.enable = true;
-	};
+  boot.loader = {
+    grub.enable = mkForce false;
+    
+    limine = {
+      enable = true;
 
-	environment.systemPackages = with pkgs; [
-		limine
-	];
+      extraEntries = ''
+        /Windows
+          protocol: efi
+          path: uuid(7006ed1b-b7fa-40ec-92af-fd0fae8ef4e2):/EFI/Microsoft/Boot/bootmgfw.efi
+      '';
+    };
+  };
 
-	diskLayout = {
-		btrfs = {
-			enable = true;
-			device = "/dev/nvme1n1";
-		};
+  environment.systemPackages = with pkgs; [
+    limine
+  ];
 
-		tmp.enable = true;
-	};
+  diskLayout = {
+    btrfs = {
+      enable = true;
+      device = "/dev/nvme1n1";
+    };
 
-	networking = {
-		hostName = "robin-pc";
-	};
+    tmp.enable = true;
+  };
+
+  networking = {
+    hostName = "robin-pc";
+  };
 }
