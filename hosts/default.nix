@@ -52,6 +52,7 @@ in {
 	environment = {
 		systemPackages = with pkgs; [
 			wget
+      lm_sensors
 		];
 	};
 

@@ -14,6 +14,8 @@ in {
 	boot = {
 		# Use Zen kernel on desktop. Can still be forced with lib.mkForce if other kernel is required/desired.
 		kernelPackages = mkForceSoft pkgs.linuxPackages_zen;
+		kernelModules = [ "ntsync" ];
+
 
 		plymouth.enable = true;
 	};

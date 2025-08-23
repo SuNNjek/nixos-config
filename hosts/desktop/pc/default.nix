@@ -35,7 +35,10 @@ in {
       device = "/dev/nvme1n1";
     };
 
-    tmp.enable = true;
+    tmp = {
+      enable = true;
+      size = "8G";
+    };
   };
 
   networking = {
