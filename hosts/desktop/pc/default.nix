@@ -11,6 +11,9 @@ in {
     ../modules/hyprland.nix
   ];
 
+  # Force 6.15 kernel for NVIDIA build to succeed: https://github.com/NixOS/nixpkgs/issues/429624
+  boot.kernelPackages = mkForce pkgs.linuxPackages_6_15;
+
   boot.loader = {
     grub.enable = mkForce false;
     
