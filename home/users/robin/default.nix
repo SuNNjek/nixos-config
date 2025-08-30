@@ -4,6 +4,7 @@
 
 		./hyprland
 
+	  ../../modules/autostart.nix
 	  ../../modules/git.nix
 	  ../../modules/firefox.nix
 	  ../../modules/vscode.nix
@@ -30,7 +31,14 @@
 		};
 	};
 
-	stylix.enable = true;
+	stylix = {
+    enable = true;
+
+    targets = {
+      # Doesn't work properly yet
+      gtk.flatpakSupport.enable = false;
+    };
+  };
 
 	gtk = {
 		enable = true;
@@ -50,6 +58,13 @@
 			enable = true;
 			createDirectories = true;
 		};
+
+    autostart.flatpaks = {
+      steam = {
+        id = "com.valvesoftware.Steam";
+        args = "-silent";
+      };
+    };
 	};
 
 	programs = {
