@@ -11,8 +11,6 @@
       kb_layout=de
     }
 
-    monitor = desc:Dell Inc. DELL U2724DE 6QZ59P3,2560x1440@120,0x0,1
-    monitor = desc:Dell Inc. DELL P2225H DNWN504,1920x1080@100,2560x0,1,transform,3
     monitor = ,highres,auto,1
 
     exec-once = ${lib.getExe' pkgs.dbus "dbus-update-activation-environment"} --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE
@@ -44,7 +42,7 @@ in {
         };
       };
 
-      restart = true;
+      restart = false;
     };
   };
 

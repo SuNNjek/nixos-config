@@ -41,8 +41,8 @@
 			};
 
 			monitor = [
-				"desc:Dell Inc. DELL U2724DE 6QZ59P3,2560x1440@120,0x0,1"
-				"desc:Dell Inc. DELL P2225H DNWN504,1920x1080@100,2560x0,1,transform,3"
+				"desc:Dell Inc. DELL U2724DE 6QZ59P3,highres,auto,1"
+				"desc:Dell Inc. DELL P2225H DNWN504,highres,auto,1,transform,3"
 				",highres,auto,1"
 			];
 
