@@ -1,14 +1,18 @@
 { lib, pkgs, ... }: let
   inherit (lib) getExe getExe';
 
-  regreetHyprlandConfig = pkgs.writeText "greetd-hyprland-config" ''
+  regreetHyprlandConfig = pkgs.writeText "regreet-hyprland-config" ''
     animations {
-      enabled=false
-      first_launch_animation=false
+      enabled = false
+      first_launch_animation = false
     }
 
     input {
-      kb_layout=de
+      kb_layout = de
+    }
+
+    misc {
+      disable_hyprland_logo = true
     }
 
     monitor = ,highres,auto,1
@@ -42,7 +46,7 @@ in {
         };
       };
 
-      restart = false;
+      restart = true;
     };
   };
 
