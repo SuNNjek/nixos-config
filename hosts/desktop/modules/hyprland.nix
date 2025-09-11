@@ -1,20 +1,24 @@
 { lib, pkgs, ... }: let
   inherit (lib) getExe getExe';
 
-  greetdHyprlandConfig = pkgs.writeText "greetd-hyprland-config" ''
+  regreetHyprlandConfig = pkgs.writeText "regreet-hyprland-config" ''
     animations {
-      enabled=false
-      first_launch_animation=false
+      enabled = false
+      first_launch_animation = false
     }
 
     input {
-      kb_layout=de
+      kb_layout = de
+    }
+
+    misc {
+      disable_hyprland_logo = true
     }
 
     monitor = ,highres,auto,1
 
     exec-once = ${lib.getExe' pkgs.dbus "dbus-update-activation-environment"} --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE
-    exec-once = ${getExe pkgs.greetd.regreet}; ${getExe' pkgs.hyprland "hyprctl"} dispatch exit
+    exec-once = ${getExe pkgs.regreet}; ${getExe' pkgs.hyprland "hyprctl"} dispatch exit
   '';
 in {
   programs = {
@@ -38,11 +42,11 @@ in {
     greetd = {
       settings = {
         default_session = {
-          command = "${getExe pkgs.hyprland} --config ${greetdHyprlandConfig} > /tmp/hyprland-log-out.txt 2>&1";
+          command = "${getExe pkgs.hyprland} --config ${regreetHyprlandConfig} > /tmp/hyprland-log-out.txt 2>&1";
         };
       };
 
-      restart = false;
+      restart = true;
     };
   };
 

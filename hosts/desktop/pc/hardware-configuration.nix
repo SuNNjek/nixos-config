@@ -16,7 +16,7 @@ in {
     extraModulePackages = [ ];
 
     # Force LTS kernel for NVIDIA build to succeed: https://github.com/NixOS/nixpkgs/issues/429624
-    kernelPackages = mkForce pkgs.linuxPackages_6_12;
+    #kernelPackages = mkForce pkgs.linuxPackages_6_12;
 
     initrd = {
       availableKernelModules = [
