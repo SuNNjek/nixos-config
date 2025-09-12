@@ -1,6 +1,4 @@
-{ inputs, lib, pkgs, ... }: let
-  inherit (lib) mkForce;
-in {
+{ inputs, ... }: {
   imports = [
     inputs.nixos-hardware.nixosModules.common-cpu-amd
     inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
@@ -15,9 +13,6 @@ in {
     kernelParams = [ "module_blacklist=amdgpu" ];
     extraModulePackages = [ ];
 
-    # Force LTS kernel for NVIDIA build to succeed: https://github.com/NixOS/nixpkgs/issues/429624
-    #kernelPackages = mkForce pkgs.linuxPackages_6_12;
-
     initrd = {
       availableKernelModules = [
         "xhci_pci"
@@ -30,7 +25,12 @@ in {
         "sr_mod"
       ];
 
-      kernelModules = [ ];
+      kernelModules = [
+        "nvidia"
+        "nvidia_drm"
+        "nvidia_uvm"
+        "nvidia_modeset"
+      ];
     };
   };
 
