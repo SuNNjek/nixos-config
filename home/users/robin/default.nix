@@ -102,5 +102,7 @@
 			enable = true;
 			pinentry.package = pkgs.pinentry-curses;
 		};
+
+    blueman-applet.enable = true;
 	};
 }

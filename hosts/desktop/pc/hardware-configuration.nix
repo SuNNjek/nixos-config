@@ -40,5 +40,7 @@
     enableRedistributableFirmware = true;
 
     nvidia.open = true;
+    
+    bluetooth.enable = true;
   };
 }
