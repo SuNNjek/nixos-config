@@ -3,13 +3,14 @@
 	lib,
 
 	hyprland,
-	hyprlandPlugins,
+  pkg-config,
+
 	rev,
 	sha256,
 		...
-}: hyprlandPlugins.mkHyprlandPlugin hyprland {
-	pluginName = "csd-titlebar-move";
-	version = "0.1"; # Not sure what to put here tbh
+}: hyprland.stdenv.mkDerivation {
+	pname = "csd-titlebar-move";
+	version = rev;
 
 	src = fetchFromGitHub {
 		inherit rev sha256;
@@ -17,6 +18,14 @@
 		owner = "khalid151";
 		repo = "csd-titlebar-move";
 	};
+
+  nativeBuildInputs = [
+    pkg-config
+  ];
+
+  buildInputs = [
+    hyprland.dev
+  ] ++ hyprland.buildInputs;
 
 	installPhase = ''
 		mkdir -p $out/lib/

@@ -15,7 +15,11 @@
       disable_hyprland_logo = true
     }
 
+    monitor = desc:Dell Inc. DELL U2724DE 6QZ59P3,highres,0x0,1
+		monitor = desc:Dell Inc. DELL P2225H DNWN504,highres,auto-right,1,transform,3
     monitor = ,highres,auto,1
+
+    workspace = 1, m:desc:Dell Inc. DELL U2724DE 6QZ59P3, default:true
 
     exec-once = ${lib.getExe' pkgs.dbus "dbus-update-activation-environment"} --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE
     exec-once = ${getExe pkgs.regreet}; ${getExe' pkgs.hyprland "hyprctl"} dispatch exit

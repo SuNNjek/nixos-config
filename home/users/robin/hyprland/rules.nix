@@ -43,6 +43,8 @@ in
 		workspace = [
 			"w[tv1], gapsin:0, gapsout:0"
 			"f[1], gapsin:0, gapsout:0"
+
+      "1, monitor:desc:Dell Inc. DELL U2724DE 6QZ59P3, default:true"
 		];
 	};
 }
