@@ -4,7 +4,6 @@
   regreetHyprlandConfig = pkgs.writeText "regreet-hyprland-config" ''
     animations {
       enabled = false
-      first_launch_animation = false
     }
 
     input {
