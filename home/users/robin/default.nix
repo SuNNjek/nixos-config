@@ -100,7 +100,7 @@
 
 		gpg-agent = {
 			enable = true;
-			pinentry.package = pkgs.pinentry-curses;
+			pinentry.package = pkgs.pinentry-qt;
 		};
 
     blueman-applet.enable = true;
