@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, config, ... }:
 let 
 	inherit (lib) mkAfter;
 	inherit (lib.strings) trim concatLines;
@@ -23,12 +23,8 @@ in {
 		addCss = false;
 	};
 
-	home.packages = with pkgs; [
-		font-awesome
-	];
-
 	programs.waybar = {
-		enable = true;
+		enable = config.sunner.hyprland.enable;
 		systemd.enable = true;
 
 		style = mkAfter (builtins.readFile ./waybar.css);

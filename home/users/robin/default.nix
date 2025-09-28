@@ -1,9 +1,8 @@
-{ lib, pkgs, ... }: {
+{ lib, osConfig, pkgs, ... }: with lib; {
 	imports = [
 	  ../shared.nix
 
-		./hyprland
-
+		../../modules/hyprland
 	  ../../modules/autostart.nix
 	  ../../modules/git.nix
 	  ../../modules/firefox.nix
@@ -30,6 +29,10 @@
 			NIXOS_OZONE_WL = "1";
 		};
 	};
+
+  sunner = {
+    hyprland.enable = true;
+  };
 
 	stylix = {
     enable = true;
@@ -96,13 +99,12 @@
 	};
 
 	services = {
-		network-manager-applet.enable = true;
+		network-manager-applet.enable = osConfig.networking.networkmanager.enable;
+    blueman-applet.enable = osConfig.hardware.bluetooth.enable;
 
 		gpg-agent = {
 			enable = true;
 			pinentry.package = pkgs.pinentry-qt;
 		};
-
-    blueman-applet.enable = true;
 	};
 }

@@ -7,7 +7,7 @@ in {
 	];
 
 	programs.walker = {
-		enable = true;
+		enable = config.sunner.hyprland.enable;
 		package = pkgs.walker;
 		runAsService = true;
 

@@ -1,4 +1,4 @@
-{ lib, pkgs, username, ... }: {
+{ username, ... }: {
 	programs.firefox = {
 		enable = true;
 

@@ -1,4 +1,4 @@
-{ username, lib, pkgs, ... }:
+{ username, lib, config, pkgs, ... }:
 let
 	# Higher priorty than mkDefault, but lower than mkForce
 	mkForceSoft = lib.mkOverride 900;
@@ -57,8 +57,12 @@ in {
 	# ofc you gotta clone it to that location yourself, this can't done here ^^
 	programs.nh.flake = "/home/${username}/git/nixos-config";
 
-	# Set X server keyboard layout
-	services.xserver = {
-		xkb.layout = "de";
+	services = {
+  	# Set X server keyboard layout
+    xserver = {
+		  xkb.layout = "de";
+    };
+
+    blueman.enable = config.hardware.bluetooth.enable;
 	};
 }

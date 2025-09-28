@@ -44,6 +44,4 @@ in {
   networking = {
     hostName = "robin-pc";
   };
-
-  services.blueman.enable = true;
 }

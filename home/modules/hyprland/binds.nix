@@ -3,10 +3,6 @@ let
 	workspaceCount = 9;
 	forWorkspace = f: builtins.concatLists (builtins.genList (ws: f (ws + 1)) workspaceCount);
 in {
-	home.packages = with pkgs; [
-		grimblast
-	];
-
 	wayland.windowManager.hyprland.settings = {
 		"$mod" = "SUPER";
 

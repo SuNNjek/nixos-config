@@ -1,6 +1,6 @@
-{
+{ config, ... }: {
 	services.mako = {
-		enable = true;
+		enable = config.sunner.hyprland.enable;
 
 		settings = {
 			anchor = "bottom-right";

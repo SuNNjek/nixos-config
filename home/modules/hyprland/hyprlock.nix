@@ -4,7 +4,7 @@ let
 	inherit (config.stylix) fonts;
 in {
 	programs.hyprlock = {
-		enable = true;
+		enable = config.sunner.hyprland.enable;
 
 		settings = {
 			"$font" = fonts.sansSerif.name;
