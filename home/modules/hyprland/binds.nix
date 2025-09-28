@@ -1,4 +1,3 @@
-{ pkgs, ... }: 
 let
 	workspaceCount = 9;
 	forWorkspace = f: builtins.concatLists (builtins.genList (ws: f (ws + 1)) workspaceCount);
@@ -8,6 +7,8 @@ in {
 
 		bind = [
 			"$mod, T, exec, $terminal"
+			"$mod, F, fullscreen"
+			"$mod, L, exec, hyprlock"
 			
 			", print, exec, grimblast --notify copy area"
 			"CTRL, print, exec, grimblast --notify copy screen"
@@ -15,8 +16,6 @@ in {
 			"$mod, Q, killactive"
 			"$mod SHIFT, Q, exec, wlogout"
 			"$mod, SPACE, exec, walker"
-
-			"$mod, l, exec, hyprlock"
 
 			"$mod, left, workspace, r-1"
 			"$mod, right, workspace, r+1"
@@ -45,11 +44,16 @@ in {
 			", switch:off:Lid Switch, exec, hyprctl keyword monitor \"eDP-1,highres,auto,1\""
 
 			", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+      ", XF86AudioPlay, exec, playerctl play-pause"
 		];
 
 		bindle = [
 			", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
 			", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
 		];
+
+    gesture = [
+      "3, horizontal, workspace"
+    ];
 	};
 }

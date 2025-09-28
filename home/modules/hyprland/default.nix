@@ -144,6 +144,8 @@ in {
 		  grimblast
       # For waybar icons
   		font-awesome
+      # For playback control
+      playerctl
 	  ];
 
     xdg.portal = {
