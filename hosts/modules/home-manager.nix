@@ -1,12 +1,12 @@
 { username, inputs, ... }: {
-	imports = [
-		inputs.home-manager.nixosModules.home-manager
-	];
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+  ];
 
-	home-manager = {
-		useGlobalPkgs = true;
-		useUserPackages = true;
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
 
-		extraSpecialArgs = { inherit username inputs; };
-	};
+    extraSpecialArgs = { inherit username inputs; };
+  };
 }

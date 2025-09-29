@@ -1,27 +1,27 @@
 { config, pkgs, inputs, ... }: 
 let
-	inherit (config.lib.stylix) colors;
+  inherit (config.lib.stylix) colors;
 in {
-	imports = [
-		inputs.walker.homeManagerModules.default
-	];
+  imports = [
+    inputs.walker.homeManagerModules.default
+  ];
 
-	programs.walker = {
-		enable = config.sunner.hyprland.enable;
-		package = pkgs.walker;
-		runAsService = true;
+  programs.walker = {
+    enable = config.sunner.hyprland.enable;
+    package = pkgs.walker;
+    runAsService = true;
 
-		config = {
-			app_launch_prefix = "uwsm app -- ";
+    config = {
+      app_launch_prefix = "uwsm app -- ";
 
-			websearch.prefix = "?";
-			switcher.prefix = "/";
-		};
+      websearch.prefix = "?";
+      switcher.prefix = "/";
+    };
 
-		theme = {
-			layout = import ./layout.nix;
+    theme = {
+      layout = import ./layout.nix;
 
-			style = with colors.withHashtag; ''
+      style = with colors.withHashtag; ''
 @define-color base00 ${base00}; @define-color base01 ${base01};
 @define-color base02 ${base02}; @define-color base03 ${base03};
 @define-color base04 ${base04}; @define-color base05 ${base05};
@@ -36,7 +36,7 @@ in {
 @define-color foreground alpha(@base05, 0.8);
 
 ''
-	 		+ (builtins.readFile ./walker.css);
-		};
-	};
+       + (builtins.readFile ./walker.css);
+    };
+  };
 }

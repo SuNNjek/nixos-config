@@ -1,13 +1,13 @@
 { username, ... }: {
-	programs.firefox = {
-		enable = true;
+  programs.firefox = {
+    enable = true;
 
-		profiles = {
-			"${username}" = {
+    profiles = {
+      "${username}" = {
 
-			};
-		};
-	};
+      };
+    };
+  };
 
-	stylix.targets.firefox.profileNames = [ username ];
+  stylix.targets.firefox.profileNames = [ username ];
 }

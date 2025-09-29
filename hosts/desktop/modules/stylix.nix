@@ -1,13 +1,13 @@
 { inputs, pkgs, ... }: {
   imports = [
-		inputs.stylix.nixosModules.stylix
+    inputs.stylix.nixosModules.stylix
   ];
 
-	stylix = {
-		enable = true;
-		autoEnable = true;
-		base16Scheme = "${pkgs.base16-schemes}/share/themes/material.yaml";
-		polarity = "dark";
+  stylix = {
+    enable = true;
+    autoEnable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/material.yaml";
+    polarity = "dark";
 
     # https://unsplash.com/photos/seashore-DA_tplYgTow
     image = ./wallpaper.jpg;
@@ -32,9 +32,9 @@
     };
 
     cursor = {
-			package = pkgs.bibata-cursors;
-			name = "Bibata-Modern-Ice";
-			size = 24;
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
+      size = 24;
     };
-	};
+  };
 }

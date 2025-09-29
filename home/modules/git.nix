@@ -1,20 +1,20 @@
 {
-	programs = {
-		git = {
-			enable = true;
+  programs = {
+    git = {
+      enable = true;
 
-			aliases = {
-				st = "status";
-				ds = "diff --staged";
-			};
+      aliases = {
+        st = "status";
+        ds = "diff --staged";
+      };
 
-			extraConfig = {
-				init = {
-					defaultBranch = "main";
-				};
-			};
-		};
+      extraConfig = {
+        init = {
+          defaultBranch = "main";
+        };
+      };
+    };
 
-		gh.enable = true;
-	};
+    gh.enable = true;
+  };
 }

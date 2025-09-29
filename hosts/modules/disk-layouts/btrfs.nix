@@ -1,83 +1,83 @@
 { lib, config, ... }:
 with lib;
 let 
-	cfg = config.diskLayout.btrfs;
+  cfg = config.diskLayout.btrfs;
 in
 {
-	options = {
-		diskLayout.btrfs = {
-			enable = mkEnableOption "btrfs";
+  options = {
+    diskLayout.btrfs = {
+      enable = mkEnableOption "btrfs";
 
-			device = mkOption {
-				type = types.str;
-				default = "/dev/sda";
-				defaultText = "/dev/sda";
-				description = "Path of the root device";
-			};
-		};
-	};
+      device = mkOption {
+        type = types.str;
+        default = "/dev/sda";
+        defaultText = "/dev/sda";
+        description = "Path of the root device";
+      };
+    };
+  };
 
-	config = mkIf cfg.enable {
-		disko.devices.disk.main = {
-			type = "disk";
-			device = cfg.device;
-			content = {
-				type = "gpt";
-				partitions = {
-					ESP = {
-						priority = 1;
-						name = "ESP";
-						start = "1M";
-						end = "512M";
-						type = "EF00";
-						content = {
-							type = "filesystem";
-							format = "vfat";
-							mountpoint = "/boot";
-							mountOptions = [ "umask=0077" ];
-						};
-					};
+  config = mkIf cfg.enable {
+    disko.devices.disk.main = {
+      type = "disk";
+      device = cfg.device;
+      content = {
+        type = "gpt";
+        partitions = {
+          ESP = {
+            priority = 1;
+            name = "ESP";
+            start = "1M";
+            end = "512M";
+            type = "EF00";
+            content = {
+              type = "filesystem";
+              format = "vfat";
+              mountpoint = "/boot";
+              mountOptions = [ "umask=0077" ];
+            };
+          };
 
-					root = {
-						size = "100%";
-						name = "root";
-						content = {
-							type = "btrfs";
+          root = {
+            size = "100%";
+            name = "root";
+            content = {
+              type = "btrfs";
 
-							subvolumes = {
-								"@" = {
-									mountpoint = "/";
-									mountOptions = [
-										"compress=zstd"
-										"noatime"
-									];
-								};
+              subvolumes = {
+                "@" = {
+                  mountpoint = "/";
+                  mountOptions = [
+                    "compress=zstd"
+                    "noatime"
+                  ];
+                };
 
-								"@nix" = {
-									mountpoint = "/nix";
-									mountOptions = [
-										"compress=zstd"
-										"noatime"
-									];
-								};
+                "@nix" = {
+                  mountpoint = "/nix";
+                  mountOptions = [
+                    "compress=zstd"
+                    "noatime"
+                  ];
+                };
 
-								"@var" = {
-									mountpoint = "/var";
-									mountOptions = [
-										"compress=zstd"
-										"noatime"
-									];
-								};
+                "@var" = {
+                  mountpoint = "/var";
+                  mountOptions = [
+                    "compress=zstd"
+                    "noatime"
+                  ];
+                };
 
-								"@home" = {
-									mountpoint = "/home";
-									mountOptions = [ "compress=zstd" ];
-								};
-							};
-						};
-					};
-				};
-			};
-		};
-	};
+                "@home" = {
+                  mountpoint = "/home";
+                  mountOptions = [ "compress=zstd" ];
+                };
+              };
+            };
+          };
+        };
+      };
+    };
+  };
 }

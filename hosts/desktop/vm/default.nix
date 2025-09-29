@@ -1,19 +1,19 @@
 {
-	imports = [
-		../.
-		./hardware-configuration.nix
+  imports = [
+    ../.
+    ./hardware-configuration.nix
 
-		../modules/hyprland.nix
-	];
+    ../modules/hyprland.nix
+  ];
 
-	diskLayout = {
-		btrfs = {
-			enable = true;
-			device = "/dev/sda";
-		};
+  diskLayout = {
+    btrfs = {
+      enable = true;
+      device = "/dev/sda";
+    };
 
-		tmp.enable = true;
-	};
+    tmp.enable = true;
+  };
 
-	networking.hostName = "nixosVm";
+  networking.hostName = "nixosVm";
 }

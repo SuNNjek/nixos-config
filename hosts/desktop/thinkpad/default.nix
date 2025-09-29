@@ -1,35 +1,35 @@
 { lib, pkgs, ... }:
 let 
-	inherit (lib) mkForce;
+  inherit (lib) mkForce;
 in {
-	imports = [
-		../.
-		./hardware-configuration.nix
+  imports = [
+    ../.
+    ./hardware-configuration.nix
 
-		../../modules/zram.nix
+    ../../modules/zram.nix
 
-		../modules/hyprland.nix
-	];
+    ../modules/hyprland.nix
+  ];
 
-	boot.loader = {
-		grub.enable = mkForce false;
-		limine.enable = true;
-	};
+  boot.loader = {
+    grub.enable = mkForce false;
+    limine.enable = true;
+  };
 
-	environment.systemPackages = with pkgs; [
-		limine
-	];
+  environment.systemPackages = with pkgs; [
+    limine
+  ];
 
-	diskLayout = {
-		btrfs = {
-			enable = true;
-			device = "/dev/nvme0n1";
-		};
+  diskLayout = {
+    btrfs = {
+      enable = true;
+      device = "/dev/nvme0n1";
+    };
 
-		tmp.enable = true;
-	};
+    tmp.enable = true;
+  };
 
-	networking = {
-		hostName = "robin-thinkpad";
-	};
+  networking = {
+    hostName = "robin-thinkpad";
+  };
 }

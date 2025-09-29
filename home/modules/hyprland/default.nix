@@ -8,18 +8,18 @@
 }: with lib; let
   cfg = config.sunner.hyprland;
 in {
-	imports = [
-		inputs.hypotd.homeManagerModules.default
+  imports = [
+    inputs.hypotd.homeManagerModules.default
 
-		./binds.nix
-		./rules.nix
+    ./binds.nix
+    ./rules.nix
 
-		./walker
-		./hyprlock.nix
-		./waybar.nix
-		./mako.nix
-		./wlogout.nix
-	];
+    ./walker
+    ./hyprlock.nix
+    ./waybar.nix
+    ./mako.nix
+    ./wlogout.nix
+  ];
 
   options = {
     sunner.hyprland = {
@@ -137,16 +137,16 @@ in {
       config = {
         provider = "bing";
       };
-	  };
+    };
 
     home.packages = with pkgs; [
       # For screenshots
-		  grimblast
+      grimblast
       # For waybar icons
-  		font-awesome
+      font-awesome
       # For playback control
       playerctl
-	  ];
+    ];
 
     xdg.portal = {
       enable = true;

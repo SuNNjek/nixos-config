@@ -1,23 +1,23 @@
 {
-	fetchFromGitHub,
-	lib,
+  fetchFromGitHub,
+  lib,
 
-	hyprland,
+  hyprland,
   pkg-config,
 
-	rev,
-	sha256,
-		...
+  rev,
+  sha256,
+    ...
 }: hyprland.stdenv.mkDerivation {
-	pname = "csd-titlebar-move";
-	version = rev;
+  pname = "csd-titlebar-move";
+  version = rev;
 
-	src = fetchFromGitHub {
-		inherit rev sha256;
+  src = fetchFromGitHub {
+    inherit rev sha256;
 
-		owner = "khalid151";
-		repo = "csd-titlebar-move";
-	};
+    owner = "khalid151";
+    repo = "csd-titlebar-move";
+  };
 
   nativeBuildInputs = [
     pkg-config
@@ -27,15 +27,15 @@
     hyprland.dev
   ] ++ hyprland.buildInputs;
 
-	installPhase = ''
-		mkdir -p $out/lib/
-		cp csd-titlebar-move.so $out/lib/libcsd-titlebar-move.so
-	'';
+  installPhase = ''
+    mkdir -p $out/lib/
+    cp csd-titlebar-move.so $out/lib/libcsd-titlebar-move.so
+  '';
 
-	meta = {
-		description = "CSD titlebar move";
-		homepage = "https://github.com/khalid151/csd-titlebar-move";
-		platforms = lib.platforms.linux;
-	};
+  meta = {
+    description = "CSD titlebar move";
+    homepage = "https://github.com/khalid151/csd-titlebar-move";
+    platforms = lib.platforms.linux;
+  };
 }
 

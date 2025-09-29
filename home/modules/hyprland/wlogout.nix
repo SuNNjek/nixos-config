@@ -1,5 +1,5 @@
 { config, ... }: {
-	programs.wlogout = {
-		enable = config.sunner.hyprland.enable;
-	};
+  programs.wlogout = {
+    enable = config.sunner.hyprland.enable;
+  };
 }
