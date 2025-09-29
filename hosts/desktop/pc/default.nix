@@ -29,6 +29,10 @@ in {
     limine
   ];
 
+  services = {
+    hardware.openrgb.enable = true;
+  };
+
   diskLayout = {
     btrfs = {
       enable = true;
