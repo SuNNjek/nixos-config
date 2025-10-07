@@ -63,6 +63,10 @@ in {
           ",highres,auto,1"
         ];
 
+        render = {
+          direct_scanout = 2;
+        };
+
         misc = {
           # Begone, anime girl
           disable_hyprland_logo = true;

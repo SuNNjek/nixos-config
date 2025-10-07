@@ -16,7 +16,17 @@ in
       "content video, tag:pip"
       "move 100%-w-8 100%-w-${toString (waybarHeight + 8)}, tag:pip"
 
-      
+      "tag +games, content:game"
+      "tag +games, class:^(steam_app.*|steam_app_\d+)$"
+      "tag +games, class:^(gamescope)$"
+
+      "content game,tag:games"
+      "noborder 1,tag:games"
+      "noshadow,tag:games"
+      "noblur,tag:games"
+      "noanim,tag:games"
+      "syncfullscreen,tag:games"
+
       # Move all windows launched by tray/waybar modules
       # to the bottom right corner
       "tag +tray, class:org.pulseaudio.pavucontrol"
