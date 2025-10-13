@@ -88,6 +88,27 @@
         "type": "github"
       }
     },
+    "elephant": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1760339876,
+        "narHash": "sha256-5iBJ3egNCSgJW1lWK1Xf9kjfM9NCd47FCIWFIK/xOfg=",
+        "owner": "abenz1267",
+        "repo": "elephant",
+        "rev": "d2c9d7382d1545f34e2a3695bf00c6a03008d878",
+        "type": "github"
+      },
+      "original": {
+        "owner": "abenz1267",
+        "repo": "elephant",
+        "type": "github"
+      }
+    },
     "firefox-gnome-theme": {
       "flake": false,
       "locked": {
@@ -257,6 +278,7 @@
     "root": {
       "inputs": {
         "disko": "disko",
+        "elephant": "elephant",
         "home-manager": "home-manager",
         "hypotd": "hypotd",
         "nixos-hardware": "nixos-hardware",
@@ -278,7 +300,7 @@
           "nixpkgs"
         ],
         "nur": "nur",
-        "systems": "systems",
+        "systems": "systems_2",
         "tinted-foot": "tinted-foot",
         "tinted-kitty": "tinted-kitty",
         "tinted-schemes": "tinted-schemes",
@@ -301,6 +323,21 @@
     },
     "systems": {
       "locked": {
+        "lastModified": 1689347949,
+        "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
+        "owner": "nix-systems",
+        "repo": "default-linux",
+        "rev": "31732fcf5e8fea42e59c2488ad31a0e651500f68",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default-linux",
+        "type": "github"
+      }
+    },
+    "systems_2": {
+      "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
         "owner": "nix-systems",
@@ -314,7 +351,7 @@
         "type": "github"
       }
     },
-    "systems_2": {
+    "systems_3": {
       "locked": {
         "lastModified": 1689347949,
         "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
@@ -412,22 +449,24 @@
     },
     "walker": {
       "inputs": {
+        "elephant": [
+          "elephant"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ],
-        "systems": "systems_2"
+        "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1754154573,
-        "narHash": "sha256-IX1m/1T6FDhGunS3wvZbn4Iv1sziMQzuRepNkEe9LC4=",
+        "lastModified": 1760346317,
+        "narHash": "sha256-9dzYCpRZc1d185P1V4oB61LdO7tpswq+PuxhtJ2eLoc=",
         "owner": "abenz1267",
         "repo": "walker",
-        "rev": "ac43fc63f51e5372709cb861c11766493620759d",
+        "rev": "fa127a118fbef1514ff09b4ffb2749d43d61dcaa",
         "type": "github"
       },
       "original": {
         "owner": "abenz1267",
-        "ref": "v0.13.14",
         "repo": "walker",
         "type": "github"
       }

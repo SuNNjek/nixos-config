@@ -18,7 +18,7 @@ in {
     ./binds.nix
     ./rules.nix
 
-    ./walker
+    ./walker.nix
     ./hyprlock.nix
     ./waybar.nix
     ./mako.nix
