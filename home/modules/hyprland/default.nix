@@ -6,6 +6,10 @@
   pkgs,
   ...
 }: with lib; let
+  inherit (lib.meta) getExe;
+
+  kitty = getExe pkgs.kitty;
+
   cfg = config.sunner.hyprland;
 in {
   imports = [
@@ -32,7 +36,7 @@ in {
       enable = true;
 
       settings = {
-        "$terminal" = "kitty";
+        "$terminal" = kitty;
 
         general = {
           gaps_out = 8;
@@ -126,7 +130,6 @@ in {
 
       hyprpolkitagent.enable = true;
 
-      # Update this when hyprsunset 0.3 hits Nix stable
       gammastep = {
         enable = true;
         provider = "geoclue2";
@@ -142,15 +145,6 @@ in {
         provider = "bing";
       };
     };
-
-    home.packages = with pkgs; [
-      # For screenshots
-      grimblast
-      # For waybar icons
-      font-awesome
-      # For playback control
-      playerctl
-    ];
 
     xdg.portal = {
       enable = true;

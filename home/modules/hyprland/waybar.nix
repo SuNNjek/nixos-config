@@ -1,7 +1,8 @@
-{ lib, config, ... }:
+{ lib, pkgs, config, ... }:
 let 
   inherit (lib) mkAfter;
   inherit (lib.strings) trim concatLines;
+  inherit (lib.meta) getExe;
 
   # Trims each line of the input string and also trims the result
   trimFormat = let
@@ -22,6 +23,11 @@ in {
 
     addCss = false;
   };
+
+  home.packages = with pkgs; [
+    # For icons
+    font-awesome
+  ];
 
   programs.waybar = {
     enable = config.sunner.hyprland.enable;
@@ -64,7 +70,7 @@ in {
         "custom/launcher" = {
           format = "  <span font_family=\"Font Awesome 6 Free\"></span>  ";
           tooltip = false;
-          on-click = "walker";
+          on-click = getExe pkgs.walker;
         };
 
         battery = {
@@ -79,7 +85,7 @@ in {
         };
 
         wireplumber = {
-          on-click = "pavucontrol";
+          on-click = getExe pkgs.pavucontrol;
           format = ''<span font_family="Font Awesome 6 Free">{icon}</span>  {volume}%'';
           format-icons = ["" "" ""];
         };

@@ -1,4 +1,15 @@
-let
+{ lib, pkgs, ... }: let
+  inherit (lib.meta) getExe;
+
+  hyprctl = "${pkgs.hyprland}/bin/hyprctl";
+  wpctl = "${pkgs.wireplumber}/bin/wpctl";
+
+  hyprlock = getExe pkgs.hyprlock;
+  walker = getExe pkgs.walker;
+  playerctl = getExe pkgs.playerctl;
+  grimblast = getExe pkgs.grimblast;
+  wlogout = getExe pkgs.wlogout;
+
   workspaceCount = 9;
   forWorkspace = f: builtins.concatLists (builtins.genList (ws: f (ws + 1)) workspaceCount);
 in {
@@ -8,14 +19,14 @@ in {
     bind = [
       "$mod, T, exec, $terminal"
       "$mod, F, fullscreen"
-      "$mod, L, exec, hyprlock"
+      "$mod, L, exec, ${hyprlock}"
       
-      ", print, exec, grimblast --notify copy area"
-      "CTRL, print, exec, grimblast --notify copy screen"
+      ", print, exec, ${grimblast} --notify copy area"
+      "CTRL, print, exec, ${grimblast} --notify copy screen"
       
       "$mod, Q, killactive"
-      "$mod SHIFT, Q, exec, wlogout"
-      "$mod, SPACE, exec, walker"
+      "$mod SHIFT, Q, exec, ${wlogout}"
+      "$mod, SPACE, exec, ${walker}"
 
       "$mod, left, workspace, r-1"
       "$mod, right, workspace, r+1"
@@ -40,16 +51,16 @@ in {
     ];
 
     bindl = [
-      ", switch:on:Lid Switch, exec, hyprctl keyword monitor \"eDP-1,disable\""
-      ", switch:off:Lid Switch, exec, hyprctl keyword monitor \"eDP-1,highres,auto,1\""
+      ", switch:on:Lid Switch, exec, ${hyprctl} keyword monitor \"eDP-1,disable\""
+      ", switch:off:Lid Switch, exec, ${hyprctl} keyword monitor \"eDP-1,highres,auto,1\""
 
-      ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-      ", XF86AudioPlay, exec, playerctl play-pause"
+      ", XF86AudioMute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle"
+      ", XF86AudioPlay, exec, ${playerctl} play-pause"
     ];
 
     bindle = [
-      ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
-      ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+      ", XF86AudioRaiseVolume, exec, ${wpctl} set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
+      ", XF86AudioLowerVolume, exec, ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%-"
     ];
 
     gesture = [
