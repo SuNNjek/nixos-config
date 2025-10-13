@@ -33,7 +33,7 @@ in {
     hardware.openrgb.enable = true;
   };
 
-  diskLayout = {
+  sunner.diskLayout = {
     btrfs = {
       enable = true;
       device = "/dev/nvme1n1";

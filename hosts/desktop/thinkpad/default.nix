@@ -20,7 +20,7 @@ in {
     limine
   ];
 
-  diskLayout = {
+  sunner.diskLayout = {
     btrfs = {
       enable = true;
       device = "/dev/nvme0n1";

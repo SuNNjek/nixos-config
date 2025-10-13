@@ -1,11 +1,11 @@
 { lib, config, ... }:
 with lib;
 let
-  cfg = config.diskLayout.tmp;
+  cfg = config.sunner.diskLayout.tmp;
 in
 {
   options = {
-    diskLayout.tmp = {
+    sunner.diskLayout.tmp = {
       enable = mkEnableOption "tmp";
 
       size = mkOption {

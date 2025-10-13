@@ -6,7 +6,7 @@
     ../modules/hyprland.nix
   ];
 
-  diskLayout = {
+  sunner.diskLayout = {
     btrfs = {
       enable = true;
       device = "/dev/sda";

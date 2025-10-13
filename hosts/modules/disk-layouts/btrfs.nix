@@ -1,11 +1,11 @@
 { lib, config, ... }:
 with lib;
 let 
-  cfg = config.diskLayout.btrfs;
+  cfg = config.sunner.diskLayout.btrfs;
 in
 {
   options = {
-    diskLayout.btrfs = {
+    sunner.diskLayout.btrfs = {
       enable = mkEnableOption "btrfs";
 
       device = mkOption {
