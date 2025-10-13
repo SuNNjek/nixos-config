@@ -1,6 +1,3 @@
-{ config, ... }: let
-  waybarHeight = config.programs.waybar.settings.mainBar.height;
-in
 {
   wayland.windowManager.hyprland.settings = {
     windowrule = [
@@ -14,7 +11,7 @@ in
       "float, tag:pip"
       "pin, tag:pip"
       "content video, tag:pip"
-      "move 100%-w-8 100%-w-${toString (waybarHeight + 8)}, tag:pip"
+      "move 100%-w-8 100%-w, tag:pip"
 
       "tag +games, content:game"
       "tag +games, class:^(steam_app.*|steam_app_\d+)$"
@@ -32,7 +29,7 @@ in
       "tag +tray, class:org.pulseaudio.pavucontrol"
       "float, tag:tray"
       "pin, tag:tray"
-      "move 100%-w-8 100%-w-${toString (waybarHeight + 8)}, tag:tray"
+      "move 100%-w-8 100%-w, tag:tray"
 
       "bordersize 0, floating:0, onworkspace:w[tv1]"
       "rounding 0, floating:0, onworkspace:w[tv1]"
@@ -41,14 +38,12 @@ in
     ];
 
     layerrule = [
-      "blur, waybar"
+      "blur, quickshell:bar"
       
-      "blur, notifications"
-      "ignorezero, notifications"
-
-      "dimaround, walker"
-      "blur, walker"
+      "dimaround, quickshell:modal"
+      "blur, quickshell:modal"
     ];
+
 
     workspace = [
       "w[tv1], gapsin:0, gapsout:0"

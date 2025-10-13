@@ -4,11 +4,8 @@
   hyprctl = "${pkgs.hyprland}/bin/hyprctl";
   wpctl = "${pkgs.wireplumber}/bin/wpctl";
 
-  hyprlock = getExe pkgs.hyprlock;
-  walker = getExe pkgs.walker;
   playerctl = getExe pkgs.playerctl;
   grimblast = getExe pkgs.grimblast;
-  wlogout = getExe pkgs.wlogout;
 
   workspaceCount = 9;
   forWorkspace = f: builtins.concatLists (builtins.genList (ws: f (ws + 1)) workspaceCount);
@@ -19,14 +16,16 @@ in {
     bind = [
       "$mod, T, exec, $terminal"
       "$mod, F, fullscreen"
-      "$mod, L, exec, ${hyprlock}"
       
       ", print, exec, ${grimblast} --notify copy area"
       "CTRL, print, exec, ${grimblast} --notify copy screen"
       
       "$mod, Q, killactive"
-      "$mod SHIFT, Q, exec, ${wlogout}"
-      "$mod, SPACE, exec, ${walker}"
+
+      "$mod, L, exec, dms ipc call lock lock"
+      "$mod, SPACE, exec, dms ipc call spotlight toggle"
+      "$mod, V, exec, dms ipc call clipboard toggle"
+      "$mod, N, exec, dms ipc call notepad toggle"
 
       "$mod, left, workspace, r-1"
       "$mod, right, workspace, r+1"

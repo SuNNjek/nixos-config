@@ -29,6 +29,8 @@
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
     };
+
+    file.".face".source = ./buizel.png;
   };
 
   sunner = {
@@ -51,6 +53,10 @@
       package = pkgs.fluent-icon-theme;
       name = "Fluent-dark";
     };
+  };
+
+  qt = {
+    enable = true;
   };
 
   xdg = {
@@ -100,9 +106,6 @@
   };
 
   services = {
-    network-manager-applet.enable = osConfig.networking.networkmanager.enable;
-    blueman-applet.enable = osConfig.hardware.bluetooth.enable;
-
     gpg-agent = {
       enable = true;
       pinentry.package = pkgs.pinentry-qt;

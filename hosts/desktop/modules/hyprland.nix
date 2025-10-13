@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }: let
+{ lib, pkgs, inputs, ... }: let
   inherit (lib) getExe getExe';
 
   regreetHyprlandConfig = pkgs.writeText "regreet-hyprland-config" ''
@@ -24,14 +24,19 @@
     exec-once = ${getExe pkgs.regreet}; ${getExe' pkgs.hyprland "hyprctl"} dispatch exit
   '';
 in {
+  imports = [
+    inputs.dankMaterialShell.nixosModules.greeter
+  ];
+
   programs = {
     hyprland = {
       enable = true;
       withUWSM = true;
     };
 
-    regreet = {
+    dankMaterialShell.greeter = {
       enable = true;
+      compositor.name = "hyprland";
     };
   };
 
@@ -40,23 +45,5 @@ in {
     udisks2.enable = true;
     # For gammastep (red filter at night)
     geoclue2.enable = true;
-
-
-    greetd = {
-      settings = {
-        default_session = {
-          command = "${getExe pkgs.hyprland} --config ${regreetHyprlandConfig} > /tmp/hyprland-log-out.txt 2>&1";
-        };
-      };
-
-      restart = true;
-    };
   };
-
-  environment.systemPackages = with pkgs; [
-    kitty
-
-    waybar
-    wev
-  ];
 }
