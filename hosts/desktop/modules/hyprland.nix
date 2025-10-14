@@ -1,7 +1,5 @@
-{ lib, pkgs, inputs, ... }: let
-  inherit (lib) getExe getExe';
-
-  regreetHyprlandConfig = pkgs.writeText "regreet-hyprland-config" ''
+{ inputs, ... }: let
+  regreetHyprlandConfig = ''
     animations {
       enabled = false
     }
@@ -19,9 +17,6 @@
     monitor = ,highres,auto,1
 
     workspace = 1, m:desc:Dell Inc. DELL U2724DE 6QZ59P3, default:true
-
-    exec-once = ${lib.getExe' pkgs.dbus "dbus-update-activation-environment"} --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE
-    exec-once = ${getExe pkgs.regreet}; ${getExe' pkgs.hyprland "hyprctl"} dispatch exit
   '';
 in {
   imports = [
@@ -36,7 +31,11 @@ in {
 
     dankMaterialShell.greeter = {
       enable = true;
-      compositor.name = "hyprland";
+
+      compositor = {
+        name = "hyprland";
+        customConfig = regreetHyprlandConfig;
+      };
     };
   };
 

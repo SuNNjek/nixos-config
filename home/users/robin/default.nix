@@ -42,21 +42,10 @@
 
     targets = {
       # Doesn't work properly yet
+      gtk.enable = false;
+      qt.enable = false;
       gtk.flatpakSupport.enable = false;
     };
-  };
-
-  gtk = {
-    enable = true;
-
-    iconTheme = {
-      package = pkgs.fluent-icon-theme;
-      name = "Fluent-dark";
-    };
-  };
-
-  qt = {
-    enable = true;
   };
 
   xdg = {

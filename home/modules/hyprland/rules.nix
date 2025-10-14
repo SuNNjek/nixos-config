@@ -39,6 +39,9 @@
 
     layerrule = [
       "blur, quickshell:bar"
+
+      "blur, quickshell:popout"
+      "ignorezero, quickshell:popout"
       
       "dimaround, quickshell:modal"
       "blur, quickshell:modal"
