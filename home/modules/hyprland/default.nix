@@ -38,6 +38,7 @@ in {
         general = {
           gaps_out = 8;
           gaps_in = 4;
+          resize_on_border = true;
         };
 
         input = {
@@ -78,6 +79,10 @@ in {
           "LIBVA_DRIVER_NAME,nvidia"
           "__GLX_VENDOR_LIBRARY_NAME,nvidia"
           "NVD_BACKEND,direct"
+        ];
+
+        source = [
+          "~/.config/hypr/colors.conf"
         ];
       };
 

@@ -1,9 +1,6 @@
 {
   wayland.windowManager.hyprland.settings = {
     windowrule = [
-      # Give kitty some transparency
-      "opacity 0.75, class:kitty"
-
       # Launch Firefox PiP in floating mode and pin it
       "tag +pip, class:firefox, title:Picture-in-Picture"
       "tag +pip, class:firefox, title:Bild-im-Bild"
@@ -33,13 +30,10 @@
     ];
 
     layerrule = [
-      "blur, quickshell:bar"
+      "blur, ^quickshell(:.*)?"
+      "ignorealpha 0.25, ^quickshell(:.*)?"
 
-      "blur, quickshell:popout"
-      "ignorezero, quickshell:popout"
-      
       "dimaround, quickshell:modal"
-      "blur, quickshell:modal"
     ];
 
 

@@ -6,6 +6,8 @@
   imports = [
     # Interesting naming there... it sure is... redundant
     inputs.dankMaterialShell.homeModules.dankMaterialShell.default
+
+    ./matugen.nix
   ];
 
   home = {

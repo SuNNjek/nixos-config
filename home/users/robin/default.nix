@@ -83,6 +83,12 @@
       enable = true;
       shellIntegration.enableZshIntegration = true;
       font.name = "MesloLGS NF";
+
+      settings = {
+         background_opacity = 0.75;
+
+         cursor_shape = "beam";
+      };
     };
 
     gpg.enable = true;
