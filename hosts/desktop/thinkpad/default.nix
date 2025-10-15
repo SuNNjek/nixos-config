@@ -8,7 +8,7 @@ in {
 
     ../../modules/zram.nix
 
-    ../modules/hyprland.nix
+    ../modules/regreet.nix
   ];
 
   boot.loader = {

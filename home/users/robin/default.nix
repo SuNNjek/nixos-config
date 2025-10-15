@@ -38,14 +38,7 @@
   };
 
   stylix = {
-    enable = true;
-
-    targets = {
-      # Doesn't work properly yet
-      gtk.enable = false;
-      qt.enable = false;
-      gtk.flatpakSupport.enable = false;
-    };
+    enable = false;
   };
 
   xdg = {
@@ -87,6 +80,7 @@
     };
 
     kitty = {
+      enable = true;
       shellIntegration.enableZshIntegration = true;
       font.name = "MesloLGS NF";
     };

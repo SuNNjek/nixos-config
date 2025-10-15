@@ -8,11 +8,30 @@
     inputs.dankMaterialShell.homeModules.dankMaterialShell.default
   ];
 
-  programs.dankMaterialShell = {
-    enable = true;
-    enableSystemd = true;
+  home = {
+    packages = with pkgs; [
+      pywalfox-native
+    ];
+
+    pointerCursor = {
+      gtk.enable = true;
+
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
+      size = 24;
+    };
   };
 
+  programs = {
+    dankMaterialShell = {
+      enable = true;
+      enableSystemd = true;
+    };
+
+    kitty.extraConfig = ''
+      include dank-theme.conf
+    '';
+  };
 
   gtk = {
     enable = true;
@@ -30,5 +49,9 @@
 
   qt = {
     enable = true;
+    platformTheme = {
+      name = "qt6ct";
+      package = pkgs.qt6ct;
+    };
   };
 }

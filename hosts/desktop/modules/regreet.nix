@@ -1,4 +1,4 @@
-{ inputs, ... }: let
+{ inputs, username, ... }: let
   regreetHyprlandConfig = ''
     animations {
       enabled = false
@@ -31,6 +31,7 @@ in {
 
     dankMaterialShell.greeter = {
       enable = true;
+      configHome = "/home/${username}";
 
       compositor = {
         name = "hyprland";

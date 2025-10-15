@@ -63,6 +63,8 @@ in {
       xkb.layout = "de";
     };
 
+    accounts-daemon.enable = true;
+
     blueman.enable = config.hardware.bluetooth.enable;
   };
 }

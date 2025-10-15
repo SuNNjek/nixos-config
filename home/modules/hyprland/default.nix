@@ -30,6 +30,7 @@ in {
   config = {
     wayland.windowManager.hyprland = mkIf cfg.enable {
       enable = true;
+      systemd.variables = [ "--all" ];
 
       settings = {
         "$terminal" = kitty;
