@@ -29,6 +29,8 @@
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
     };
+
+    file.".face".source = ./buizel.png;
   };
 
   sunner = {
@@ -36,21 +38,7 @@
   };
 
   stylix = {
-    enable = true;
-
-    targets = {
-      # Doesn't work properly yet
-      gtk.flatpakSupport.enable = false;
-    };
-  };
-
-  gtk = {
-    enable = true;
-
-    iconTheme = {
-      package = pkgs.fluent-icon-theme;
-      name = "Fluent-dark";
-    };
+    enable = false;
   };
 
   xdg = {
@@ -92,17 +80,21 @@
     };
 
     kitty = {
+      enable = true;
       shellIntegration.enableZshIntegration = true;
       font.name = "MesloLGS NF";
+
+      settings = {
+         background_opacity = 0.75;
+
+         cursor_shape = "beam";
+      };
     };
 
     gpg.enable = true;
   };
 
   services = {
-    network-manager-applet.enable = osConfig.networking.networkmanager.enable;
-    blueman-applet.enable = osConfig.hardware.bluetooth.enable;
-
     gpg-agent = {
       enable = true;
       pinentry.package = pkgs.pinentry-qt;

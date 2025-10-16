@@ -18,11 +18,7 @@ in {
     ./binds.nix
     ./rules.nix
 
-    ./walker.nix
-    ./hyprlock.nix
-    ./waybar.nix
-    ./mako.nix
-    ./wlogout.nix
+    ./dms.nix
   ];
 
   options = {
@@ -34,6 +30,7 @@ in {
   config = {
     wayland.windowManager.hyprland = mkIf cfg.enable {
       enable = true;
+      systemd.variables = [ "--all" ];
 
       settings = {
         "$terminal" = kitty;
@@ -41,6 +38,7 @@ in {
         general = {
           gaps_out = 8;
           gaps_in = 4;
+          resize_on_border = true;
         };
 
         input = {
@@ -82,6 +80,10 @@ in {
           "__GLX_VENDOR_LIBRARY_NAME,nvidia"
           "NVD_BACKEND,direct"
         ];
+
+        source = [
+          "~/.config/hypr/colors.conf"
+        ];
       };
 
       plugins = with pkgs; [
@@ -89,45 +91,7 @@ in {
       ];
     };
 
-    stylix.targets.hyprpaper.enable = mkForce false;
     services = {
-      hyprpaper = {
-        enable = true;
-
-        settings = {
-          ipc = "on";
-        };
-      };
-
-      hypridle = {
-        enable = true;
-
-        settings = {
-          general = {
-            lock_cmd = "pidof hyprlock || hyprlock";
-            before_sleep_cmd = "loginctl lock-session";
-            after_sleep_cmd = "hyprctl dispatch dpms on";
-          };
-        
-          listener = [
-            {
-              timeout = 10 * 60;
-              on-timeout = "loginctl lock-session";
-            }
-            {
-              timeout = 15 * 60;
-              on-timeout = "hyprctl dispatch dpms off";
-              on-resume = "hyprctl dispatch dpms on";
-            }
-            {
-              timeout = 30;
-              on-timeout = "pidof hyprlock && hyprctl dispatch dpms off";
-              on-resume = "hyprctl dispatch dpms on";
-            }
-          ];
-        };
-      };
-
       hyprpolkitagent.enable = true;
 
       gammastep = {
@@ -143,6 +107,7 @@ in {
 
       config = {
         provider = "bing";
+        customCommand = "dms ipc call wallpaper set {{.Path}}";
       };
     };
 
