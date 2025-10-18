@@ -1,4 +1,4 @@
-{ lib, osConfig, pkgs, ... }: with lib; {
+{ lib, pkgs, ... }: with lib; {
   imports = [
     ../shared.nix
 
@@ -99,5 +99,7 @@
       enable = true;
       pinentry.package = pkgs.pinentry-qt;
     };
+
+    cliphist.enable = true;
   };
 }
