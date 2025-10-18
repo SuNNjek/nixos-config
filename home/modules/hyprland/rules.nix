@@ -8,7 +8,6 @@
       "float, tag:pip"
       "pin, tag:pip"
       "content video, tag:pip"
-      "move 100%-w-8 100%-w, tag:pip"
 
       "tag +games, content:game"
       "tag +games, class:^(steam_app.*|steam_app_\d+)$"
@@ -24,9 +23,6 @@
       # Move all windows launched by tray/waybar modules
       # to the bottom right corner
       "tag +tray, class:org.pulseaudio.pavucontrol"
-      "float, tag:tray"
-      "pin, tag:tray"
-      "move 100%-w-8 100%-w, tag:tray"
     ];
 
     layerrule = [

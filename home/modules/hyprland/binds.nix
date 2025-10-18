@@ -29,6 +29,8 @@ in {
       "$mod, right, workspace, r+1"
       "$mod SHIFT, left, movetoworkspace, r-1"
       "$mod SHIFT, right, movetoworkspace, r+1"
+      "$mod ALT, right, swapactiveworkspaces, current +1"
+      "$mod ALT, left, swapactiveworkspaces, current -1"
     ]
     ++ forWorkspace (ws: [
       "$mod, ${toString ws}, workspace, ${toString ws}"
