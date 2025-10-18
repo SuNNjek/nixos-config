@@ -64,6 +64,7 @@ in {
     };
 
     accounts-daemon.enable = true;
+    upower.enable = true;
 
     blueman.enable = config.hardware.bluetooth.enable;
   };
