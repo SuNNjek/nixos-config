@@ -3,7 +3,7 @@
     ../.
     ./hardware-configuration.nix
 
-    ../modules/hyprland.nix
+    ../modules/regreet.nix
   ];
 
   sunner.diskLayout = {
@@ -15,5 +15,5 @@
     tmp.enable = true;
   };
 
-  networking.hostName = "nixosVm";
+  networking.hostName = "nixos-vm";
 }
