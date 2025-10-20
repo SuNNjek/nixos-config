@@ -11,7 +11,7 @@ in {
     "$mod" = "SUPER";
 
     bind = [
-      "$mod, T, exec, $terminal"
+      "$mod, T, exec, uwsm app -- $terminal"
       "$mod, F, fullscreen"
       
       ", print, exec, ${grimblast} --notify copy area"
