@@ -1,13 +1,6 @@
 { lib, ... }:
 with lib;
 let
-  sudoConfig = with types; submodule {
-    options = {
-      enable = mkEnableOption "sudo";
-      withoutPassword = mkEnableOption "without password";
-    };
-  };
-
   userConfig = with types; submodule {
     options = {
       configPath = mkOption {
@@ -15,9 +8,9 @@ let
         description = "Path to the user config";
       };
 
-      sudo = mkOption {
-        type = sudoConfig;
-        description = "Sudo config";
+      sudo = {
+        enable = mkEnableOption "sudo";
+        withoutPassword = mkEnableOption "without password";
       };
     };
   };

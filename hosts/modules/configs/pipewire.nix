@@ -1,8 +1,10 @@
-{
-  security.rtkit.enable = true;
+{ config, ... }: let
+  cfg = config.sunner.pipewire;
+in {
+  security.rtkit.enable = cfg.enable;
 
   services.pipewire = {
-    enable = true;
+    enable = cfg.enable;
     wireplumber.enable = true;
     pulse.enable = true;
 

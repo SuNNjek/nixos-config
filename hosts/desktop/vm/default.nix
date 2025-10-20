@@ -2,8 +2,6 @@
   imports = [
     ../.
     ./hardware-configuration.nix
-
-    ../modules/regreet.nix
   ];
 
   sunner = {

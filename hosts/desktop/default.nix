@@ -1,14 +1,22 @@
 { config, ... }: {
   imports = [
     ../.
-
-    ./modules/pipewire.nix
-    ./modules/flatpak.nix
-    ./modules/stylix.nix
   ];
 
   sunner = {
+    stylix.enable = true;
     zram.enable = true;
+    pipewire.enable = true;
+    flatpak.enable = true;
+    hyprland.enable = true;
+
+    dms = {
+      enable = true;
+
+      greeter = {
+        configUser = "robin";
+      };
+    };
 
     homeManager = {
       enable = true;

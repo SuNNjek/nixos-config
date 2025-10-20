@@ -1,12 +1,14 @@
 {
   imports = [
     ./disk-layouts
-
-    ./limine.nix
+    ./dms.nix
+    ./flatpak.nix
     ./grub.nix
-
-    ./zram.nix
-
     ./hm.nix
+    ./hyprland.nix
+    ./limine.nix
+    ./pipewire.nix
+    ./stylix.nix
+    ./zram.nix
   ];
 }

@@ -1,12 +1,14 @@
-{ pkgs, ... }: {
-  services.flatpak.enable = true;
+{ lib, config, pkgs, ... }: let
+  cfg = config.sunner.flatpak;
+in {
+  services.flatpak.enable = cfg.enable;
 
-  environment.systemPackages = with pkgs; [
-    steam-devices-udev-rules
-  ];
+  # TODO: Move to somewhere else, it's only related to the Steam Flatpak, not Flatpak in general
+  environment.systemPackages = with pkgs;
+    lib.optional cfg.enable steam-devices-udev-rules;
 
   systemd.services.flatpak-repo = {
-    enable = true;
+    enable = cfg.enable;
     wantedBy = [ "multi-user.target" ];
     path = [ pkgs.flatpak ];
     script = ''
@@ -15,7 +17,7 @@
   };
 
   systemd.user.services.flatpak-repo = {
-    enable = true;
+    enable = cfg.enable;
     wantedBy = [ "default.target" ];
     path = [ pkgs.flatpak ];
     script = ''
