@@ -86,6 +86,7 @@
 
       settings = {
          background_opacity = 0.75;
+         window_padding_width = 8;
 
          cursor_shape = "beam";
       };
