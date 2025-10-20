@@ -4,19 +4,6 @@ let
   cfg = config.sunner.diskLayout.btrfs;
 in
 {
-  options = {
-    sunner.diskLayout.btrfs = {
-      enable = mkEnableOption "btrfs";
-
-      device = mkOption {
-        type = types.str;
-        default = "/dev/sda";
-        defaultText = "/dev/sda";
-        description = "Path of the root device";
-      };
-    };
-  };
-
   config = mkIf cfg.enable {
     disko.devices.disk.main = {
       type = "disk";

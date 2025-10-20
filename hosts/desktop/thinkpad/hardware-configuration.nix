@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ inputs, pkgs, ... }: {
   imports = [
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480s
   ];
@@ -9,6 +9,7 @@
       kernelModules = [ ];
     };
 
+    kernelPackages = pkgs.linuxPackages_zen;
     kernelModules = [ "kvm-intel"];
     extraModulePackages = [ ];
   };

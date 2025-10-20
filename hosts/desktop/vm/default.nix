@@ -6,13 +6,17 @@
     ../modules/regreet.nix
   ];
 
-  sunner.diskLayout = {
-    btrfs = {
-      enable = true;
-      device = "/dev/sda";
-    };
+  sunner = {
+    boot.limine.enable = true;
 
-    tmp.enable = true;
+    diskLayout = {
+      btrfs = {
+        enable = true;
+        device = "/dev/sda";
+      };
+
+      tmp.enable = true;
+    };
   };
 
   networking.hostName = "nixos-vm";

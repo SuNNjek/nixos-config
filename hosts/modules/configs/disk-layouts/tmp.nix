@@ -4,19 +4,6 @@ let
   cfg = config.sunner.diskLayout.tmp;
 in
 {
-  options = {
-    sunner.diskLayout.tmp = {
-      enable = mkEnableOption "tmp";
-
-      size = mkOption {
-        type = types.str;
-        default = "2G";
-        defaultText = "2G";
-        description = "Size of /tmp";
-      };
-    };
-  };
-
   config = mkIf cfg.enable {
     disko.devices.nodev = {
       "/tmp" = {
