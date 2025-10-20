@@ -29,6 +29,10 @@ in {
     tmp.enable = true;
   };
 
+  services = {
+    power-profiles-daemon.enable = true;
+  };
+
   networking = {
     hostName = "robin-thinkpad";
   };
