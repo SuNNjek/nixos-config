@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 with lib;
 let
   userConfig = with types; submodule {
@@ -6,6 +6,10 @@ let
       configPath = mkOption {
         type = path;
         description = "Path to the user config";
+      };
+
+      shell = mkPackageOption pkgs "User shell" {
+        default = "zsh";
       };
 
       sudo = {

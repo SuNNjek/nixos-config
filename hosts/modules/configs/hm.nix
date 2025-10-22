@@ -34,11 +34,13 @@ in {
       # Trust all users declared in home-manager config
       nix.settings.trusted-users = lib.attrNames cfg.users;
 
-      users.users = lib.genAttrs (lib.attrNames cfg.users) (username: {
+      users.users = lib.mapAttrs (username: userCfg: {
+        inherit (userCfg) shell;
+
         isNormalUser = true;
         initialPassword = "changeMe";
-        extraGroups = lib.optional cfg.users.${username}.sudo.enable "wheel";
-      });
+        extraGroups = lib.optional userCfg.sudo.enable "wheel";
+      }) cfg.users;
     }
 
     (let 
