@@ -5,15 +5,11 @@
   ];
 
   sunner = {
-    boot.limine = {
-      enable = true;
-
-      extraEntries = ''
-        /Windows
-          protocol: efi
-          path: uuid(7006ed1b-b7fa-40ec-92af-fd0fae8ef4e2):/EFI/Microsoft/Boot/bootmgfw.efi
-      '';
-    };
+    boot.limine.extraEntries = ''
+      /Windows
+        protocol: efi
+        path: uuid(7006ed1b-b7fa-40ec-92af-fd0fae8ef4e2):/EFI/Microsoft/Boot/bootmgfw.efi
+    '';
 
     diskLayout = {
       btrfs = {
@@ -21,10 +17,7 @@
         device = "/dev/nvme1n1";
       };
 
-      tmp = {
-        enable = true;
-        size = "8G";
-      };
+      tmp.size = "8G";
     };
   };
 
@@ -35,10 +28,4 @@
   networking = {
     hostName = "robin-pc";
   };
-
-  boot = {
-    plymouth.enable = true;
-  };
-
-  stylix.targets.plymouth.logoAnimated = false;
 }

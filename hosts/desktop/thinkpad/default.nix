@@ -5,15 +5,11 @@
   ];
 
   sunner = {
-    boot.limine.enable = true;
-
     diskLayout = {
       btrfs = {
         enable = true;
         device = "/dev/nvme0n1";
       };
-
-      tmp.enable = true;
     };
   };
 

@@ -5,15 +5,11 @@
   ];
 
   sunner = {
-    boot.limine.enable = true;
-
     diskLayout = {
       btrfs = {
         enable = true;
         device = "/dev/sda";
       };
-
-      tmp.enable = true;
     };
   };
 

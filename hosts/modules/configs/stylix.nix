@@ -14,7 +14,10 @@ in {
     # https://unsplash.com/photos/seashore-DA_tplYgTow
     image = ./assets/wallpaper.jpg;
 
-    targets.grub.useWallpaper = true;
+    targets = {
+      grub.useWallpaper = true;
+      plymouth.logoAnimated = false;
+    };
 
     fonts = {
       sansSerif = {

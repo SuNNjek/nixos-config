@@ -4,7 +4,12 @@
   ];
 
   sunner = {
+    diskLayout.tmp.enable = true;
+
+    boot.limine.enable = true;
+    
     stylix.enable = true;
+    
     zram.enable = true;
     pipewire.enable = true;
     flatpak.enable = true;
@@ -32,6 +37,10 @@
         };
       };
     };
+  };
+
+  boot = {
+    plymouth.enable = true;
   };
 
   # Use NetworkManager on desktop
