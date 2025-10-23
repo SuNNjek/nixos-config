@@ -48,13 +48,13 @@
     enable = true;
 
     theme = {
-      package = pkgs.colloid-gtk-theme;
-      name = "Colloid";
+      package = pkgs.adw-gtk3;
+      name = "adw-gtk3-dark";
     };
 
     iconTheme = {
-      package = pkgs.colloid-icon-theme;
-      name = "Colloid";
+      package = pkgs.vimix-icon-theme;
+      name = "Vimix-dark";
     };
 
     gtk3.extraCss = extraCss;
