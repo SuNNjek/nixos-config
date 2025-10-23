@@ -52,9 +52,9 @@
     };
 
     autostart.flatpaks = {
-      steam = {
-        id = "com.valvesoftware.Steam";
-        args = "-silent";
+      "com.valvesoftware.Steam" = {
+        enable = true;
+        args = [ "-silent" ];
       };
     };
   };
