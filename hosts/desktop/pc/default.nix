@@ -19,6 +19,13 @@
 
       tmp.size = "8G";
     };
+
+    host.useCases = {
+      development.enable = true;
+      gaming.enable = true;
+      imageEditing.enable = true;
+      videoEditing.enable = true;
+    };
   };
 
   services = {

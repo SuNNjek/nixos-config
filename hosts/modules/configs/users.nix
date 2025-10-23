@@ -19,7 +19,6 @@ in {
             # Set default based on username
             home = {
               inherit username;
-              homeDirectory = "/home/${username}";
             };
           }
 

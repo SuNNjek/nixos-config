@@ -1,31 +1,9 @@
-{ lib, pkgs, ... }: with lib; {
+{
   imports = [
-    ../shared.nix
-
-    ../../modules/hyprland
-    ../../modules/autostart.nix
-    ../../modules/git.nix
-    ../../modules/firefox.nix
-    ../../modules/vscode.nix
-    ../../modules/zsh.nix
+    ../..
   ];
 
   home = {
-    packages = with pkgs; [
-      fastfetch
-      krabby
-
-      nemo-with-extensions
-      mpc-qt
-      image-roll
-      gimp3
-
-      nixd
-      nixpkgs-lint-community
-    ];
-
-    stateVersion = "25.05";
-
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
     };
@@ -33,74 +11,17 @@
     file.".face".source = ./buizel.png;
   };
 
-  sunner = {
-    hyprland.enable = true;
-  };
+  programs.git = {
+    userName = "Sunner";
+    userEmail = "sunnerlp@gmail.com";
 
-  stylix = {
-    enable = false;
-  };
-
-  xdg = {
-    systemDirs.data = [
-      "/home/robin/.local/share/flatpak/exports/share"
-    ];
-
-    userDirs = {
-      enable = true;
-      createDirectories = true;
-    };
-
-    autostart.flatpaks = {
-      "com.valvesoftware.Steam" = {
-        enable = true;
-        args = [ "-silent" ];
-      };
+    signing = {
+      signByDefault = true;
+      key = "068C46171236B7AD"; # Needs to be imported
     };
   };
 
   programs = {
     vesktop.enable = true;
-
-    git = {
-      userName = "Sunner";
-      userEmail = "sunnerlp@gmail.com";
-
-      signing = {
-        signByDefault = true;
-        key = "068C46171236B7AD"; # Needs to be imported
-      };
-    };
-
-    direnv = {
-      enable = true;
-      enableZshIntegration = true;
-
-      nix-direnv.enable = true;
-    };
-
-    kitty = {
-      enable = true;
-      shellIntegration.enableZshIntegration = true;
-      font.name = "MesloLGS NF";
-
-      settings = {
-         background_opacity = 0.75;
-         window_padding_width = 8;
-
-         cursor_shape = "beam";
-      };
-    };
-
-    gpg.enable = true;
-  };
-
-  services = {
-    gpg-agent = {
-      enable = true;
-      pinentry.package = pkgs.pinentry-qt;
-    };
-
-    cliphist.enable = true;
   };
 }

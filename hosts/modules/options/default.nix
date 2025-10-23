@@ -10,5 +10,7 @@
     ./stylix.nix
     ./users.nix
     ./zram.nix
+
+    ./use-cases.nix
   ];
 }

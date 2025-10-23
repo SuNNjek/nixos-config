@@ -11,6 +11,11 @@
         device = "/dev/nvme0n1";
       };
     };
+
+    host.useCases = {
+      development.enable = true;
+      imageEditing.enable = true;
+    };
   };
 
   services = {
