@@ -1,6 +1,5 @@
 {
   lib,
-  config,
   osConfig,
   inputs,
   pkgs,
@@ -10,7 +9,7 @@
 
   kitty = getExe pkgs.kitty;
 
-  cfg = config.sunner.hyprland;
+  cfg = osConfig.sunner.hyprland;
 in {
   imports = [
     inputs.hypotd.homeManagerModules.default
@@ -20,12 +19,6 @@ in {
 
     ./dms.nix
   ];
-
-  options = {
-    sunner.hyprland = {
-      enable = mkEnableOption "Hyprland";
-    };
-  };
 
   config = {
     wayland.windowManager.hyprland = mkIf cfg.enable {

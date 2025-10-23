@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ inputs, pkgs, ... }: {
   imports = [
     inputs.nixos-hardware.nixosModules.common-cpu-amd
     inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
@@ -8,6 +8,7 @@
   ];
 
   boot = {
+    kernelPackages = pkgs.linuxPackages_zen;
     kernelModules = [ "kvm-amd" ];
     kernelParams = [ "module_blacklist=amdgpu" ];
     extraModulePackages = [ ];

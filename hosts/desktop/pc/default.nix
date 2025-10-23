@@ -1,48 +1,35 @@
-{ lib, pkgs, ... }:
-let 
-  inherit (lib) mkForce;
-in {
+{
   imports = [
     ../.
     ./hardware-configuration.nix
-
-    ../../modules/zram.nix
-
-    ../modules/regreet.nix
   ];
 
-  boot.loader = {
-    grub.enable = mkForce false;
-    
-    limine = {
-      enable = true;
+  sunner = {
+    boot.limine.extraEntries = ''
+      /Windows
+        protocol: efi
+        path: uuid(7006ed1b-b7fa-40ec-92af-fd0fae8ef4e2):/EFI/Microsoft/Boot/bootmgfw.efi
+    '';
 
-      extraEntries = ''
-        /Windows
-          protocol: efi
-          path: uuid(7006ed1b-b7fa-40ec-92af-fd0fae8ef4e2):/EFI/Microsoft/Boot/bootmgfw.efi
-      '';
+    diskLayout = {
+      btrfs = {
+        enable = true;
+        device = "/dev/nvme1n1";
+      };
+
+      tmp.size = "8G";
+    };
+
+    host.useCases = {
+      development.enable = true;
+      gaming.enable = true;
+      imageEditing.enable = true;
+      videoEditing.enable = true;
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    limine
-  ];
 
   services = {
     hardware.openrgb.enable = true;
-  };
-
-  sunner.diskLayout = {
-    btrfs = {
-      enable = true;
-      device = "/dev/nvme1n1";
-    };
-
-    tmp = {
-      enable = true;
-      size = "8G";
-    };
   };
 
   networking = {

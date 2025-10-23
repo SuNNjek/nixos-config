@@ -1,30 +1,18 @@
-{ lib, pkgs, config, ... }:
-let
-  inherit (lib) mkDefault;
+{ lib, pkgs, config, ... }: let
+  cfg = config.sunner.boot.limine;
+in lib.mkMerge [
+  {
+    boot.loader.limine = {
+      enable = cfg.enable;
 
-
-  inherit (config.lib.stylix) colors;
-  wallpaper = config.stylix.image;
-in {
-  # Set default options for bootloaders, but don't enable them here
-  boot.loader = {
-    efi.canTouchEfiVariables = pkgs.stdenv.hostPlatform.isEfi;
-
-    # I feel like all of these could depend on the system to use, so use mkDefault everywhere
-    grub = {
-      efiSupport = pkgs.stdenv.hostPlatform.isEfi;
-      device = mkDefault "nodev";
-    
-      useOSProber = mkDefault false;
-    };
-
-    limine = {
       # Should be enough and doesn't spam the boot menu
       maxGenerations = 5;
 
       # No stylix support yet, so do it manually
-      style = {
-        wallpapers = [ wallpaper ];
+      style = lib.mkIf cfg.enableStylix (let
+        inherit (config.lib.stylix) colors;
+      in {
+        wallpapers = [ config.stylix.image ];
         backdrop = colors.base00;
 
         graphicalTerminal = {
@@ -50,7 +38,13 @@ in {
             "FFFFFF"
           ]);
         };
-      };
+      });
     };
-  };
-}
+  }
+
+  (lib.mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [
+      limine
+    ];
+  })
+]
