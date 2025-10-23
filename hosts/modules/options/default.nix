@@ -4,11 +4,11 @@
     ./dms.nix
     ./flatpak.nix
     ./grub.nix
-    ./hm.nix
     ./hyprland.nix
     ./limine.nix
     ./pipewire.nix
     ./stylix.nix
+    ./users.nix
     ./zram.nix
   ];
 }

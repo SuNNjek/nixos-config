@@ -23,18 +23,15 @@
       };
     };
 
-    homeManager = {
-      enable = true;
+    users.robin = {
+      homeManager = {
+        enable = true;
+        configPath = ../../home/users/robin;
+      };
 
-      users = {
-        robin = {
-          configPath = ../../home/users/robin;
-
-          sudo = {
-            enable = true;
-            withoutPassword = true;
-          };
-        };
+      sudo = {
+        enable = true;
+        withoutPassword = true;
       };
     };
   };
