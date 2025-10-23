@@ -21,17 +21,26 @@ in {
 
       "$mod, L, exec, dms ipc call lock lock"
       "$mod, SPACE, exec, dms ipc call spotlight toggle"
+      "$mod, TAB, exec, dms ipc call hypr toggleOverview"
       "$mod, V, exec, dms ipc call clipboard toggle"
       "$mod, N, exec, dms ipc call notepad toggle"
       "$mod SHIFT, Q, exec, dms ipc call powermenu toggle"
 
       "$mod, left, workspace, r-1"
       "$mod, right, workspace, r+1"
+      "$mod, mouse:275, workspace, r-1"
+      "$mod, mouse:276, workspace, r+1"
+
       "$mod SHIFT, left, movetoworkspace, r-1"
       "$mod SHIFT, right, movetoworkspace, r+1"
+      "$mod SHIFT, mouse:275, movetoworkspace, r-1"
+      "$mod SHIFT, mouse:276, movetoworkspace, r+1"
+
       "$mod ALT, right, swapactiveworkspaces, current +1"
       "$mod ALT, left, swapactiveworkspaces, current -1"
-    ]
+      "$mod ALT, mouse:275, swapactiveworkspaces, current +1"
+      "$mod ALT, mouse:276, swapactiveworkspaces, current -1"
+   ]
     ++ forWorkspace (ws: [
       "$mod, ${toString ws}, workspace, ${toString ws}"
       "$mod SHIFT, ${toString ws}, movetoworkspace, ${toString ws}"
@@ -60,6 +69,10 @@ in {
     bindle = [
       ", XF86AudioRaiseVolume, exec, dms ipc call audio increment 5"
       ", XF86AudioLowerVolume, exec, dms ipc call audio decrement 5"
+
+      ", XF86MonBrightnessUp, exec, dms ipc call brightness increment 5"
+      ", XF86MonBrightnessDown, exec, dms ipc call brightness decrement 5"
+
     ];
 
     gesture = [
