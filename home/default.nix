@@ -10,7 +10,6 @@
       homeDirectory = "/home/${config.home.username}";
 
       packages = with pkgs; [
-        fastfetch
         krabby
 
         nemo-with-extensions
