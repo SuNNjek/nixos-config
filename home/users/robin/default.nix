@@ -12,8 +12,10 @@
   };
 
   programs.git = {
-    userName = "Sunner";
-    userEmail = "sunnerlp@gmail.com";
+    settings.user = {
+      name = "Sunner";
+      email = "sunnerlp@gmail.com";
+    };
 
     signing = {
       signByDefault = true;

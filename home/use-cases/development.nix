@@ -10,12 +10,12 @@ in lib.mkIf cfg.enable {
     git = {
       enable = true;
 
-      aliases = {
-        st = "status";
-        ds = "diff --staged";
-      };
+      settings = {
+        alias = {
+          st = "status";
+          ds = "diff --staged";
+        };
 
-      extraConfig = {
         init = {
           defaultBranch = "main";
         };
