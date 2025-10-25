@@ -1,11 +1,7 @@
-{ lib, config, pkgs, ... }: let
+{ config, pkgs, ... }: let
   cfg = config.sunner.flatpak;
 in {
   services.flatpak.enable = cfg.enable;
-
-  # TODO: Move to somewhere else, it's only related to the Steam Flatpak, not Flatpak in general
-  environment.systemPackages = with pkgs;
-    lib.optional cfg.enable steam-devices-udev-rules;
 
   systemd.services.flatpak-repo = {
     enable = cfg.enable;

@@ -23,6 +23,11 @@
     programs = {
       home-manager.enable = true;
 
+      nh = {
+        enable = true;
+        flake = "${config.home.homeDirectory}/git/nixos-config";
+      };
+
       zsh = {
         enable = true;
 
@@ -41,7 +46,7 @@
         enable = true;
         shellIntegration.enableZshIntegration = true;
         font = {
-          name = "FiraCodeNFM-Reg"; # TODO: idk what it's called actually
+          name = "FiraCodeNFM-Reg";
           package = pkgs.nerd-fonts.fira-code;
         };
 
@@ -60,9 +65,7 @@
     stylix.enable = false;
 
     xdg = {
-      systemDirs.data = [
-        "${config.home.homeDirectory}/.local/share/flatpak/exports/share"
-      ];
+      autostart.enable = true;
 
       userDirs = {
         enable = true;

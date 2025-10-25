@@ -12,7 +12,7 @@
       };
     };
 
-    host.useCases = {
+    useCases = {
       development.enable = true;
       imageEditing.enable = true;
     };

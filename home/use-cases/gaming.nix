@@ -1,11 +1,19 @@
-{ lib, osConfig, ... }: let 
-  cfg = osConfig.sunner.host.useCases.gaming;
+{ lib, osConfig, pkgs, ... }: let 
+  cfg = osConfig.sunner.useCases.gaming;
 in lib.mkIf cfg.enable {
+  programs.mangohud.enable = true;
+
   xdg = {
-    autostart.flatpaks = {
-      "com.valvesoftware.Steam" = {
-        enable = true;
-        args = [ "-silent" ];
+    autostart = {
+      entries = with pkgs; [
+        "${steam}/share/applications/steam.desktop"
+      ];
+
+      flatpaks = {
+        "com.valvesoftware.Steam" = {
+          enable = true;
+          args = [ "-silent" ];
+        };
       };
     };
   };

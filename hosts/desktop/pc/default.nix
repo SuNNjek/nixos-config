@@ -20,7 +20,7 @@
       tmp.size = "8G";
     };
 
-    host.useCases = {
+    useCases = {
       development.enable = true;
       gaming.enable = true;
       imageEditing.enable = true;
