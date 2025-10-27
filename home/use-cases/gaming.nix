@@ -17,14 +17,5 @@ in lib.mkIf cfg.enable (
         };
       };
     }
-
-    (lib.mkIf osConfig.sunner.flatpak.enable {
-      xdg.autostart.flatpaks = {
-        "com.valvesoftware.Steam" = {
-          enable = true;
-          args = [ "-silent" ];
-        };
-      };
-    })
   ]
 )
