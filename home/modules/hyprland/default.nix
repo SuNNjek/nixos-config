@@ -20,8 +20,12 @@ in {
     ./dms.nix
   ];
 
-  config = {
-    wayland.windowManager.hyprland = mkIf cfg.enable {
+  config = mkIf cfg.enable {
+    systemd.user.sessionVariables = {
+      NIXOS_OZONE_WL = "1";
+    };
+
+    wayland.windowManager.hyprland = {
       enable = true;
       systemd.variables = [ "--all" ];
 

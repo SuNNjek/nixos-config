@@ -1,4 +1,5 @@
 {
+  lib,
   inputs,
   config,
   pkgs,
@@ -14,6 +15,7 @@
   home = {
     packages = with pkgs; [
       pywalfox-native
+      grimblast
     ];
 
     pointerCursor = {
@@ -29,6 +31,18 @@
     dankMaterialShell = {
       enable = true;
       enableSystemd = true;
+
+      plugins = with pkgs.dms-plugins; {
+        grimblast = {
+          enable = true;
+          src = grimblast;
+        };
+      };
+    };
+
+    grimblast = {
+      enable = true;
+      editor = "${lib.meta.getExe pkgs.satty} --filename";
     };
 
     kitty.extraConfig = ''
