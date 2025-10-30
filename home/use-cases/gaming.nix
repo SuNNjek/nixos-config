@@ -1,21 +1,17 @@
 { lib, osConfig, pkgs, ... }: let 
   cfg = osConfig.sunner.useCases.gaming;
-in lib.mkIf cfg.enable (
-  lib.mkMerge [
-    {
-      home.packages = with pkgs; [
-        prismlauncher
+in lib.mkIf cfg.enable {
+  home.packages = with pkgs; [
+    prismlauncher
+  ];
+
+  programs.mangohud.enable = true;
+
+  xdg = {
+    autostart = {
+      entries = with pkgs; [
+        "${steam}/share/applications/steam.desktop"
       ];
-
-      programs.mangohud.enable = true;
-
-      xdg = {
-        autostart = {
-          entries = with pkgs; [
-            "${steam}/share/applications/steam.desktop"
-          ];
-        };
-      };
-    }
-  ]
-)
+    };
+  };
+}
