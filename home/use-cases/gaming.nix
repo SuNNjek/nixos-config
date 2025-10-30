@@ -7,6 +7,10 @@ in lib.mkIf cfg.enable {
 
   programs.mangohud.enable = true;
 
+  services.flatpak.packages = [
+    "com.usebottles.bottles"
+  ];
+
   xdg = {
     autostart = {
       entries = with pkgs; [

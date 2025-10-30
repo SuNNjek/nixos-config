@@ -32,6 +32,8 @@
       url = "github:SuNNjek/hypotd";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak/v0.6.0";
   };
 
   outputs = inputs@{ nixpkgs, ... }:
