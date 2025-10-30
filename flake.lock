@@ -294,11 +294,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758922896,
-        "narHash": "sha256-F04+HJEsh/Sl2y3iTt+VPJngEgehtZqJOK6as9mWkX8=",
+        "lastModified": 1761843012,
+        "narHash": "sha256-8fHAeSrdbQSWMuAgw42jymndkH/aJcfjGlcIXZMNRbc=",
         "owner": "SuNNjek",
         "repo": "hypotd",
-        "rev": "b9f9536576b5fbf1c04cb954e301b53c4c055af9",
+        "rev": "393a77367c41211583a03c165b06441ea6e5ded7",
         "type": "github"
       },
       "original": {
