@@ -25,6 +25,10 @@ in {
       NIXOS_OZONE_WL = "1";
     };
 
+    home.packages = with pkgs; [
+      xrandr
+    ];
+
     wayland.windowManager.hyprland = {
       enable = true;
       systemd.variables = [ "--all" ];
@@ -57,8 +61,6 @@ in {
         };
 
         monitor = [
-          "desc:Dell Inc. DELL U2724DE 6QZ59P3,highres,0x0,1"
-          "desc:Dell Inc. DELL P2225H DNWN504,highres,auto-right,1,transform,3"
           ",highres,auto,1"
         ];
 
