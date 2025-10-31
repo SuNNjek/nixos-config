@@ -5,7 +5,7 @@
 }: stdenv.mkDerivation {
   inherit (pywalfox-native) version;
 
-  name = "pywalfox";
+  pname = "pywalfox";
   dontUnpack = true;
 
   nativeBuildInputs = [
