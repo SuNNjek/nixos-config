@@ -1,6 +1,10 @@
-{ lib, config, pkgs, ... }: let
+{ inputs, lib, config, pkgs, ... }: let
   cfg = config.sunner.useCases.gaming;
 in {
+  imports = [
+    inputs.nixos-rocksmith.nixosModules.default
+  ];
+
   options = with lib; {
     sunner.useCases.gaming = {
       enable = mkEnableOption "Gaming";
@@ -12,6 +16,12 @@ in {
       protonup-rs
     ];
 
+    users.users = let
+      users = lib.attrNames config.sunner.users;
+    in lib.genAttrs users (username: {
+      extraGroups = [ "audio" "rtkit" ];
+    });
+
     programs = {
       gamescope.enable = true;
       gamemode.enable = true;
@@ -19,6 +29,7 @@ in {
       steam = {
         enable = true;
         protontricks.enable = true;
+        rocksmithPatch.enable = true;
 
         extraCompatPackages = with pkgs; [
           steamtinkerlaunch

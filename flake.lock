@@ -173,6 +173,24 @@
     },
     "flake-parts": {
       "inputs": {
+        "nixpkgs-lib": "nixpkgs-lib"
+      },
+      "locked": {
+        "lastModified": 1759362264,
+        "narHash": "sha256-wfG0S7pltlYyZTM+qqlhJ7GMw2fTF4mLKCIVhLii/4M=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "758cf7296bee11f1706a574c77d072b8a7baa881",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_2": {
+      "inputs": {
         "nixpkgs-lib": [
           "stylix",
           "nixpkgs"
@@ -307,6 +325,22 @@
         "type": "github"
       }
     },
+    "linux-rocksmith": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1750602317,
+        "narHash": "sha256-XJ5hYe7Gob5VsnUYW3Gq/OgHykBYnfjsqJajFKbrcgs=",
+        "owner": "theNizo",
+        "repo": "linux_rocksmith",
+        "rev": "6914aa88aa836a7b0abfeeb36ffec4167eb7aa95",
+        "type": "github"
+      },
+      "original": {
+        "owner": "theNizo",
+        "repo": "linux_rocksmith",
+        "type": "github"
+      }
+    },
     "nix-flatpak": {
       "locked": {
         "lastModified": 1739444422,
@@ -320,6 +354,31 @@
         "owner": "gmodena",
         "ref": "v0.6.0",
         "repo": "nix-flatpak",
+        "type": "github"
+      }
+    },
+    "nix-gaming": {
+      "inputs": {
+        "flake-parts": [
+          "nixos-rocksmith",
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixos-rocksmith",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1759455985,
+        "narHash": "sha256-8qDv7NXH3fj1CDXed7c7vJLtrRKDZSo0x6TaWSfelVg=",
+        "owner": "fufexan",
+        "repo": "nix-gaming",
+        "rev": "eb5ab503cbd3cb386e8d85a55a9faed73ec7dc37",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fufexan",
+        "repo": "nix-gaming",
         "type": "github"
       }
     },
@@ -338,6 +397,30 @@
         "type": "github"
       }
     },
+    "nixos-rocksmith": {
+      "inputs": {
+        "flake-parts": "flake-parts",
+        "linux-rocksmith": "linux-rocksmith",
+        "nix-gaming": "nix-gaming",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rs-linux-autoconnect": "rs-linux-autoconnect"
+      },
+      "locked": {
+        "lastModified": 1759510022,
+        "narHash": "sha256-Vv5lIWl6s/NTSniBgNQz+uanTBAkm4A+Lv+ehZ2wSGE=",
+        "owner": "re1n0",
+        "repo": "nixos-rocksmith",
+        "rev": "5a81c4ce489520338405fe20316b068a834fc5a3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "re1n0",
+        "repo": "nixos-rocksmith",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1761907660,
@@ -351,6 +434,21 @@
         "owner": "NixOS",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-lib": {
+      "locked": {
+        "lastModified": 1754788789,
+        "narHash": "sha256-x2rJ+Ovzq0sCMpgfgGaaqgBSwY+LST+WbZ6TytnT9Rk=",
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "rev": "a73b9c743612e4244d865a2fdee11865283c04e6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
         "type": "github"
       }
     },
@@ -387,8 +485,25 @@
         "hypotd": "hypotd",
         "nix-flatpak": "nix-flatpak",
         "nixos-hardware": "nixos-hardware",
+        "nixos-rocksmith": "nixos-rocksmith",
         "nixpkgs": "nixpkgs",
         "stylix": "stylix"
+      }
+    },
+    "rs-linux-autoconnect": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1753454170,
+        "narHash": "sha256-Uk4J2ZGHZFI6RX7pmGbdgxUWWdOegsNtJLc/aeBnj54=",
+        "owner": "KczBen",
+        "repo": "rs-linux-autoconnect",
+        "rev": "09a3f0fd0492573dd48468ab413626edd0cba757",
+        "type": "github"
+      },
+      "original": {
+        "owner": "KczBen",
+        "repo": "rs-linux-autoconnect",
+        "type": "github"
       }
     },
     "stylix": {
@@ -398,7 +513,7 @@
         "base16-helix": "base16-helix",
         "base16-vim": "base16-vim",
         "firefox-gnome-theme": "firefox-gnome-theme",
-        "flake-parts": "flake-parts",
+        "flake-parts": "flake-parts_2",
         "gnome-shell": "gnome-shell",
         "nixpkgs": [
           "nixpkgs"
