@@ -22,6 +22,7 @@
 
     programs = {
       home-manager.enable = true;
+      nemo.enable = true;
 
       nh = {
         enable = true;
@@ -39,12 +40,10 @@
 
       starship = {
         enable = true;
-        enableZshIntegration = true;      
       };
 
       kitty = {
         enable = true;
-        shellIntegration.enableZshIntegration = true;
         font = {
           name = "FiraCodeNFM-Reg";
           package = pkgs.nerd-fonts.fira-code;

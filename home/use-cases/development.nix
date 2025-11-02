@@ -26,7 +26,6 @@ in lib.mkIf cfg.enable {
 
     direnv = {
       enable = true;
-      enableZshIntegration = true;
 
       nix-direnv.enable = true;
     };

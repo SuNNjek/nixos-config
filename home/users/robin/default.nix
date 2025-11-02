@@ -5,6 +5,8 @@
 
   home = {
     file.".face".source = ./buizel.png;
+
+    shell.enableZshIntegration = true;
   };
 
   programs.git = {

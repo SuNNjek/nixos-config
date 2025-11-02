@@ -6,5 +6,6 @@
     ./autostart.nix
     ./flatpak.nix
     ./grimblast.nix
+    ./nemo.nix
   ];
 }
