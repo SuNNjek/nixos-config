@@ -12,7 +12,6 @@
       packages = with pkgs; [
         krabby
 
-        nemo-with-extensions
         mpc-qt
         image-roll
       ];
@@ -23,6 +22,7 @@
     programs = {
       home-manager.enable = true;
       nemo.enable = true;
+      zathura.enable = true;
 
       nh = {
         enable = true;
