@@ -47,6 +47,7 @@
 
     kitty.extraConfig = ''
       include dank-theme.conf
+      include dank-tabs.conf
     '';
   };
 

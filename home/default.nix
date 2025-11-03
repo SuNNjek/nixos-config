@@ -54,6 +54,7 @@
           window_padding_width = 8;
 
           cursor_shape = "beam";
+          cursor_trail = 3;
         };
       };
 
