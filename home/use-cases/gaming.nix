@@ -1,5 +1,11 @@
 { lib, osConfig, pkgs, ... }: let 
   cfg = osConfig.sunner.useCases.gaming;
+
+  steamAutostart = pkgs.makeDesktopItem {
+    name = "steam";
+    desktopName = "Steam";
+    exec = "${lib.getExe pkgs.steam} -nochatui -nofriendsui -silent";
+  };
 in lib.mkIf cfg.enable {
   home.packages = with pkgs; [
     prismlauncher
@@ -13,8 +19,8 @@ in lib.mkIf cfg.enable {
 
   xdg = {
     autostart = {
-      entries = with pkgs; [
-        "${steam}/share/applications/steam.desktop"
+      entries = [
+        "${steamAutostart}/share/applications/steam.desktop"
       ];
     };
   };

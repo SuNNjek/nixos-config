@@ -7,5 +7,6 @@
     ./flatpak.nix
     ./grimblast.nix
     ./nemo.nix
+    ./vesktop.nix
   ];
 }
