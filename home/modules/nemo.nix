@@ -16,8 +16,11 @@ in {
     dbus.packages = [ cfg.package ];
 
     xdg.mimeApps = {
-      defaultApplications = {
-        "inode/directory" = [ "nemo.desktop" ];
+      defaultApplications = let
+        desktop = "${cfg.package}/share/applications/nemo.desktop";
+      in {
+        "inode/directory" = [ desktop ];
+        "application/x-gnome-saved-search" = [ desktop ];
       };
     };
 

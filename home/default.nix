@@ -66,6 +66,7 @@
 
     xdg = {
       autostart.enable = true;
+      mimeApps.enable = true;
 
       userDirs = {
         enable = true;
