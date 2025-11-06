@@ -40,6 +40,11 @@ in {
           gaps_out = 8;
           gaps_in = 4;
           resize_on_border = true;
+
+          snap = {
+            enabled = true;
+            respect_gaps = true;
+          };
         };
 
         input = {
@@ -57,6 +62,12 @@ in {
 
           blur = {
             passes = 2;
+            popups = true;
+
+            noise = 0.02;
+            contrast = 1.1;
+            vibrancy = 0.2;
+            vibrancy_darkness = 0.3;
           };
         };
 

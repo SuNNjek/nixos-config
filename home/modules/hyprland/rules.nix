@@ -26,10 +26,10 @@
     ];
 
     layerrule = [
-      "blur, ^quickshell(:.*)?"
-      "ignorealpha 0.25, ^quickshell(:.*)?"
+      "blur, ^(dms|quickshell)(:.*)?"
+      "ignorealpha 0.25, ^(dms|quickshell)(:.*)?"
 
-      "dimaround, quickshell:modal"
+      "dimaround, (dms|quickshell):modal"
     ];
 
 
