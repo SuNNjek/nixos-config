@@ -13,6 +13,7 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = [ cfg.package ];
+    dbus.packages = [ cfg.package ];
 
     xdg.mimeApps = {
       defaultApplications = {
