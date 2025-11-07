@@ -31,10 +31,5 @@
 
       "dimaround, (dms|quickshell):modal"
     ];
-
-
-    workspace = [
-      "1, monitor:desc:Dell Inc. DELL U2724DE 6QZ59P3, default:true"
-    ];
   };
 }
