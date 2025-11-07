@@ -77,6 +77,9 @@ in {
 
     gesture = [
       "3, horizontal, workspace"
+
+      "3, up, dispatcher, exec, dms ipc call spotlight open"
+      "3, down, dispatcher, exec, dms ipc call spotlight close"
     ];
   };
 }
