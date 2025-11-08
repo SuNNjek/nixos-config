@@ -15,9 +15,5 @@ in lib.mkIf cfg.enable {
         obs-studio-nvidia
       else
         obs-studio;
-
-    plugins = with pkgs.obs-studio-plugins; [
-      wlrobs
-    ];
   };
 }
