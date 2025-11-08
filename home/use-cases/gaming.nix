@@ -13,9 +13,20 @@ in lib.mkIf cfg.enable {
 
   programs.mangohud.enable = true;
 
-  services.flatpak.packages = [
-    "com.usebottles.bottles"
-  ];
+  services.flatpak = {
+    packages = [
+      "com.usebottles.bottles"
+    ];
+
+    overrides = {
+      "com.usebottles.bottles" = {
+        # Allow bottles to create desktop shortcuts
+        Context.filesystems = [
+          "xdg-data/applications"
+        ];
+      };
+    };
+  };
 
   xdg = {
     autostart = {
