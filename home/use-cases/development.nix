@@ -4,6 +4,8 @@ in lib.mkIf cfg.enable {
   home.packages = with pkgs; [
     nixd
     nixpkgs-lint-community
+
+    jetbrains-toolbox
   ];
 
   programs = {
