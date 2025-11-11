@@ -1,4 +1,4 @@
-{ lib, osConfig, pkgs, ... }: let 
+{ lib, config, osConfig, pkgs, ... }: let 
   cfg = osConfig.sunner.useCases.gaming;
 
   steamAutostart = pkgs.makeDesktopItem {
@@ -23,6 +23,7 @@ in lib.mkIf cfg.enable {
         # Allow bottles to create desktop shortcuts
         Context.filesystems = [
           "xdg-data/applications"
+          "/run/media/${config.home.username}:ro"
         ];
       };
     };

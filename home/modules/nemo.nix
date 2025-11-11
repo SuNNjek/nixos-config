@@ -16,17 +16,15 @@ in {
     dbus.packages = [ cfg.package ];
 
     xdg.mimeApps = {
-      defaultApplications = let
-        desktop = "${cfg.package}/share/applications/nemo.desktop";
-      in {
-        "inode/directory" = [ desktop ];
-        "application/x-gnome-saved-search" = [ desktop ];
+      defaultApplications = {
+        "inode/directory" = [ "nemo.desktop" ];
+        "application/x-gnome-saved-search" = [ "nemo.desktop" ];
       };
     };
 
     dconf.settings = {
       "org/cinnamon/desktop/applications/terminal" = {
-        exec = getExe cfg.terminal;  
+        exec = getExe cfg.terminal;
       };
     };
   };

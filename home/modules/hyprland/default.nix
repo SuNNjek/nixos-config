@@ -109,15 +109,30 @@ in {
         provider = "geoclue2";
       };
 
-      udiskie.enable = true;
+      udiskie = {
+        enable = true;
+
+        settings = {
+          program_options = {
+            menu = "flat";
+            file_manager = "xdg-open";
+          };
+        };
+      };
     };
 
-    programs.hypotd = {
-      enable = true;
+    programs = {
+      hypotd = {
+        enable = true;
 
-      config = {
-        provider = "bing";
-        customCommand = "dms ipc call wallpaper set {{.Path}}";
+        config = {
+          provider = "bing";
+          customCommand = "dms ipc call wallpaper set {{.Path}}";
+        };
+      };
+
+      grimblast = {
+        enable = true;
       };
     };
 

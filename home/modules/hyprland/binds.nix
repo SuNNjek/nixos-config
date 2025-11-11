@@ -14,8 +14,8 @@ in {
       "$mod, T, exec, uwsm app -- $terminal"
       "$mod, F, fullscreen"
       
-      ", print, exec, ${grimblast} --notify copy area"
-      "CTRL, print, exec, ${grimblast} --notify copy screen"
+      ", print, exec, ${grimblast} edit area"
+      "CTRL, print, exec, ${grimblast} edit screen"
       
       "$mod, Q, killactive"
 
