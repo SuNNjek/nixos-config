@@ -1,0 +1,16 @@
+diff --git a/main.cpp b/main.cpp
+--- main.cpp
++++ main.cpp
+@@ -65,11 +65,9 @@
+     }
+ 
+     g_pCXDGToplevelResConstructor->hook();
+ 
+-    if (success)
+-        HyprlandAPI::addNotification(PHANDLE, "[csd-titlebar-move] Initialized successfully!", CHyprColor{0.2, 1.0, 0.2, 1.0}, 5000);
+-    else {
++    if (!success) {
+         HyprlandAPI::addNotification(PHANDLE, "[csd-titlebar-move] Failure in initialization (hook failed)!", CHyprColor{1.0, 0.2, 0.2, 1.0}, 5000);
+         throw std::runtime_error("[csd-titlebar-move] Hooks failed");
+     }
+ 

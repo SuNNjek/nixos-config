@@ -19,6 +19,11 @@
     repo = "csd-titlebar-move";
   };
 
+  patches = [
+    # Removes the message that shows when the plugin was initialized successfully (I don't need to see it every time ^^)
+    ./remove-success-message.patch
+  ];
+
   nativeBuildInputs = [
     pkg-config
   ];

@@ -1,6 +1,6 @@
 final: prev: {
   csd-titlebar-move = prev.callPackage ./package.nix {
-    rev = "ee9db13b7955a2b05cc660324d176538772adf17";
-    sha256 = "sha256-219UocltY5RnJfkwmFu3oHuTjjKKsMIm1D41kOgiJqQ=";
+    rev = "bd8ac086009245396d9172c5acd0e43cd1cfc616";
+    sha256 = "sha256-ZT+1doIIPyyo/qr0qsofixY9tZpNFP4N6P4Qjr99j0Y=";
   };
 }
