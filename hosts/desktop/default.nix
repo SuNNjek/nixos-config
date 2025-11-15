@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ config, pkgs, ... }: {
   imports = [
     ../.
   ];
@@ -60,5 +60,12 @@
     gvfs.enable = true;
 
     blueman.enable = config.hardware.bluetooth.enable;
+  };
+
+  environment = {
+    systemPackages = with pkgs; [
+      unzip
+      p7zip-rar
+    ];
   };
 }
