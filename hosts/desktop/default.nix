@@ -65,7 +65,7 @@
   environment = {
     systemPackages = with pkgs; [
       unzip
-      p7zip-rar
+      p7zip
     ];
   };
 }
