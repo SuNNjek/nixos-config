@@ -58,7 +58,7 @@
         };
       };
 
-      librewolf.enable = true;
+      firefox.enable = true;
       gpg.enable = true;
     };
 

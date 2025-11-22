@@ -2,8 +2,8 @@
   wayland.windowManager.hyprland.settings = {
     windowrule = [
       # Launch Firefox PiP in floating mode and pin it
-      "tag +pip, class:(firefox|librewolf), title:Picture-in-Picture"
-      "tag +pip, class:(firefox|librewolf), title:Bild-im-Bild"
+      "tag +pip, class:firefox, title:Picture-in-Picture"
+      "tag +pip, class:firefox, title:Bild-im-Bild"
       
       "float, tag:pip"
       "pin, tag:pip"
