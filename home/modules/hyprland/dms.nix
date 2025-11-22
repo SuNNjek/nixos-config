@@ -74,6 +74,8 @@
     };
   };
 
-  programs.firefox.nativeMessagingHosts = with pkgs; [ pywalfox ];
+  programs.firefox.nativeMessagingHosts = [ pkgs.pywalfox ];
+  programs.librewolf.nativeMessagingHosts = [ pkgs.pywalfox ];
+
   xdg.cacheFile."wal/colors.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.cache/wal/dank-pywalfox.json";
 }
