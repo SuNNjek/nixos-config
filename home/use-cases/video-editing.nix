@@ -10,10 +10,8 @@ in lib.mkIf cfg.enable {
   programs.obs-studio = {
     enable = true;
 
-    package = with pkgs;
-      if osConfig.hardware.nvidia.enabled then
-        obs-studio-nvidia
-      else
-        obs-studio;
+    package = pkgs.obs-studio.override {
+      cudaSupport = osConfig.hardware.nvidia.enabled;
+    };
   };
 }

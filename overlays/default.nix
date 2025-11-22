@@ -4,7 +4,5 @@
     (import ./dms-plugins)
     (import ./klassy)
     (import ./pywalfox)
-
-    (import ./obs-studio.nix)
   ];
 }
