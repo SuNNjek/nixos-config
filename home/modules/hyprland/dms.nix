@@ -29,7 +29,7 @@
   programs = {
     dankMaterialShell = {
       enable = true;
-      enableSystemd = true;
+      systemd.enable = true;
     };
 
     kitty.extraConfig = ''
