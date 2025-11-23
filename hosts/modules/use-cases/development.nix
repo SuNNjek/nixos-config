@@ -18,7 +18,5 @@ in {
 
       autoPrune.enable = true;
     };
-
-    hardware.nvidia-container-toolkit.enable = config.hardware.nvidia.enabled;
   };
 }
