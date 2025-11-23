@@ -6,6 +6,12 @@
         Enabled = false;
         Locked = true;
       };
+
+      FirefoxHome = {
+        SponsoredTopSites = false;
+        SponsoredPocket = false;
+        SponsoredStories = false;
+      };
     };
   };
 }
