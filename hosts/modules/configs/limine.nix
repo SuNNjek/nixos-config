@@ -7,6 +7,8 @@ in lib.mkMerge [
 
       # Should be enough and doesn't spam the boot menu
       maxGenerations = 5;
+
+      extraConfig = "quiet: yes";
     };
   }
 

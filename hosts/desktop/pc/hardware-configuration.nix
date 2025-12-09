@@ -1,4 +1,6 @@
-{ inputs, pkgs, ... }: {
+{ inputs, lib, config, pkgs, ... }:
+with lib;
+{
   imports = [
     inputs.nixos-hardware.nixosModules.common-cpu-amd
     inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
@@ -9,9 +11,12 @@
 
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
-    kernelModules = [ "kvm-amd" ];
-    kernelParams = [ "module_blacklist=amdgpu" ];
     extraModulePackages = [ ];
+    kernelModules = [ "kvm-amd" ];
+    kernelParams = [
+      "module_blacklist=amdgpu"
+      "initcall_blacklist=simpledrm_platform_driver_init"
+    ];
 
     initrd = {
       availableKernelModules = [
@@ -27,9 +32,9 @@
 
       kernelModules = [
         "nvidia"
-        "nvidia_drm"
-        "nvidia_uvm"
         "nvidia_modeset"
+        "nvidia_uvm"
+        "nvidia_drm"
       ];
     };
   };
