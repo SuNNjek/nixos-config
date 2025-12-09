@@ -23,6 +23,7 @@
 
   programs = {
     vesktop.enable = true;
+    obsidian.enable = true;
 
     fastfetch = {
       enable = true;
