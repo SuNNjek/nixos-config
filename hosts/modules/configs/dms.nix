@@ -1,19 +1,33 @@
-{ inputs, lib, config, ... }: let
+{ inputs, lib, config, ... }:
+with lib;
+let
   cfg = config.sunner.dms;
+  cursorCfg = config.stylix.cursor;
 in {
   imports = [
     inputs.dankMaterialShell.nixosModules.greeter
   ];
 
   config = {
+    environment.sessionVariables = {
+      XDG_DATA_DIRS = [ "${cursorCfg.package}/share" ];
+      XCURSOR_PATH = [ "${cursorCfg.package}/share/icons" ];
+    };
+
     programs.dankMaterialShell.greeter = {
-      enable = true;
-      configHome = lib.mkIf (cfg.greeter.configUser != null)
+      enable = cfg.enable;
+      configHome = mkIf (cfg.greeter.configUser != null)
         "/home/${cfg.greeter.configUser}";
 
       compositor = {
         name = "hyprland";
         customConfig = ''
+          env = HYPRCURSOR_THEME,${cursorCfg.name}
+          env = XCURSOR_THEME,${cursorCfg.name}
+
+          env = HYPRCURSOR_SIZE,${toString cursorCfg.size}
+          env = XCURSOR_SIZE,${toString cursorCfg.size}
+
           animations {
             enabled = false
           }
