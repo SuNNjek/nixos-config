@@ -44,7 +44,10 @@ with lib;
   hardware = {
     enableRedistributableFirmware = true;
 
-    nvidia.open = true;
+    nvidia = {
+      open = true;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
+    };
     
     bluetooth.enable = true;
   };
