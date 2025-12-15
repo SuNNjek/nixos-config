@@ -102,8 +102,6 @@ in {
     };
 
     services = {
-      hyprpolkitagent.enable = true;
-
       gammastep = {
         enable = true;
         provider = "geoclue2";
