@@ -66,7 +66,19 @@
 
     xdg = {
       autostart.enable = true;
-      mimeApps.enable = true;
+
+      mimeApps = {
+        enable = true;
+
+        # Set default applications
+        defaultApplicationPackages = (with config.programs; [
+          firefox.package
+          nemo.package
+        ]) ++ (with pkgs; [
+          mpc-qt
+          image-roll
+        ]);
+      };
 
       userDirs = {
         enable = true;
