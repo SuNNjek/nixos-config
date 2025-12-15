@@ -5,8 +5,8 @@
   ...
 }: {
   imports = [
-    # Interesting naming there... it sure is... redundant
     inputs.dankMaterialShell.homeModules.dankMaterialShell.default
+    inputs.dsearch.homeModules.default
 
     ./matugen.nix
   ];
@@ -30,6 +30,20 @@
     dankMaterialShell = {
       enable = true;
       systemd.enable = true;
+    };
+
+    dsearch = {
+      enable = true;
+
+      config = {
+        indexPaths = [
+          {
+            path = config.xdg.userDirs.pictures;
+            max_depth = 0;
+            extract_exif = true;
+          }
+        ];
+      };
     };
 
     kitty.extraConfig = ''

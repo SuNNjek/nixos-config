@@ -133,6 +133,27 @@
         "type": "github"
       }
     },
+    "dsearch": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1765742418,
+        "narHash": "sha256-gU349UQcr6Cl23tPt1yHD7EcWM8Uw6HZmbeVXyLwGj0=",
+        "owner": "AvengeMedia",
+        "repo": "danksearch",
+        "rev": "f0b790411b7dd9de530c5a8dbdfcbde962e2043e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AvengeMedia",
+        "ref": "v0.1.1",
+        "repo": "danksearch",
+        "type": "github"
+      }
+    },
     "firefox-gnome-theme": {
       "flake": false,
       "locked": {
@@ -343,6 +364,7 @@
       "inputs": {
         "dankMaterialShell": "dankMaterialShell",
         "disko": "disko",
+        "dsearch": "dsearch",
         "home-manager": "home-manager",
         "hypotd": "hypotd",
         "nix-flatpak": "nix-flatpak",

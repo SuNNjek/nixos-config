@@ -28,6 +28,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    dsearch = {
+      url = "github:AvengeMedia/danksearch/v0.1.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hypotd = {
       url = "github:SuNNjek/hypotd";
       inputs.nixpkgs.follows = "nixpkgs";
