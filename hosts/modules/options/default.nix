@@ -7,6 +7,7 @@
     ./hyprland.nix
     ./limine.nix
     ./pipewire.nix
+    ./qmk.nix
     ./stylix.nix
     ./users.nix
     ./zram.nix

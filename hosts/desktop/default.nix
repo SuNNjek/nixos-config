@@ -71,6 +71,11 @@
     blueman.enable = config.hardware.bluetooth.enable;
   };
 
+  programs.qmk = {
+    enable = true;
+    enableVia = true;
+  };
+
   environment = {
     systemPackages = with pkgs; [
       unzip
