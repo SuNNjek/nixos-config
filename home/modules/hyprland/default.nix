@@ -84,6 +84,13 @@ in {
           disable_hyprland_logo = true;
         };
 
+        animation = [
+          "windows, 1, 3, default, popin 50%"
+          "fade, 1, 3, default"
+          "workspaces, 1, 5, default"
+          "border, 1, 3, default"
+        ];
+
         # Set environment variables on NVIDIA system
         env = optionals osConfig.hardware.nvidia.enabled [
           "LIBVA_DRIVER_NAME,nvidia"

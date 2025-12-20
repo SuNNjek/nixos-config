@@ -50,7 +50,7 @@ in {
     # $mod + Right Mouse to resize it
     bindm = [
       "$mod, mouse:272, movewindow"
-      "$mod, mouse:273, resizewindow"
+      "$mod, mouse:273, resizewindow 1"
     ];
 
     # $mod + Middle Mouse (=scrollwheel click) to toggle floating of current window

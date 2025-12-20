@@ -7,18 +7,17 @@
       
       "float, tag:pip"
       "pin, tag:pip"
+      "keepaspectratio on, tag:pip"
       "content video, tag:pip"
 
-      "tag +games, content:game"
-      "tag +games, class:^(steam_app.*|steam_app_\d+)$"
-      "tag +games, class:^(gamescope)$"
+      "content game, class:^(steam_app.*|steam_app_\d+)$"
+      "content game, class:^(gamescope)$"
 
-      "content game,tag:games"
-      "noborder 1,tag:games"
-      "noshadow,tag:games"
-      "noblur,tag:games"
-      "noanim,tag:games"
-      "syncfullscreen,tag:games"
+      "noborder 1,content:game"
+      "noshadow,content:game"
+      "noblur,content:game"
+      "noanim,content:game"
+      "syncfullscreen,content:game"
 
       # Move all windows launched by tray/waybar modules
       # to the bottom right corner
