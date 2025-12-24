@@ -3,6 +3,7 @@
 
   hyprctl = "${pkgs.hyprland}/bin/hyprctl";
   grimblast = getExe pkgs.grimblast;
+  startApp = app: "uwsm app -- ${app}";
 
   workspaceCount = 9;
   forWorkspace = f: builtins.concatLists (builtins.genList (ws: f (ws + 1)) workspaceCount);
@@ -11,7 +12,8 @@ in {
     "$mod" = "SUPER";
 
     bind = [
-      "$mod, T, exec, uwsm app -- $terminal"
+      "$mod, T, exec, ${startApp "$terminal"}"
+      "$mod, B, exec, ${startApp "$browser"}"
       "$mod, F, fullscreen"
       
       ", print, exec, ${grimblast} edit area"

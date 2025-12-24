@@ -1,6 +1,7 @@
 {
   lib,
   osConfig,
+  config,
   inputs,
   pkgs,
   ...
@@ -8,6 +9,7 @@
   inherit (lib.meta) getExe;
 
   kitty = getExe pkgs.kitty;
+  firefox = getExe config.programs.firefox.package;
 
   cfg = osConfig.sunner.hyprland;
 in {
@@ -35,6 +37,7 @@ in {
 
       settings = {
         "$terminal" = kitty;
+        "$browser" = firefox;
 
         general = {
           gaps_out = 8;
