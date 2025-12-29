@@ -26,6 +26,7 @@
 
     layerrule = [
       "blur, ^(dms|quickshell)(:.*)?"
+      "blurpopups, ^(dms|quickshell)(:.*)?"
       "ignorealpha 0.25, ^(dms|quickshell)(:.*)?"
 
       "dimaround, (dms|quickshell):modal"

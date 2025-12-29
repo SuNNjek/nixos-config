@@ -1,16 +1,12 @@
 {
   lib,
   osConfig,
-  config,
   inputs,
   pkgs,
   ...
-}: with lib; let
-  inherit (lib.meta) getExe;
-
-  kitty = getExe pkgs.kitty;
-  firefox = getExe config.programs.firefox.package;
-
+}:
+with lib;
+let
   cfg = osConfig.sunner.hyprland;
 in {
   imports = [
@@ -36,8 +32,8 @@ in {
       systemd.variables = [ "--all" ];
 
       settings = {
-        "$terminal" = kitty;
-        "$browser" = firefox;
+        "$terminal" = "kitty";
+        "$browser" = "firefox";
 
         general = {
           gaps_out = 8;
