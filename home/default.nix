@@ -13,6 +13,7 @@
         krabby
 
         mpc-qt
+        vlc
         image-roll
       ];
 
