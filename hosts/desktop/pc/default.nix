@@ -25,6 +25,11 @@
       gaming.enable = true;
       imageEditing.enable = true;
       videoEditing.enable = true;
+
+      audioEditing = {
+        enable = true;
+        fullDaws.enable = true;
+      };
     };
   };
 

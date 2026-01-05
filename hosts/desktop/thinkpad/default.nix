@@ -15,6 +15,7 @@
     useCases = {
       development.enable = true;
       imageEditing.enable = true;
+      audioEditing.enable = true;
     };
   };
 
