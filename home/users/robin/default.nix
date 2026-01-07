@@ -10,9 +10,13 @@
   };
 
   programs.git = {
-    settings.user = {
-      name = "Sunner";
-      email = "sunnerlp@gmail.com";
+    settings = {
+      user = {
+        name = "Sunner";
+        email = "sunnerlp@gmail.com";
+      };
+
+      pull.rebase = true;
     };
 
     signing = {
