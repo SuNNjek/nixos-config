@@ -1,7 +1,9 @@
-{ lib, config, ... }: let 
+{ lib, config, pkgs, ... }:
+with lib;
+let 
   cfg = config.sunner.useCases.development;
 in {
-  options = with lib; {
+  options = {
     sunner.useCases = {
       development = {
         enable = mkEnableOption "Development";
@@ -10,13 +12,21 @@ in {
   };
 
   config = {
-    virtualisation.podman = {
-      enable = cfg.enable;
+    environment.systemPackages = optional cfg.enable pkgs.podman-compose;
 
-      dockerSocket.enable = true;
-      dockerCompat = true;
+    virtualisation = {
+      containers.registries = {
+        search = [ "docker.io" ];
+      };
 
-      autoPrune.enable = true;
+      podman = {
+        enable = cfg.enable;
+
+        dockerSocket.enable = true;
+        dockerCompat = true;
+
+        autoPrune.enable = true;
+      };
     };
   };
 }
