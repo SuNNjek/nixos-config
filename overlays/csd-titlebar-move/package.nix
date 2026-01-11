@@ -20,8 +20,8 @@
   };
 
   patches = [
-    # Removes the message that shows when the plugin was initialized successfully (I don't need to see it every time ^^)
-    ./remove-success-message.patch
+    ./patches/remove-success-message.patch
+    ./patches/fix-0_53.patch
   ];
 
   nativeBuildInputs = [

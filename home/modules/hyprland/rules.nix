@@ -2,34 +2,20 @@
   wayland.windowManager.hyprland.settings = {
     windowrule = [
       # Launch Firefox PiP in floating mode and pin it
-      "tag +pip, class:firefox, title:Picture-in-Picture"
-      "tag +pip, class:firefox, title:Bild-im-Bild"
+      "tag +pip, match:class firefox, match:title Picture-in-Picture"
+      "tag +pip, match:class firefox, match:title Bild-im-Bild"
       
-      "float, tag:pip"
-      "pin, tag:pip"
-      "keepaspectratio on, tag:pip"
-      "content video, tag:pip"
+      "float on, pin on, keep_aspect_ratio on, content video, match:tag pip"
 
-      "content game, class:^(steam_app.*|steam_app_\d+)$"
-      "content game, class:^(gamescope)$"
+      "content game, match:class ^(steam_app.*|steam_app_\d+)$"
+      "content game, match:class ^(gamescope)$"
 
-      "noborder 1,content:game"
-      "noshadow,content:game"
-      "noblur,content:game"
-      "noanim,content:game"
-      "syncfullscreen,content:game"
-
-      # Move all windows launched by tray/waybar modules
-      # to the bottom right corner
-      "tag +tray, class:org.pulseaudio.pavucontrol"
+      "no_shadow on, no_blur on, no_anim on, sync_fullscreen on, match:content game"
     ];
 
     layerrule = [
-      "blur, ^(dms|quickshell)(:.*)?"
-      "blurpopups, ^(dms|quickshell)(:.*)?"
-      "ignorealpha 0.25, ^(dms|quickshell)(:.*)?"
-
-      "dimaround, (dms|quickshell):modal"
+      "blur on, blur_popups on, ignore_alpha 0.25, match:namespace ^(dms|quickshell)(:.*)?"
+      "dim_around on, match:namespace (dms|quickshell):modal"
     ];
   };
 }
