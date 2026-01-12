@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, osConfig, ... }: {
   imports = [
     ../..
   ];
@@ -7,6 +7,13 @@
     file.".face".source = ./buizel.png;
 
     shell.enableZshIntegration = true;
+
+    packages = lib.optionals osConfig.sunner.hardware.hasOpticalDrive (
+      with pkgs; [
+        kdePackages.k3b
+        makemkv
+      ]
+    );
   };
 
   programs.git = {

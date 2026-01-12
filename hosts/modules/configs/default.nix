@@ -4,6 +4,7 @@
     ./dms.nix
     ./flatpak.nix
     ./grub.nix
+    ./hardware.nix
     ./hyprland.nix
     ./limine.nix
     ./pipewire.nix

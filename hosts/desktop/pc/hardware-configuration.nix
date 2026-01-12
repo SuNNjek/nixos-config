@@ -51,4 +51,8 @@ with lib;
     
     bluetooth.enable = true;
   };
+
+  sunner.hardware = {
+    hasOpticalDrive = true;
+  };
 }
