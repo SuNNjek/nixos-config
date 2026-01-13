@@ -1,10 +1,8 @@
-{ inputs, lib, config, pkgs, ... }:
-with lib;
-{
+{ inputs, pkgs, ... }: {
   imports = [
     inputs.nixos-hardware.nixosModules.common-cpu-amd
     inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
-    inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+    inputs.nixos-hardware.nixosModules.common-gpu-amd
     inputs.nixos-hardware.nixosModules.common-pc
     inputs.nixos-hardware.nixosModules.common-pc-ssd
   ];
@@ -13,10 +11,6 @@ with lib;
     kernelPackages = pkgs.linuxPackages_zen;
     extraModulePackages = [ ];
     kernelModules = [ "kvm-amd" ];
-    kernelParams = [
-      "module_blacklist=amdgpu"
-      "initcall_blacklist=simpledrm_platform_driver_init"
-    ];
 
     initrd = {
       availableKernelModules = [
@@ -29,13 +23,6 @@ with lib;
         "sd_mod"
         "sr_mod"
       ];
-
-      kernelModules = [
-        "nvidia"
-        "nvidia_modeset"
-        "nvidia_uvm"
-        "nvidia_drm"
-      ];
     };
   };
 
@@ -43,12 +30,6 @@ with lib;
 
   hardware = {
     enableRedistributableFirmware = true;
-
-    nvidia = {
-      open = true;
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
-    };
-    
     bluetooth.enable = true;
   };
 
