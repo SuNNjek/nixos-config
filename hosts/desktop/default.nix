@@ -13,7 +13,6 @@
     zram.enable = true;
     pipewire.enable = true;
     hyprland.enable = true;
-    flatpak.enable = true;
 
     dms = {
       enable = true;

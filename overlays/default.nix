@@ -4,5 +4,6 @@
     (import ./dms-plugins)
     (import ./klassy)
     (import ./pywalfox)
+    (import ./ubisoft-connect)
   ];
 }

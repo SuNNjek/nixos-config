@@ -9,6 +9,7 @@
 in lib.mkIf cfg.enable {
   home.packages = with pkgs; [
     prismlauncher
+    ubisoft-connect
   ];
 
   programs.mangohud.enable = true;
