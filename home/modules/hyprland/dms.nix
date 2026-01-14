@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    inputs.dankMaterialShell.homeModules.dankMaterialShell.default
+    inputs.dms.homeModules.dank-material-shell
     inputs.dsearch.homeModules.default
 
     ./matugen.nix

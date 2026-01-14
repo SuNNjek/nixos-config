@@ -5,7 +5,7 @@ let
   cursorCfg = config.stylix.cursor;
 in {
   imports = [
-    inputs.dankMaterialShell.nixosModules.greeter
+    inputs.dms.nixosModules.greeter
   ];
 
   config = {
