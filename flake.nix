@@ -24,7 +24,7 @@
     };
 
     dankMaterialShell = {
-      url = "github:AvengeMedia/DankMaterialShell/v1.0.3";
+      url = "github:AvengeMedia/DankMaterialShell/v1.2.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -38,7 +38,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-flatpak.url = "github:gmodena/nix-flatpak/v0.6.0";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/v0.7.0";
   };
 
   outputs = inputs@{ nixpkgs, ... }:

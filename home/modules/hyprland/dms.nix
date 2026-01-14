@@ -27,7 +27,7 @@
   };
 
   programs = {
-    dankMaterialShell = {
+    dank-material-shell = {
       enable = true;
       systemd.enable = true;
     };

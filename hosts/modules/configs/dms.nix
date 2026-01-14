@@ -14,7 +14,7 @@ in {
       XCURSOR_PATH = [ "${cursorCfg.package}/share/icons" ];
     };
 
-    programs.dankMaterialShell.greeter = {
+    programs.dank-material-shell.greeter = {
       enable = cfg.enable;
       configHome = mkIf (cfg.greeter.configUser != null)
         "/home/${cfg.greeter.configUser}";
