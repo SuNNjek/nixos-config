@@ -10,6 +10,8 @@
   umu-launcher,
   proton-ge-bin,
 
+  prefixPath ? "$HOME/Games/UbisoftConnect",
+
   ...
 }: let
   script = writeShellApplication {
@@ -32,7 +34,7 @@
     };
 
     text = ''
-      export WINEPREFIX=$HOME/Games/UbisoftConnect
+      export WINEPREFIX="${prefixPath}"
       mkdir -p "$WINEPREFIX"
 
       LAUNCHER="''${WINEPREFIX}''${LAUNCHER_PATH}"
@@ -48,11 +50,14 @@
 
   icon = stdenv.mkDerivation {
     name = "ubisoft-connect-icon";
-    src = ./icon.png;
+    src = lib.fileset.toSource {
+      root = ./.;
+      fileset = ./icon.png;
+    };
     phases = ["installPhase"];
     installPhase = ''
       mkdir -p $out/share/icons/hicolor/256x256/apps
-      cp $src $out/share/icons/hicolor/256x256/apps/
+      cp $src/icon.png $out/share/icons/hicolor/256x256/apps/ubisoft-connect.png
     '';
   };
 
