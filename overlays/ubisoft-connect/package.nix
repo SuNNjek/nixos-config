@@ -1,5 +1,6 @@
 {
   lib,
+  stdenv,
 
   writeShellApplication,
   symlinkJoin,
@@ -45,7 +46,17 @@
     '';
   };
 
-  desktopIcon = makeDesktopItem {
+  icon = stdenv.mkDerivation {
+    name = "ubisoft-connect-icon";
+    src = ./icon.png;
+    phases = ["installPhase"];
+    installPhase = ''
+      mkdir -p $out/share/icons/hicolor/256x256/apps
+      cp $src $out/share/icons/hicolor/256x256/apps/
+    '';
+  };
+
+  desktopItem = makeDesktopItem {
     name = "ubisoft-connect";
     exec = "${lib.getExe script} %U";
     icon = "ubisoft-connect";
@@ -56,12 +67,7 @@
 in symlinkJoin {
   name = "ubisoft-connect";
   paths = [
-    script
-    desktopIcon
+    desktopItem
+    icon
   ];
-
-  postBuild = ''
-    mkdir -p "$out/share/icons/hicolor/256x256/apps"
-    ln -s ${./icon.png} "$out/share/icons/hicolor/256x256/apps/ubisoft-connect.png"
-  '';
 }
