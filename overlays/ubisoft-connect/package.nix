@@ -31,11 +31,21 @@
       PROTON_VERBS = "waitforexitandrun";
 
       PROTON_ENABLE_WOW64 = "1";
+
+      MESA_SHADER_CACHE_MAX_SIZE = "1G";
+      __GL_SHADER_DISK_CACHE = "1";
+      __GL_SHADER_DISK_CACHE_SIZE = "1073741824";
+      __GL_SHADER_DISK_CACHE_SKIP_CLEANUP = "1";
     };
 
     text = ''
+      # Setup Wine prefix
       export WINEPREFIX="${prefixPath}"
       mkdir -p "$WINEPREFIX"
+
+      # Setup env vars for shader caching
+      export MESA_SHADER_CACHE_DIR="$WINEPREFIX"
+      export __GL_SHADER_DISK_CACHE_PATH="$WINEPREFIX"
 
       LAUNCHER="''${WINEPREFIX}''${LAUNCHER_PATH}"
 
