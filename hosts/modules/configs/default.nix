@@ -7,6 +7,7 @@
     ./hardware.nix
     ./hyprland.nix
     ./limine.nix
+    ./mango.nix
     ./pipewire.nix
     ./stylix.nix
     ./users.nix

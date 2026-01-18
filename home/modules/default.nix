@@ -1,6 +1,7 @@
 {
   imports = [
     ./hyprland
+    ./mango
     ./dms.nix
     ./kanshi
 

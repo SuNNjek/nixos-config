@@ -13,6 +13,7 @@
     zram.enable = true;
     pipewire.enable = true;
     hyprland.enable = true;
+    mango.enable = true;
 
     dms = {
       enable = true;
