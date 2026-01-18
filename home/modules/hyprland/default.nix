@@ -14,8 +14,6 @@ in {
 
     ./binds.nix
     ./rules.nix
-
-    ./dms.nix
   ];
 
   config = mkIf cfg.enable {
@@ -95,10 +93,6 @@ in {
           "LIBVA_DRIVER_NAME,nvidia"
           "__GLX_VENDOR_LIBRARY_NAME,nvidia"
           "NVD_BACKEND,direct"
-        ];
-
-        source = [
-          "~/.config/hypr/colors.conf"
         ];
       };
 

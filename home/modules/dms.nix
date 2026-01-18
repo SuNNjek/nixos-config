@@ -7,8 +7,6 @@
   imports = [
     inputs.dms.homeModules.dank-material-shell
     inputs.dsearch.homeModules.default
-
-    ./matugen.nix
   ];
 
   home = {
@@ -16,14 +14,6 @@
       pywalfox-native
       grimblast
     ];
-
-    pointerCursor = {
-      gtk.enable = true;
-
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Ice";
-      size = 24;
-    };
   };
 
   programs = {
@@ -55,6 +45,12 @@
   services = {
     cliphist.enable = true;
   };
+
+  wayland.windowManager.hyprland.settings.source = [
+    "~/.config/hypr/dms/colors.conf"
+    "~/.config/hypr/dms/cursor.conf"
+    "~/.config/hypr/dms/layout.conf"
+  ];
 
   gtk = let
     extraCss = ''
