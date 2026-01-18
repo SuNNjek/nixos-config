@@ -7,6 +7,7 @@
   imports = [
     inputs.dms.homeModules.dank-material-shell
     inputs.dsearch.homeModules.default
+    inputs.hypotd.homeManagerModules.default
   ];
 
   home = {
@@ -20,6 +21,15 @@
     dank-material-shell = {
       enable = true;
       systemd.enable = true;
+    };
+
+    hypotd = {
+      enable = true;
+
+      config = {
+        provider = "bing";
+        customCommand = "dms ipc call wallpaper set {{.Path}}";
+      };
     };
 
     dsearch = {

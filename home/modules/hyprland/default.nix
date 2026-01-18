@@ -10,8 +10,6 @@ let
   cfg = osConfig.sunner.hyprland;
 in {
   imports = [
-    inputs.hypotd.homeManagerModules.default
-
     ./binds.nix
     ./rules.nix
   ];
@@ -120,15 +118,6 @@ in {
     };
 
     programs = {
-      hypotd = {
-        enable = true;
-
-        config = {
-          provider = "bing";
-          customCommand = "dms ipc call wallpaper set {{.Path}}";
-        };
-      };
-
       grimblast = {
         enable = true;
       };
