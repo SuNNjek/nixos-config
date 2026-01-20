@@ -4,7 +4,7 @@
   steamAutostart = pkgs.makeDesktopItem {
     name = "steam";
     desktopName = "Steam";
-    exec = "${lib.getExe pkgs.steam} -nochatui -nofriendsui -silent";
+    exec = "${lib.getExe osConfig.programs.steam.package} -nochatui -nofriendsui -silent";
   };
 in lib.mkIf cfg.enable {
   home.packages = with pkgs; [

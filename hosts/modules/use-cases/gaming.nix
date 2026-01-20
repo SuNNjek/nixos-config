@@ -21,7 +21,7 @@ in {
         protontricks.enable = true;
 
         extraCompatPackages = with pkgs; [
-          steamtinkerlaunch
+          proton-ge-bin
         ];
 
         # Open ports for some functionality in the firewall
