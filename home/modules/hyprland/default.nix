@@ -1,7 +1,6 @@
 {
   lib,
   osConfig,
-  inputs,
   pkgs,
   ...
 }:
@@ -74,9 +73,15 @@ in {
           direct_scanout = 2;
         };
 
+        ecosystem = {
+          no_donation_nag = true;
+        };
+
         misc = {
           # Begone, anime girl
           disable_hyprland_logo = true;
+
+          focus_on_activate = true;
         };
 
         animation = [
