@@ -99,9 +99,9 @@ in {
         ];
       };
 
-      plugins = with pkgs; [
-        csd-titlebar-move
-      ];
+      #plugins = with pkgs; [
+      #  csd-titlebar-move
+      #];
     };
 
     services = {
