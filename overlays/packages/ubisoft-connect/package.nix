@@ -11,8 +11,6 @@
   proton-ge-bin,
 
   prefixPath ? "$HOME/Games/UbisoftConnect",
-
-  ...
 }: let
   script = writeShellApplication {
     name = "ubisoft-connect-wrapper";

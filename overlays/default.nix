@@ -1,9 +1,10 @@
 {
   nixpkgs.overlays = [
-    (import ./csd-titlebar-move)
-    (import ./dms-plugins)
-    (import ./klassy)
-    (import ./pywalfox)
-    (import ./ubisoft-connect)
+    (final: prev:
+      prev.lib.packagesFromDirectoryRecursive {
+        inherit (prev) callPackage;
+        directory = ./packages;
+      }
+    )
   ];
 }
