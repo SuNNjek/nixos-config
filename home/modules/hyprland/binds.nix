@@ -77,7 +77,6 @@ in
 
       ", XF86MonBrightnessUp, exec, dms ipc call brightness increment 5"
       ", XF86MonBrightnessDown, exec, dms ipc call brightness decrement 5"
-
     ];
 
     gesture = [

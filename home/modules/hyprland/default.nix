@@ -52,6 +52,10 @@ in
           };
         };
 
+        cursor = {
+          no_warps = true;
+        };
+
         decoration = {
           rounding = 8;
 
