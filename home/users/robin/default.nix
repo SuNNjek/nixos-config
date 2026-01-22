@@ -1,4 +1,10 @@
-{ lib, pkgs, osConfig, ... }: {
+{
+  lib,
+  pkgs,
+  osConfig,
+  ...
+}:
+{
   imports = [
     ../..
   ];
@@ -9,7 +15,8 @@
     shell.enableZshIntegration = true;
 
     packages = lib.optionals osConfig.sunner.hardware.hasOpticalDrive (
-      with pkgs; [
+      with pkgs;
+      [
         kdePackages.k3b
         makemkv
       ]

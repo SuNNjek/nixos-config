@@ -1,6 +1,8 @@
-{ config, ... }: let
+{ config, ... }:
+let
   cfg = config.sunner.hyprland;
-in {
+in
+{
   programs = {
     hyprland = {
       enable = cfg.enable;

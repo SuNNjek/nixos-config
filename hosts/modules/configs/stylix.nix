@@ -1,6 +1,13 @@
-{ inputs, pkgs, config, ... }: let 
+{
+  inputs,
+  pkgs,
+  config,
+  ...
+}:
+let
   cfg = config.sunner.stylix;
-in {
+in
+{
   imports = [
     inputs.stylix.nixosModules.stylix
   ];

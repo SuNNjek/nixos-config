@@ -1,6 +1,8 @@
-{ inputs, config, ... }: let
+{ inputs, config, ... }:
+let
   cfg = config.sunner.flatpak;
-in {
+in
+{
   imports = [
     inputs.nix-flatpak.nixosModules.nix-flatpak
   ];

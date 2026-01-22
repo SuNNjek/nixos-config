@@ -2,6 +2,7 @@
 with lib;
 let
   cfg = config.sunner.hardware;
-in {
+in
+{
   boot.kernelModules = optional cfg.hasOpticalDrive "sg";
 }

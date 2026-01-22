@@ -1,4 +1,5 @@
-{ lib, pkgs, ... }: let
+{ lib, pkgs, ... }:
+let
   inherit (lib.meta) getExe;
 
   hyprctl = "${pkgs.hyprland}/bin/hyprctl";
@@ -7,7 +8,8 @@
 
   workspaceCount = 9;
   forWorkspace = f: builtins.concatLists (builtins.genList (ws: f (ws + 1)) workspaceCount);
-in {
+in
+{
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
 
@@ -15,10 +17,10 @@ in {
       "$mod, T, exec, ${startApp "$terminal"}"
       "$mod, B, exec, ${startApp "$browser"}"
       "$mod, F, fullscreen"
-      
+
       ", print, exec, ${grimblast} edit area"
       "CTRL, print, exec, ${grimblast} edit screen"
-      
+
       "$mod, Q, killactive"
 
       "$mod, L, exec, dms ipc call lock lock"
@@ -42,7 +44,7 @@ in {
       "$mod ALT, left, swapactiveworkspaces, current -1"
       "$mod ALT, mouse:275, swapactiveworkspaces, current +1"
       "$mod ALT, mouse:276, swapactiveworkspaces, current -1"
-   ]
+    ]
     ++ forWorkspace (ws: [
       "$mod, ${toString ws}, workspace, ${toString ws}"
       "$mod SHIFT, ${toString ws}, movetoworkspace, ${toString ws}"

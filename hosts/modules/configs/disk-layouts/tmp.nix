@@ -2,7 +2,8 @@
 with lib;
 let
   cfg = config.sunner.diskLayout.tmp;
-in mkIf cfg.enable {
+in
+mkIf cfg.enable {
   disko.devices.nodev = {
     "/tmp" = {
       fsType = "tmpfs";

@@ -1,6 +1,13 @@
-{ lib, config, pkgs, ... }: let
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+let
   cfg = config.sunner.useCases.gaming;
-in {
+in
+{
   options = with lib; {
     sunner.useCases.gaming = {
       enable = mkEnableOption "Gaming";
@@ -34,4 +41,4 @@ in {
       steam-devices-udev-rules
     ];
   };
-} 
+}

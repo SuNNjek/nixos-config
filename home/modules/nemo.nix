@@ -1,13 +1,19 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 with lib;
 let
   cfg = config.programs.nemo;
-in {
+in
+{
   options = {
     programs.nemo = {
       enable = mkEnableOption "Nemo file manager";
-      package = mkPackageOption pkgs "nemo-with-extensions" {};
-      terminal = mkPackageOption pkgs "kitty" {};
+      package = mkPackageOption pkgs "nemo-with-extensions" { };
+      terminal = mkPackageOption pkgs "kitty" { };
     };
   };
 

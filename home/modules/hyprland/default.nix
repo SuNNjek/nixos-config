@@ -7,7 +7,8 @@
 with lib;
 let
   cfg = osConfig.sunner.hyprland;
-in {
+in
+{
   imports = [
     ./binds.nix
     ./rules.nix
@@ -100,7 +101,7 @@ in {
       };
 
       plugins = with pkgs; [
-       csd-titlebar-move
+        csd-titlebar-move
       ];
     };
 

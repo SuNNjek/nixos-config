@@ -1,6 +1,13 @@
-{ inputs, config, lib, ... }: let
+{
+  inputs,
+  config,
+  lib,
+  ...
+}:
+let
   cfg = config.sunner.users;
-in {
+in
+{
   imports = [
     inputs.home-manager.nixosModules.home-manager
   ];
@@ -14,16 +21,19 @@ in {
       # Import paths for all users
       users = lib.pipe cfg [
         (lib.filterAttrs (username: userCfg: userCfg.homeManager.enable))
-        (lib.mapAttrs (username: userCfg: lib.mkMerge [
-          {
-            # Set default based on username
-            home = {
-              inherit username;
-            };
-          }
+        (lib.mapAttrs (
+          username: userCfg:
+          lib.mkMerge [
+            {
+              # Set default based on username
+              home = {
+                inherit username;
+              };
+            }
 
-          (import userCfg.homeManager.configPath)
-        ]))
+            (import userCfg.homeManager.configPath)
+          ]
+        ))
       ];
 
       # TODO: Pass in username to config somehow? Or manage it all in user config?

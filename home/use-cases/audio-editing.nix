@@ -1,19 +1,23 @@
-{ lib, osConfig, pkgs, ... }:
+{
+  lib,
+  osConfig,
+  pkgs,
+  ...
+}:
 with lib;
-let 
+let
   cfg = osConfig.sunner.useCases.audioEditing;
-in mkIf cfg.enable (
-  mkMerge [
-    {
-      home.packages = with pkgs; [
-        audacity
-      ];
-    }
+in
+mkIf cfg.enable (mkMerge [
+  {
+    home.packages = with pkgs; [
+      audacity
+    ];
+  }
 
-    (mkIf cfg.fullDaws.enable {
-      home.packages = with pkgs; [
-        ardour
-      ];
-    })
-  ]
-)
+  (mkIf cfg.fullDaws.enable {
+    home.packages = with pkgs; [
+      ardour
+    ];
+  })
+])

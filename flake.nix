@@ -41,33 +41,32 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak/v0.7.0";
   };
 
-  outputs = inputs@{ nixpkgs, ... }:
-  let
-    allSystems = builtins.attrNames nixpkgs.legacyPackages;
+  outputs =
+    inputs@{ nixpkgs, ... }:
+    let
+      allSystems = builtins.attrNames nixpkgs.legacyPackages;
 
-    forAllSystems = (f:
-      nixpkgs.lib.genAttrs allSystems (system:
-        f nixpkgs.legacyPackages.${system}
-      )
-    );
+      forAllSystems = (f: nixpkgs.lib.genAttrs allSystems (system: f nixpkgs.legacyPackages.${system}));
 
-    defineHost = username: definition: nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs username; };
-      modules = [
-        ./overlays
-        definition
-      ];
+      defineHost =
+        username: definition:
+        nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs username; };
+          modules = [
+            ./overlays
+            definition
+          ];
+        };
+
+      robinHost = defineHost "robin";
+    in
+    {
+      nixosConfigurations = {
+        nixos-vm = robinHost ./hosts/desktop/vm;
+        robin-thinkpad = robinHost ./hosts/desktop/thinkpad;
+        robin-pc = robinHost ./hosts/desktop/pc;
+      };
+
+      formatter = forAllSystems (pkgs: pkgs.nixfmt-tree);
     };
-
-    robinHost = defineHost "robin";
-  in {
-    nixosConfigurations = {
-      nixos-vm = robinHost ./hosts/desktop/vm;
-      robin-thinkpad = robinHost ./hosts/desktop/thinkpad;
-      robin-pc = robinHost ./hosts/desktop/pc;
-    };
-
-    formatter = forAllSystems (pkgs: pkgs.nixfmt-tree);
-  };
 }
-

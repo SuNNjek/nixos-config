@@ -11,7 +11,8 @@
   proton-ge-bin,
 
   prefixPath ? "$HOME/Games/UbisoftConnect",
-}: let
+}:
+let
   script = writeShellApplication {
     name = "ubisoft-connect-wrapper";
 
@@ -62,7 +63,7 @@
       root = ./.;
       fileset = ./icon.png;
     };
-    phases = ["installPhase"];
+    phases = [ "installPhase" ];
     installPhase = ''
       mkdir -p $out/share/icons/hicolor/256x256/apps
       cp $src/icon.png $out/share/icons/hicolor/256x256/apps/ubisoft-connect.png
@@ -75,9 +76,10 @@
     icon = "ubisoft-connect";
     desktopName = "Ubisoft Connect";
     comment = "Ubisoft Connect";
-    categories = ["Game"];
+    categories = [ "Game" ];
   };
-in symlinkJoin {
+in
+symlinkJoin {
   name = "ubisoft-connect";
   paths = [
     desktopItem

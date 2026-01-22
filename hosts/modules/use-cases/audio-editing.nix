@@ -1,7 +1,8 @@
 { lib, config, ... }:
 let
   cfg = config.sunner.useCases.audioEditing;
-in {
+in
+{
   options = with lib; {
     sunner.useCases = {
       audioEditing = {

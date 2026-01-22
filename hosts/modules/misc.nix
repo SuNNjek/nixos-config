@@ -1,5 +1,6 @@
 # Default stuff that's not configurable
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -28,7 +29,7 @@
     "HOSTNAME" = config.networking.hostName;
   };
 
-    # Set your time zone.
+  # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
   # Select internationalisation properties.

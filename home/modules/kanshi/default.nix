@@ -1,25 +1,34 @@
-{ lib, osConfig, config, pkgs, ... }:
+{
+  lib,
+  osConfig,
+  config,
+  pkgs,
+  ...
+}:
 with lib;
 let
   cfg = config.sunner.kanshi;
 
-  setPrimaryMonitor = getExe (pkgs.writeShellApplication {
-    name = "set-primary-monitor";
+  setPrimaryMonitor = getExe (
+    pkgs.writeShellApplication {
+      name = "set-primary-monitor";
 
-    runtimeInputs = with pkgs; [
-      wlr-randr
-      xrandr
-      jq
-    ];
+      runtimeInputs = with pkgs; [
+        wlr-randr
+        xrandr
+        jq
+      ];
 
-    text = readFile ./set-primary-monitor.sh;
-  });
+      text = readFile ./set-primary-monitor.sh;
+    }
+  );
 
   hyprctl = "${pkgs.hyprland}/bin/hyprctl";
 
   mainMonitor = "Dell Inc. DELL U2724DE 6QZ59P3";
   sideMonitor = "Dell Inc. DELL P2225H DNWN504";
-in {
+in
+{
   options = {
     sunner.kanshi.enable = mkOption {
       type = types.bool;
@@ -29,7 +38,7 @@ in {
   };
 
   config = {
-    services.kanshi ={
+    services.kanshi = {
       enable = cfg.enable;
 
       settings = [

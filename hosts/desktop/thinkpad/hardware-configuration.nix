@@ -1,16 +1,22 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, ... }:
+{
   imports = [
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480s
   ];
 
   boot = {
     initrd = {
-      availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
+      availableKernelModules = [
+        "xhci_pci"
+        "nvme"
+        "usb_storage"
+        "sd_mod"
+      ];
       kernelModules = [ ];
     };
 
     kernelPackages = pkgs.linuxPackages_zen;
-    kernelModules = [ "kvm-intel"];
+    kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
   };
 

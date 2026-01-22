@@ -1,8 +1,9 @@
 { lib, config, ... }:
 with lib;
-let 
+let
   cfg = config.sunner.diskLayout.btrfs;
-in mkIf cfg.enable {
+in
+mkIf cfg.enable {
   disko.devices.disk.main = {
     type = "disk";
     device = cfg.device;

@@ -1,4 +1,11 @@
-{ lib, config, osConfig, pkgs, ... }: let 
+{
+  lib,
+  config,
+  osConfig,
+  pkgs,
+  ...
+}:
+let
   cfg = osConfig.sunner.useCases.gaming;
 
   steamAutostart = pkgs.makeDesktopItem {
@@ -6,7 +13,8 @@
     desktopName = "Steam";
     exec = "${lib.getExe osConfig.programs.steam.package} -nochatui -nofriendsui -silent";
   };
-in lib.mkIf cfg.enable {
+in
+lib.mkIf cfg.enable {
   home.packages = with pkgs; [
     prismlauncher
     ubisoft-connect

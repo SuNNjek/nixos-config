@@ -1,7 +1,8 @@
 {
   stdenv,
   pywalfox-native,
-}: stdenv.mkDerivation {
+}:
+stdenv.mkDerivation {
   inherit (pywalfox-native) version;
 
   pname = "pywalfox";

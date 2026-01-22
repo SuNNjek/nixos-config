@@ -1,6 +1,13 @@
-{ lib, pkgs, config, ... }: let
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+let
   cfg = config.sunner.boot.limine;
-in lib.mkMerge [
+in
+lib.mkMerge [
   {
     boot.loader.limine = {
       enable = cfg.enable;

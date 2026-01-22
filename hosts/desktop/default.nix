@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   imports = [
     ../.
   ];
@@ -7,9 +8,9 @@
     diskLayout.tmp.enable = true;
 
     boot.limine.enable = true;
-    
+
     stylix.enable = true;
-    
+
     zram.enable = true;
     pipewire.enable = true;
     hyprland.enable = true;

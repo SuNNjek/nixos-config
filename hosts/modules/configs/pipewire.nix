@@ -1,6 +1,8 @@
-{ config, ... }: let
+{ config, ... }:
+let
   cfg = config.sunner.pipewire;
-in {
+in
+{
   security.rtkit.enable = cfg.enable;
 
   services.pipewire = {

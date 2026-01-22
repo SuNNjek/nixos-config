@@ -3,7 +3,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     inputs.dms.homeModules.dank-material-shell
     inputs.dsearch.homeModules.default
@@ -62,26 +63,28 @@
     "~/.config/hypr/dms/layout.conf"
   ];
 
-  gtk = let
-    extraCss = ''
-      @import url("dank-colors.css");
-    '';
-  in {
-    enable = true;
+  gtk =
+    let
+      extraCss = ''
+        @import url("dank-colors.css");
+      '';
+    in
+    {
+      enable = true;
 
-    theme = {
-      package = pkgs.adw-gtk3;
-      name = "adw-gtk3-dark";
+      theme = {
+        package = pkgs.adw-gtk3;
+        name = "adw-gtk3-dark";
+      };
+
+      iconTheme = {
+        package = pkgs.vimix-icon-theme;
+        name = "Vimix-dark";
+      };
+
+      gtk3.extraCss = extraCss;
+      gtk4.extraCss = extraCss;
     };
-
-    iconTheme = {
-      package = pkgs.vimix-icon-theme;
-      name = "Vimix-dark";
-    };
-
-    gtk3.extraCss = extraCss;
-    gtk4.extraCss = extraCss;
-  };
 
   qt = {
     enable = true;
@@ -95,5 +98,6 @@
   };
 
   programs.firefox.nativeMessagingHosts = with pkgs; [ pywalfox ];
-  xdg.cacheFile."wal/colors.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.cache/wal/dank-pywalfox.json";
+  xdg.cacheFile."wal/colors.json".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.cache/wal/dank-pywalfox.json";
 }

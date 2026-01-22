@@ -1,4 +1,11 @@
-{ inputs, lib, config, osConfig, ... }: {
+{
+  inputs,
+  lib,
+  config,
+  osConfig,
+  ...
+}:
+{
   imports = [
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
   ];
@@ -29,6 +36,5 @@
     };
   };
 
-  xdg.systemDirs.data = lib.optional osConfig.sunner.flatpak.enable
-    "${config.home.homeDirectory}/.local/share/flatpak/exports/share";
+  xdg.systemDirs.data = lib.optional osConfig.sunner.flatpak.enable "${config.home.homeDirectory}/.local/share/flatpak/exports/share";
 }

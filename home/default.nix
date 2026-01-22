@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   imports = [
     ./modules
     ./use-cases
@@ -72,13 +73,15 @@
         enable = true;
 
         # Set default applications
-        defaultApplicationPackages = (with config.programs; [
-          firefox.package
-          nemo.package
-        ]) ++ (with pkgs; [
-          mpc-qt
-          image-roll
-        ]);
+        defaultApplicationPackages =
+          (with config.programs; [
+            firefox.package
+            nemo.package
+          ])
+          ++ (with pkgs; [
+            mpc-qt
+            image-roll
+          ]);
       };
 
       userDirs = {

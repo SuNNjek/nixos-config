@@ -4,7 +4,7 @@
       # Launch Firefox PiP in floating mode and pin it
       "tag +pip, match:class firefox, match:title Picture-in-Picture"
       "tag +pip, match:class firefox, match:title Bild-im-Bild"
-      
+
       "float on, pin on, keep_aspect_ratio on, content video, match:tag pip"
 
       "content game, match:class ^(steam_app.*|steam_app_\d+)$"

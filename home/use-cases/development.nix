@@ -1,6 +1,13 @@
-{ lib, osConfig, pkgs, ... }: let 
+{
+  lib,
+  osConfig,
+  pkgs,
+  ...
+}:
+let
   cfg = osConfig.sunner.useCases.development;
-in lib.mkIf cfg.enable {
+in
+lib.mkIf cfg.enable {
   home.packages = with pkgs; [
     nixd
     nixpkgs-lint-community

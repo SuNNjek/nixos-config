@@ -1,6 +1,8 @@
-{ lib, config, ... }: let
+{ lib, config, ... }:
+let
   cfg = config.sunner.zram;
-in lib.mkMerge [
+in
+lib.mkMerge [
   {
     # Use zram-generator to generate some sweet ZRAM
     services.zram-generator = {

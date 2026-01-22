@@ -4,10 +4,12 @@
 
   hyprland,
   pkg-config,
-}: let
+}:
+let
   rev = "bd8ac086009245396d9172c5acd0e43cd1cfc616";
   sha256 = "sha256-ZT+1doIIPyyo/qr0qsofixY9tZpNFP4N6P4Qjr99j0Y=";
-in hyprland.stdenv.mkDerivation {
+in
+hyprland.stdenv.mkDerivation {
   pname = "csd-titlebar-move";
   version = rev;
 
@@ -29,7 +31,8 @@ in hyprland.stdenv.mkDerivation {
 
   buildInputs = [
     hyprland.dev
-  ] ++ hyprland.buildInputs;
+  ]
+  ++ hyprland.buildInputs;
 
   installPhase = ''
     mkdir -p $out/lib/
@@ -42,4 +45,3 @@ in hyprland.stdenv.mkDerivation {
     platforms = lib.platforms.linux;
   };
 }
-

@@ -1,8 +1,14 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 with lib;
-let 
+let
   cfg = config.sunner.useCases.development;
-in {
+in
+{
   options = {
     sunner.useCases = {
       development = {

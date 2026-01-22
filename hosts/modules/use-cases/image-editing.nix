@@ -1,4 +1,5 @@
-{ lib, ... }: {
+{ lib, ... }:
+{
   options = with lib; {
     sunner.useCases = {
       imageEditing = {

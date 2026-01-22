@@ -1,9 +1,15 @@
-{ inputs, lib, config, ... }:
+{
+  inputs,
+  lib,
+  config,
+  ...
+}:
 with lib;
 let
   cfg = config.sunner.dms;
   cursorCfg = config.stylix.cursor;
-in {
+in
+{
   imports = [
     inputs.dms.nixosModules.greeter
   ];
@@ -16,8 +22,7 @@ in {
 
     programs.dank-material-shell.greeter = {
       enable = cfg.enable;
-      configHome = mkIf (cfg.greeter.configUser != null)
-        "/home/${cfg.greeter.configUser}";
+      configHome = mkIf (cfg.greeter.configUser != null) "/home/${cfg.greeter.configUser}";
 
       compositor = {
         name = "hyprland";
