@@ -43,6 +43,14 @@
 
   outputs = inputs@{ nixpkgs, ... }:
   let
+    allSystems = builtins.attrNames nixpkgs.legacyPackages;
+
+    forAllSystems = (f:
+      nixpkgs.lib.genAttrs allSystems (system:
+        f nixpkgs.legacyPackages.${system}
+      )
+    );
+
     defineHost = username: definition: nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs username; };
       modules = [
@@ -58,6 +66,8 @@
       robin-thinkpad = robinHost ./hosts/desktop/thinkpad;
       robin-pc = robinHost ./hosts/desktop/pc;
     };
+
+    formatter = forAllSystems (pkgs: pkgs.nixfmt-tree);
   };
 }
 
