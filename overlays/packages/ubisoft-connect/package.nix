@@ -9,6 +9,7 @@
   wget,
   umu-launcher,
   proton-ge-bin,
+  gamemode,
 
   prefixPath ? "$HOME/Games/UbisoftConnect",
 }:
@@ -19,6 +20,7 @@ let
     runtimeInputs = [
       wget
       umu-launcher
+      gamemode
     ];
 
     runtimeEnv = {
@@ -53,7 +55,7 @@ let
         umu-run "$SETUP_DL_LOCATION"
       fi
 
-      umu-run "$LAUNCHER" "$@"
+      gamemoderun umu-run "$LAUNCHER" "$@"
     '';
   };
 
