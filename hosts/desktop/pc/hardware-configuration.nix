@@ -36,5 +36,6 @@
 
   sunner.hardware = {
     hasOpticalDrive = true;
+    hasIrCamera = true;
   };
 }
