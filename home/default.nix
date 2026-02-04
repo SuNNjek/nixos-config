@@ -68,6 +68,7 @@
 
     xdg = {
       autostart.enable = true;
+      terminal-exec.enable = true;
 
       mimeApps = {
         enable = true;
