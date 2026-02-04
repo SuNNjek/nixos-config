@@ -68,7 +68,15 @@
 
     xdg = {
       autostart.enable = true;
-      terminal-exec.enable = true;
+      
+      terminal-exec = {
+        enable = true;
+        settings = {
+          default = [
+            "kitty.desktop"
+          ];
+        };
+      };
 
       mimeApps = {
         enable = true;
