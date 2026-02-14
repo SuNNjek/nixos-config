@@ -18,6 +18,7 @@ lib.mkIf cfg.enable {
   home.packages = with pkgs; [
     prismlauncher
     ubisoft-connect
+    uwu-launch
   ];
 
   programs.mangohud.enable = true;

@@ -76,6 +76,8 @@
       unzip
       p7zip
       file
+      gettext
+      icoutils
     ];
   };
 }
