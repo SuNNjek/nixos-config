@@ -48,7 +48,9 @@ in
 
       isNormalUser = true;
       initialPassword = "changeMe";
-      extraGroups = lib.optional userCfg.sudo.enable "wheel";
+      extraGroups = [
+        "networkmanager"
+      ] ++ lib.optional userCfg.sudo.enable "wheel";
     }) cfg;
 
     # User is allowed to do sudo things without inputting a password on desktop.
