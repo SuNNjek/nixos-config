@@ -8,6 +8,7 @@
     ./firefox.nix
     ./flatpak.nix
     ./grimblast.nix
+    ./matugen.nix
     ./nemo.nix
     ./vesktop.nix
   ];
