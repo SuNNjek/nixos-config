@@ -18,7 +18,7 @@ in {
       openrgb = lib.mkIf osConfig.services.hardware.openrgb.enable {
         input_path = "/dev/null";
         output_path = "/dev/null";
-        post_hook = "${lib.getExe pkgs.openrgb} -m static -c {{colors.primary.default.hex_stripped}}";
+        post_hook = "${lib.getExe pkgs.openrgb} -m static -c {{colors.source_color.default.hex_stripped}}";
       };
     };
 
