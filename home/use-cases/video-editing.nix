@@ -10,7 +10,7 @@ in
 lib.mkIf cfg.enable {
   home.packages = with pkgs; [
     kdePackages.kdenlive
-    ffmpeg
+    ffmpeg-full
     ccextractor
   ];
 
