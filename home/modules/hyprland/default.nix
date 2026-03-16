@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   osConfig,
   pkgs,
@@ -7,6 +8,7 @@
 with lib;
 let
   cfg = osConfig.sunner.hyprland;
+  csd-titlebar-move = inputs.csd-titlebar-move.packages.${pkgs.stdenv.hostPlatform.system}.csd-titlebar-move;
 in
 {
   imports = [
@@ -30,6 +32,8 @@ in
       settings = {
         "$terminal" = "kitty";
         "$browser" = "firefox";
+
+        debug.disable_logs = false;
 
         general = {
           gaps_out = 8;
@@ -104,7 +108,7 @@ in
         ];
       };
 
-      plugins = with pkgs; [
+      plugins = [
         csd-titlebar-move
       ];
     };

@@ -38,6 +38,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    csd-titlebar-move = {
+      url = "github:SuNNjek/csd-titlebar-move";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-flatpak.url = "github:gmodena/nix-flatpak/v0.7.0";
   };
 
