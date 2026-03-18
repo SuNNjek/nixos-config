@@ -4,13 +4,11 @@ let
 in
 lib.mkMerge [
   {
-    # Use zram-generator to generate some sweet ZRAM
-    services.zram-generator = {
+    zramSwap = {
       enable = cfg.enable;
-      settings.zram0 = {
-        compression-algorithm = "zstd";
-        zram-size = cfg.size;
-      };
+      algorithm = "zstd";
+      memoryPercent = 50;
+      memoryMax = 8192 * 1024 * 1024;
     };
   }
 

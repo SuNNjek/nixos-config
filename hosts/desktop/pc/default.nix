@@ -16,8 +16,6 @@
         enable = true;
         device = "/dev/nvme1n1";
       };
-
-      tmp.size = "8G";
     };
 
     useCases = {

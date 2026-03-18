@@ -5,8 +5,6 @@
   ];
 
   sunner = {
-    diskLayout.tmp.enable = true;
-
     boot.limine.enable = true;
 
     stylix.enable = true;
@@ -47,6 +45,15 @@
       "udev.log_priority=3"
       "rd.systemd.show_status=auto"
     ];
+
+    tmp = {
+      useZram = true;
+
+      zramSettings = {
+        compression-algorithm = "zstd";
+        zram-size = "min(ram / 2, 8192)";
+      };
+    };
   };
 
   networking = {

@@ -12,16 +12,6 @@ with lib;
           description = "Path of the root device";
         };
       };
-
-      tmp = {
-        enable = mkEnableOption "tmp";
-
-        size = mkOption {
-          type = types.str;
-          default = "2G";
-          description = "Size of /tmp";
-        };
-      };
     };
   };
 }
