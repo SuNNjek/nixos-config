@@ -40,5 +40,16 @@ lib.mkIf cfg.enable {
     };
 
     vscode.enable = true;
+
+    nemo.actions.open-with-vscode = {
+      Name = "Open with VS Code";
+      Comment = "Open the selected directory with VS Code";
+      Exec = "code %F";
+      Icon-Name = "com.visualstudio.code";
+      Selection = "none";
+      Extensions = [ "dir" ];
+      Quote = "double";
+      Dependencies = [ "code" ];
+    };
   };
 }
