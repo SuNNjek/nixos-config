@@ -4,7 +4,8 @@
   proton-ge-bin,
   icoutils,
   umu-launcher,
-}: writeShellApplication {
+}:
+writeShellApplication {
   # Like umu, but with the "m" inverted UwU
   name = "uwu-launch";
 

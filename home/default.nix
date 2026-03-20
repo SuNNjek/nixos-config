@@ -68,7 +68,7 @@
 
     xdg = {
       autostart.enable = true;
-      
+
       terminal-exec = {
         enable = true;
         settings = {

@@ -8,7 +8,8 @@
 with lib;
 let
   cfg = osConfig.sunner.hyprland;
-  csd-titlebar-move = inputs.csd-titlebar-move.packages.${pkgs.stdenv.hostPlatform.system}.csd-titlebar-move;
+  csd-titlebar-move =
+    inputs.csd-titlebar-move.packages.${pkgs.stdenv.hostPlatform.system}.csd-titlebar-move;
 in
 {
   imports = [

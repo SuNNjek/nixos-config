@@ -16,7 +16,7 @@ in
       terminal = mkPackageOption pkgs "kitty" { };
 
       actions = mkOption {
-        default = {};
+        default = { };
         type = with lib.types; attrsOf anything;
       };
     };
@@ -32,23 +32,23 @@ in
       };
     };
 
-    xdg.dataFile = 
-    let
-      iniFormat = pkgs.formats.ini {
-        listToValue = atoms:
-          atoms
-          |> lib.map (atom: "${atom};")
-          |> lib.concatStrings;
-      };
-
-      mapAction = (name: action: {
-        name = "nemo/actions/${name}.nemo_action";
-        value = {
-          source = iniFormat.generate "${name}.nemo_action" {
-            "Nemo Action" = action;
-          };
+    xdg.dataFile =
+      let
+        iniFormat = pkgs.formats.ini {
+          listToValue = atoms: atoms |> lib.map (atom: "${atom};") |> lib.concatStrings;
         };
-      });
-    in lib.mapAttrs' mapAction cfg.actions;
+
+        mapAction = (
+          name: action: {
+            name = "nemo/actions/${name}.nemo_action";
+            value = {
+              source = iniFormat.generate "${name}.nemo_action" {
+                "Nemo Action" = action;
+              };
+            };
+          }
+        );
+      in
+      lib.mapAttrs' mapAction cfg.actions;
   };
 }

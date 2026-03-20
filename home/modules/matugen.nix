@@ -1,14 +1,22 @@
-{ osConfig, config, lib, pkgs, ... }: let
-  tomlFormat = pkgs.formats.toml {};
+{
+  osConfig,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  tomlFormat = pkgs.formats.toml { };
 
   cfg = config.services.matugen;
-in {
+in
+{
   # Little hack to get mkIf working
   options = with lib; {
     services.matugen = {
       templates = mkOption {
         type = with types; attrsOf anything;
-        default = {};
+        default = { };
       };
     };
   };
@@ -23,7 +31,7 @@ in {
     };
 
     xdg.configFile."matugen/config.toml".source = tomlFormat.generate "matugen.toml" {
-      config = {};
+      config = { };
       inherit (cfg) templates;
     };
   };
