@@ -65,13 +65,6 @@
 
   gtk =
     let
-      extraCss = ''
-        @import url("dank-colors.css");
-      '';
-    in
-    {
-      enable = true;
-
       theme = {
         package = pkgs.adw-gtk3;
         name = "adw-gtk3-dark";
@@ -82,8 +75,17 @@
         name = "Vimix-dark";
       };
 
-      gtk3.extraCss = extraCss;
-      gtk4.extraCss = extraCss;
+      extraCss = ''
+        @import url("dank-colors.css");
+      '';
+    in
+    {
+      enable = true;
+
+      inherit theme iconTheme;
+
+      gtk3 = { inherit extraCss theme iconTheme; };
+      gtk4 = { inherit extraCss theme iconTheme; };
     };
 
   qt = {
