@@ -45,6 +45,11 @@ in
             disable_hyprland_logo = true
           }
 
+          ecosystem {
+            no_update_news = true
+            no_donation_nag = true
+          }
+
           monitor = desc:Dell Inc. DELL U2724DE 6QZ59P3,highres,0x0,1
           monitor = desc:Dell Inc. DELL P2225H DNWN504,highres,auto-right,1,transform,3
           monitor = ,highres,auto,1
