@@ -6,6 +6,7 @@
 }:
 with lib;
 let
+  users = config.sunner.users;
   cfg = config.sunner.useCases.development;
 in
 {
@@ -34,5 +35,11 @@ in
         autoPrune.enable = true;
       };
     };
+
+    users.users = lib.mapAttrs (username: _: {
+      extraGroups = [
+        "podman"
+      ];
+    }) users;
   };
 }
