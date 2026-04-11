@@ -17,6 +17,7 @@ in
       "$mod, T, exec, ${startApp "$terminal"}"
       "$mod, B, exec, ${startApp "$browser"}"
       "$mod, F, fullscreen"
+      "$mod, G, togglegroup"
 
       ", print, exec, ${grimblast} edit area"
       "CTRL, print, exec, ${grimblast} edit screen"

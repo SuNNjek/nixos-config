@@ -75,6 +75,19 @@ in
           };
         };
 
+        group = {
+          groupbar = {
+            height = 16;
+            font_size = 12;
+            rounding = 8;
+            gradient_rounding = 8;
+            gradients = true;
+            blur = true;
+            "col.active" = "0x80000000";
+            "col.inactive" = "0x66000000";
+          };
+        };
+
         monitor = [
           ",highres,auto,1"
         ];
