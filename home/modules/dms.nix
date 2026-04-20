@@ -26,6 +26,7 @@
 
     hypotd = {
       enable = true;
+      target = "dms.service";
 
       config = {
         provider = "bing";
