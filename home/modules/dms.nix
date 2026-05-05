@@ -25,7 +25,8 @@
     };
 
     hypotd = {
-      enable = true;
+      # Disable for now, I found a cool wallpaper :3
+      enable = false;
       target = "dms.service";
 
       config = {
