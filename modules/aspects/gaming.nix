@@ -44,8 +44,8 @@
         home.packages = with pkgs; [
           protonup-rs
           prismlauncher
-          # ubisoft-connect
-          # uwu-launch
+          ubisoft-connect
+          uwu-launch
         ];
 
         programs.mangohud.enable = true;

@@ -9,7 +9,10 @@ in
     includes = [ den.batteries.mutual-provider ];
   };
 
-  den.default.includes = with den.batteries; [ hostname host-aspects ];
+  den.default.includes =
+    (with den.batteries; [ hostname host-aspects ]) ++
+    (with den.aspects; [ overlays ]);
+
   den.default.nixos.system = { inherit stateVersion; };
   den.default.homeManager.home = { inherit stateVersion; };
 }
