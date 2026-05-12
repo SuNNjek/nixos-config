@@ -5,14 +5,18 @@
       firefox
     ];
 
-    nixos = {
-      services = {
-        # For udiskie (auto-mounting drives)
-        udisks2.enable = true;
-        # For gammastep (red filter at night)
-        geoclue2.enable = true;
+    nixos =
+      { pkgs, ... }:
+      {
+        boot.kernelPackages = pkgs.linuxPackages_zen;
+
+        services = {
+          # For udiskie (auto-mounting drives)
+          udisks2.enable = true;
+          # For gammastep (red filter at night)
+          geoclue2.enable = true;
+        };
       };
-    };
 
     homeManager = { pkgs, ... }: {
       xdg = {

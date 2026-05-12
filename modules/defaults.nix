@@ -13,6 +13,11 @@ in
     (with den.batteries; [ hostname host-aspects ]) ++
     (with den.aspects; [ overlays ]);
 
-  den.default.nixos.system = { inherit stateVersion; };
+  den.default.nixos = {
+    system = { inherit stateVersion; };
+
+    hardware.enableRedistributableFirmware = true;
+  };
+
   den.default.homeManager.home = { inherit stateVersion; };
 }
