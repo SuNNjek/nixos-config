@@ -1,18 +1,24 @@
-{ den, ... }:
+{ lib, den, ... }:
 {
   # user aspect
   den.aspects.robin = {
-    includes = [
-      den.batteries.define-user
-      den.batteries.primary-user
-      (den.batteries.user-shell "zsh")
+    includes = lib.concatLists [
+      # Batteries
+      (with den.batteries; [
+        define-user
+        primary-user
+        (user-shell "zsh")
+        (initial-password "changeMe")
+      ])
 
-      (den.batteries.initial-password "changeMe")
+      # Aspects
+      (with den.aspects; [
+        dms._.greeter-user
 
-      den.aspects.dms._.greeter-user
-
-      den.aspects.vesktop
-      den.aspects.hyprland
+        vesktop
+        hyprland
+        gpg
+      ])
     ];
 
     homeManager =
@@ -34,6 +40,8 @@
 
             defaultKeymap = "emacs";
           };
+
+          gpg.enable = true;
 
           git = {
             settings = {

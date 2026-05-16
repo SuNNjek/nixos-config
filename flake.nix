@@ -9,6 +9,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     den.url = "github:denful/den";
+    disko = {
+      url = "github:nix-community/disko/v1.12.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     dms = {
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";

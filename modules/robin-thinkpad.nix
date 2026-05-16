@@ -2,6 +2,9 @@
 {
   den.aspects.robin-thinkpad = {
     includes = with den.aspects; [
+      disko
+      disko._.btrfs-root
+
       limine
       plymouth
       zram

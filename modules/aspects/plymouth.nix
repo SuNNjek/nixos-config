@@ -4,7 +4,6 @@
       boot = {
         plymouth = {
           enable = true;
-          # TODO: Theming
         };
 
         consoleLogLevel = 3;

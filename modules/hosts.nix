@@ -3,10 +3,14 @@
 {
   den.hosts.x86_64-linux = {
     robin-pc = {
+      rootDrive = "/dev/nvme1n1";
+
       users.robin = { };
     };
 
     robin-thinkpad = {
+      rootDrive = "/dev/nvme0n1";
+
       users.robin = { };
     };
   };

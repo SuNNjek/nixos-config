@@ -2,6 +2,9 @@
 {
   den.aspects.robin-pc = {
     includes = with den.aspects; [
+      disko
+      disko._.btrfs-root
+
       limine
       plymouth
       zram
@@ -52,6 +55,12 @@
             "sr_mod"
           ];
         };
+
+        loader.limine.extraEntries = ''
+          /Windows
+            protocol: efi
+            path: uuid(7006ed1b-b7fa-40ec-92af-fd0fae8ef4e2):/EFI/Microsoft/Boot/bootmgfw.efi
+        '';
       };
 
       hardware = {
