@@ -13,6 +13,7 @@
       locale-de
       desktop
       hyprland
+      kanshi._.pc
       dms
       howdy
 
