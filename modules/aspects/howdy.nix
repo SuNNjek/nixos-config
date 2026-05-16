@@ -1,9 +1,13 @@
 {
   den.aspects.howdy = {
     nixos = {
-      services.howdy = {
-        enable = true;
-        control = "sufficient";
+      services = {
+        linux-enable-ir-emitter.enable = true;
+
+        howdy = {
+          enable = true;
+          control = "sufficient";
+        };
       };
     };
   };

@@ -1,6 +1,6 @@
 {
   den.aspects.firefox = {
-    homeManager = {
+    homeManager = { pkgs, ... }: {
       programs.firefox = {
         enable = true;
 
@@ -18,6 +18,10 @@
           };
         };
       };
+
+      xdg.mimeApps.defaultApplicationPackages = [
+        pkgs.firefox
+      ];
     };
   };
 }

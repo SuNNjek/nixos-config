@@ -3,12 +3,16 @@
   den.aspects.robin-thinkpad = {
     includes = with den.aspects; [
       limine
+      plymouth
       zram
+      bluetooth
 
+      locale-de
       desktop
       hyprland
       dms
 
+      development
       image-editing
       audio-editing
     ];

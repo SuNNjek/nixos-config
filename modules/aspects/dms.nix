@@ -73,6 +73,27 @@
 
     homeManager =
       { config, pkgs, ... }:
+      let
+        theme = {
+          package = pkgs.adw-gtk3;
+          name = "adw-gtk3-dark";
+        };
+
+        cursorTheme = {
+          package = pkgs.bibata-cursors;
+          name = "Bibata-Modern-Ice";
+          size = 24;
+        };
+
+        iconTheme = {
+          package = pkgs.vimix-icon-theme;
+          name = "Vimix-dark";
+        };
+
+        extraCss = ''
+          @import url("dank-colors.css");
+        '';
+      in
       {
         imports = [
           inputs.dms.homeModules.dank-material-shell
@@ -83,6 +104,8 @@
           packages = with pkgs; [
             pywalfox-native
           ];
+
+          pointerCursor = cursorTheme;
         };
 
         programs = {
@@ -122,30 +145,14 @@
           "~/.config/hypr/dms/layout.conf"
         ];
 
-        gtk =
-          let
-            theme = {
-              package = pkgs.adw-gtk3;
-              name = "adw-gtk3-dark";
-            };
+        gtk = {
+          enable = true;
+          inherit theme cursorTheme iconTheme;
 
-            iconTheme = {
-              package = pkgs.vimix-icon-theme;
-              name = "Vimix-dark";
-            };
-
-            extraCss = ''
-              @import url("dank-colors.css");
-            '';
-          in
-          {
-            enable = true;
-
-            inherit theme iconTheme;
-
-            gtk3 = { inherit extraCss theme iconTheme; };
-            gtk4 = { inherit extraCss theme iconTheme; };
-          };
+          gtk2 = { enable = true; inherit theme cursorTheme iconTheme; };
+          gtk3 = { enable = true; inherit extraCss theme cursorTheme iconTheme; };
+          gtk4 = { enable = true; inherit extraCss theme cursorTheme iconTheme; };
+        };
 
         qt = {
           enable = true;

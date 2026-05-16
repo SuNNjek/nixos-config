@@ -3,12 +3,17 @@
   den.aspects.robin-pc = {
     includes = with den.aspects; [
       limine
+      plymouth
       zram
+      bluetooth
 
+      locale-de
       desktop
       hyprland
       dms
+      howdy
 
+      development
       gaming
 
       video-editing
@@ -18,6 +23,8 @@
 
       audio-editing
       audio-editing._.recording
+
+      (den.batteries.unfree [ "makemkv" ])
     ];
 
     nixos = {
@@ -31,7 +38,7 @@
 
       boot = {
         extraModulePackages = [ ];
-        kernelModules = [ "kvm-amd" ];
+        kernelModules = [ "kvm-amd" "sg" ];
 
         initrd = {
           availableKernelModules = [
@@ -52,6 +59,13 @@
       };
 
       services.hardware.openrgb.enable = true;
+    };
+
+    homeManager = { pkgs, ... }: {
+      home.packages = with pkgs; [
+        kdePackages.k3b
+        makemkv
+      ];
     };
   };
 }

@@ -6,6 +6,8 @@ in
   den.aspects.development = {
     includes = [
       (den.batteries.add-user-to-group "podman")
+
+      (den.batteries.unfree [ "jetbrains-toolbox" "vscode" ])
     ];
 
     nixos =
@@ -58,19 +60,18 @@ in
           };
 
           vscode.enable = true;
-
-          # TODO: Add nemo module
-          # nemo.actions.open-with-vscode = {
-          #   Name = "Open with VS Code";
-          #   Comment = "Open the selected directory with VS Code";
-          #   Exec = "code %F";
-          #   Icon-Name = "com.visualstudio.code";
-          #   Selection = "none";
-          #   Extensions = [ "dir" ];
-          #   Quote = "double";
-          #   Dependencies = [ "code" ];
-          # };
         };
       };
+
+    nemo.actions.open-with-vscode = {
+      Name = "Open with VS Code";
+      Comment = "Open the selected directory with VS Code";
+      Exec = "code %F";
+      Icon-Name = "com.visualstudio.code";
+      Selection = "none";
+      Extensions = [ "dir" ];
+      Quote = "double";
+      Dependencies = [ "code" ];
+    };
   };
 }
