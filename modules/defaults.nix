@@ -13,7 +13,7 @@ in
     (with den.batteries; [ hostname host-aspects ]) ++
     (with den.aspects; [ overlays ]);
 
-  den.default.nixos = { pkgs, ... }: {
+  den.default.nixos = { config, pkgs, ... }: {
     system = { inherit stateVersion; };
 
     hardware.enableRedistributableFirmware = true;
@@ -39,6 +39,11 @@ in
       wget
       lm_sensors
     ];
+
+    console = {
+      earlySetup = config.boot.initrd.systemd.enable;
+      font = "Lat2-Terminus16";
+    };
 
     programs = {
       htop.enable = true;

@@ -1,8 +1,17 @@
 { lib, den, ... }:
+let
+  addUserToGamemodeGroup = { host, user, ... }: {
+    nixos.users.users.${user.userName}.extraGroups = [
+      "gamemode"
+    ];
+  };
+in
 {
   den.aspects.gaming = {
     includes = [
       (den.batteries.unfree [ "steam" "steam-unwrapped" ])
+
+      addUserToGamemodeGroup
     ];
 
     nixos =

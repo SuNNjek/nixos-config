@@ -5,7 +5,9 @@
       firefox
       nemo
       kitty
-    ];
+    ] ++ (with den.batteries; [
+      allow-passwordless-sudo
+    ]);
 
     nixos =
       { pkgs, ... }:

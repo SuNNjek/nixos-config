@@ -4,6 +4,8 @@
   proton-ge-bin,
   icoutils,
   umu-launcher,
+
+  compatTool ? proton-ge-bin.steamcompattool,
 }:
 writeShellApplication {
   # Like umu, but with the "m" inverted UwU
@@ -15,7 +17,7 @@ writeShellApplication {
   ];
 
   runtimeEnv = {
-    PROTONPATH = "${proton-ge-bin.steamcompattool}/";
+    PROTONPATH = "${compatTool}/";
     PROTON_VERBS = "waitforexitandrun";
 
     PROTON_ENABLE_WOW64 = "1";

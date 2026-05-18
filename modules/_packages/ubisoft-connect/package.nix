@@ -9,19 +9,27 @@
   wget,
   umu-launcher,
   proton-ge-bin,
-  gamemode,
 
   prefixPath ? "$HOME/Games/UbisoftConnect",
+
+  useGamemode ? true,
+  gamemode,
 }:
 let
+  addSpaceToPrefix = p: if p == "" then "" else "${p} ";
+
+  launchPrefix =
+    (lib.optional useGamemode "gamemoderun")
+    |> lib.join " "
+    |> addSpaceToPrefix;
+
   script = writeShellApplication {
     name = "ubisoft-connect-wrapper";
 
     runtimeInputs = [
       wget
       umu-launcher
-      gamemode
-    ];
+    ] ++ (lib.optional useGamemode gamemode);
 
     runtimeEnv = {
       SETUP_URL = "https://ubistatic3-a.akamaihd.net/orbit/launcher_installer/UbisoftConnectInstaller.exe";
@@ -55,7 +63,7 @@ let
         umu-run "$SETUP_DL_LOCATION"
       fi
 
-      gamemoderun umu-run "$LAUNCHER" "$@"
+      ${launchPrefix}umu-run "$LAUNCHER" "$@"
     '';
   };
 
