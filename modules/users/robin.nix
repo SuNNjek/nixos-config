@@ -16,7 +16,6 @@
         dms._.greeter-user
 
         vesktop
-        hyprland
         gpg
       ])
     ];

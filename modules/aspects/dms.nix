@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ lib, inputs, ... }:
 {
   flake-file.inputs = {
     dms = {
@@ -168,6 +168,28 @@
         programs.firefox.nativeMessagingHosts = with pkgs; [ pywalfox ];
         xdg.cacheFile."wal/colors.json".source =
           config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.cache/wal/dank-pywalfox.json";
+      };
+
+    niriConfig =
+      let
+        dmsFiles = [
+          "alttab"
+          "binds"
+          "colors"
+          "cursor"
+          "layout"
+          "outputs"
+          "windowrules"
+          "wpblur"
+        ];
+      in
+      {
+        _children = lib.map (file: {
+          include = {
+            _args = [ "dms/${file}.kdl" ];
+            _props.optional = true;
+          };
+        }) dmsFiles;
       };
 
     provides = {
