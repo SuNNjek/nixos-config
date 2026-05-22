@@ -26,6 +26,13 @@
             };
           };
 
+          input = {
+            touchpad = {
+              tap = {};
+              natural-scroll = {};
+            };
+          };
+
           layout = {
             center-focused-column = "on-overflow";
 
