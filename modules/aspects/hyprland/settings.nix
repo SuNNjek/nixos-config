@@ -2,7 +2,7 @@
 {
   den.aspects.hyprland.provides.settings = {
     homeManager =
-      { osConfig, ... }:
+      { osConfig, config, ... }:
       {
       wayland.windowManager.hyprland = {
         settings = {
@@ -21,7 +21,7 @@
           };
 
           input = {
-            kb_layout = "de";
+            kb_layout = config.home.keyboard.layout;
             # Focus window when clicking on it, not when hovering over it
             follow_mouse = 2;
 

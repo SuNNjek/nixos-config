@@ -5,13 +5,17 @@
 {
   den.default.nixos.virtualisation.vmVariant = {
     virtualisation = {
-      diskSize = 5 * 1024;
+      diskSize = 10 * 1024;
       cores = 4;
       memorySize = 8192;
 
       qemu.options = [
+        # VirtIO GPU acceleration
         "-device virtio-vga-gl"
         "-display sdl,gl=on"
+
+        # VirtIO sound
+        "-audio driver=sdl,model=virtio"
       ];
     };
   };

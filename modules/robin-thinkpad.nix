@@ -13,6 +13,7 @@
       locale-de
       desktop
       hyprland
+      #niri
       kanshi._.laptop
       dms
 

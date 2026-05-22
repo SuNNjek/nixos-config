@@ -1,36 +1,46 @@
-{
-  den.quirks.niriConfig = {
-    description = "Niri configuration";
-  };
+{ den, ... }: {
+  den.default.homeManager.imports = [
+    (import ./_hm.nix)
+  ];
 
   den.aspects.niri = {
+    includes = with den.aspects.niri._; [
+      binds
+      rules
+    ];
+
     nixos = {
       programs.niri.enable = true;
     };
 
-    homeManager = { lib, pkgs, niriConfig, ... }: {
-      xdg.configFile."niri/config.kdl" =
-        let
-          generator = lib.hm.generators.toKDL { };
-          settings = lib.mergeAttrsList niriConfig;
-          text = generator settings;
-        in
-        {
-          source = pkgs.writeTextFile {
-            name = "niri-config.kdl";
-            inherit text;
-            checkPhase = ''
-              ${lib.getExe pkgs.niri} validate --config "$target"
-          '';
-          };
-        };
-    };
+    homeManager = {
+      programs.niri = {
+        enable = true;
+        
+        config = {
+          prefer-no-csd = { };
 
-    niriConfig = {
-      input = {
-        keyboard = {
-          # For now...
-          layout = "de";
+          gestures = {
+            hot-corners = {
+              off = { };
+            };
+          };
+
+          layout = {
+            center-focused-column = "on-overflow";
+
+            default-column-width = {
+              proportion = 0.5;
+            };
+
+            preset-column-widths = {
+              _children = [
+                { proportion = 1.0 / 3.0; }
+                { proportion = 0.5; }
+                { proportion = 2.0 / 3.0; }
+              ];
+            };
+          };
         };
       };
     };

@@ -103,6 +103,10 @@
         home = {
           packages = with pkgs; [
             pywalfox-native
+
+            roboto
+            roboto-slab
+            nerd-fonts.roboto-mono
           ];
 
           pointerCursor = cursorTheme;
@@ -132,6 +136,28 @@
             include dank-theme.conf
             include dank-tabs.conf
           '';
+
+          niri.config =
+            let
+              dmsFiles = [
+                "alttab"
+                "binds"
+                "colors"
+                "cursor"
+                "layout"
+                "outputs"
+                "windowrules"
+                "wpblur"
+              ];
+            in
+            {
+              _children = lib.map (file: {
+                include = {
+                  _args = [ "dms/${file}.kdl" ];
+                  _props.optional = true;
+                };
+              }) dmsFiles;
+            };
         };
 
         services = {
@@ -149,9 +175,8 @@
           enable = true;
           inherit theme cursorTheme iconTheme;
 
-          gtk2 = { enable = true; inherit theme cursorTheme iconTheme; };
-          gtk3 = { enable = true; inherit extraCss theme cursorTheme iconTheme; };
-          gtk4 = { enable = true; inherit extraCss theme cursorTheme iconTheme; };
+          gtk3 = { inherit extraCss; };
+          gtk4 = { inherit extraCss theme; };
         };
 
         qt = {
@@ -165,31 +190,19 @@
           };
         };
 
+        fonts.fontconfig = {
+          enable = true;
+
+          defaultFonts = {
+            sansSerif = ["Roboto"];
+            serif = ["Roboto Slab"];
+            monospace = ["RobotoMono Nerd Font Mono"];
+          };
+        };
+
         programs.firefox.nativeMessagingHosts = with pkgs; [ pywalfox ];
         xdg.cacheFile."wal/colors.json".source =
           config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.cache/wal/dank-pywalfox.json";
-      };
-
-    niriConfig =
-      let
-        dmsFiles = [
-          "alttab"
-          "binds"
-          "colors"
-          "cursor"
-          "layout"
-          "outputs"
-          "windowrules"
-          "wpblur"
-        ];
-      in
-      {
-        _children = lib.map (file: {
-          include = {
-            _args = [ "dms/${file}.kdl" ];
-            _props.optional = true;
-          };
-        }) dmsFiles;
       };
 
     provides = {

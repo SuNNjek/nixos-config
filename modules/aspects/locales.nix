@@ -1,5 +1,5 @@
 let
-  localeDef = { locale, timeZone, keyMap, xdgLayout }: {
+  localeDef = { locale, timeZone, keyMap, xkbLayout }: {
     nixos = {
       i18n = {
         defaultLocale = locale;
@@ -10,11 +10,13 @@ let
 
       time = { inherit timeZone; };
       console = { inherit keyMap; };
+
+      services.xserver.xkb.layout = xkbLayout;
     };
 
     homeManager = {
       home = {
-        keyboard.layout = xdgLayout;
+        keyboard.layout = xkbLayout;
       };
     };
   };
@@ -24,6 +26,6 @@ in
     locale = "de_DE.UTF-8";
     keyMap = "de-latin1-nodeadkeys";
     timeZone = "Europe/Berlin";
-    xdgLayout = "de";
+    xkbLayout = "de";
   };
 }
