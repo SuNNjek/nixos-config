@@ -15,6 +15,7 @@
       (with den.aspects; [
         dms._.greeter-user
 
+        fastfetch
         vesktop
         gpg
       ])
