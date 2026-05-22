@@ -21,7 +21,7 @@
     ];
 
     homeManager =
-      { ... }:
+      { config, ... }:
       {
         home = {
           file.".face".source = ./buizel.png;
@@ -41,6 +41,11 @@
           };
 
           gpg.enable = true;
+
+          nh = {
+            enable = true;
+            flake = "${config.home.homeDirectory}/git/nixos-config";
+          };
 
           git = {
             settings = {
