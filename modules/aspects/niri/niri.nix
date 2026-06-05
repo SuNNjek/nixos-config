@@ -33,11 +33,15 @@
             };
           };
 
+          hotkey-overlay = {
+            skip-at-startup = {};
+          };
+
           layout = {
             center-focused-column = "on-overflow";
 
             default-column-width = {
-              proportion = 0.5;
+              proportion = 2.0 / 3.0;
             };
 
             preset-column-widths = {

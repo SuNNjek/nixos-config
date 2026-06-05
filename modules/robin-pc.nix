@@ -12,8 +12,9 @@
 
       locale-de
       desktop
-      hyprland
-      #niri
+      #hyprland
+      niri
+      niri._.dms
       kanshi._.pc
       dms
       howdy

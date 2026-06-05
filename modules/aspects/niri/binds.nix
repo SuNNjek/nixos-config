@@ -54,6 +54,14 @@ in
             bind = "spawn";
             bindArgs = [ "dms" "ipc" "call" "powermenu" "toggle" ];
           }
+          {
+            keys = ["Mod" "L"];
+            keyOptions = {
+              repeat = false;
+            };
+            bind = "spawn";
+            bindArgs = [ "dms" "ipc" "call" "lock" "lock" ];
+          }
 
           {
             keys = ["Mod" "Space"];
@@ -90,12 +98,20 @@ in
             bind = "focus-column-left";
           }
           {
+            keys = ["Mod" "WheelScrollUp"];
+            bind = "focus-column-left";
+          }
+          {
             keys = ["Mod" "Shift" "Left"];
             bind = "move-column-left";
           }
 
           {
             keys = ["Mod" "Right"];
+            bind = "focus-column-right";
+          }
+          {
+            keys = ["Mod" "WheelScrollDown"];
             bind = "focus-column-right";
           }
           {
@@ -126,12 +142,20 @@ in
             bind = "focus-workspace-down";
           }
           {
+            keys = ["Mod" "MouseBack"];
+            bind = "focus-workspace-down";
+          }
+          {
             keys = ["Mod" "Shift" "Page_Down"];
             bind = "move-column-to-workspace-down";
           }
 
           {
             keys = ["Mod" "Page_Up"];
+            bind = "focus-workspace-up";
+          }
+          {
+            keys = ["Mod" "MouseForward"];
             bind = "focus-workspace-up";
           }
           {
@@ -156,6 +180,39 @@ in
           {
             keys = ["Print"];
             bind = "screenshot";
+          }
+
+          {
+            keys = [ "XF86AudioRaiseVolume" ];
+            keyOptions = {
+              allow-when-locked = true;
+            };
+            bind = "spawn";
+            bindArgs = [ "dms" "ipc" "call" "audio" "increment" "5" ];
+          }
+          {
+            keys = [ "XF86AudioLowerVolume" ];
+            keyOptions = {
+              allow-when-locked = true;
+            };
+            bind = "spawn";
+            bindArgs = [ "dms" "ipc" "call" "audio" "decrement" "5" ];
+          }
+          {
+            keys = [ "XF86AudioMute" ];
+            keyOptions = {
+              allow-when-locked = true;
+            };
+            bind = "spawn";
+            bindArgs = [ "dms" "ipc" "call" "audio" "mute" ];
+          }
+          {
+            keys = [ "XF86AudioPlay" ];
+            keyOptions = {
+              allow-when-locked = true;
+            };
+            bind = "spawn";
+            bindArgs = [ "dms" "ipc" "call" "mpris" "playPause" ];
           }
 
           {

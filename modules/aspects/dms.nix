@@ -36,8 +36,9 @@
           enable = true;
 
           compositor = {
-            name = "hyprland";
-            customConfig = ''
+            # Use hyprland by default
+            name = lib.mkDefault "hyprland";
+            customConfig = lib.mkDefault ''
               env = HYPRCURSOR_THEME,${cursorCfg.name}
               env = XCURSOR_THEME,${cursorCfg.name}
 

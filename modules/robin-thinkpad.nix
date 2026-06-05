@@ -14,6 +14,7 @@
       desktop
       #hyprland
       niri
+      niri._.dms
       kanshi._.laptop
       dms
 
