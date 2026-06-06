@@ -1,22 +1,6 @@
 { lib, ... }:
 let
-  joinKeys = keys: lib.join "+" keys;
-
-  toBind = {
-    keys,
-    bind,
-    keyOptions ? {},
-    bindArgs ? []
-  }: {
-    ${joinKeys keys} = {
-      _props = keyOptions;
-      _children = [
-        {
-          ${bind} = bindArgs;
-        }
-      ];
-    };
-  };
+  niriLib = import ./_lib.nix { inherit lib; };
 
   generateWorkspaceBinds = ws: [
     {
@@ -38,7 +22,7 @@ in
   den.aspects.niri.provides.binds = {
     homeManager.programs.niri.config = {
       binds = {
-        _children = lib.map toBind ([
+        _children = lib.map niriLib.toBind ([
           {
             keys = ["Mod" "Q"];
             keyOptions = {
@@ -46,25 +30,9 @@ in
             };
             bind = "close-window";
           }
-          {
-            keys = ["Mod" "Shift" "Q"];
-            keyOptions = {
-              repeat = false;
-            };
-            bind = "spawn";
-            bindArgs = [ "dms" "ipc" "call" "powermenu" "toggle" ];
-          }
-          {
-            keys = ["Mod" "L"];
-            keyOptions = {
-              repeat = false;
-            };
-            bind = "spawn";
-            bindArgs = [ "dms" "ipc" "call" "lock" "lock" ];
-          }
 
           {
-            keys = ["Mod" "Space"];
+            keys = ["Mod" "O"];
             keyOptions = {
               repeat = false;
             };
@@ -182,38 +150,6 @@ in
             bind = "screenshot";
           }
 
-          {
-            keys = [ "XF86AudioRaiseVolume" ];
-            keyOptions = {
-              allow-when-locked = true;
-            };
-            bind = "spawn";
-            bindArgs = [ "dms" "ipc" "call" "audio" "increment" "5" ];
-          }
-          {
-            keys = [ "XF86AudioLowerVolume" ];
-            keyOptions = {
-              allow-when-locked = true;
-            };
-            bind = "spawn";
-            bindArgs = [ "dms" "ipc" "call" "audio" "decrement" "5" ];
-          }
-          {
-            keys = [ "XF86AudioMute" ];
-            keyOptions = {
-              allow-when-locked = true;
-            };
-            bind = "spawn";
-            bindArgs = [ "dms" "ipc" "call" "audio" "mute" ];
-          }
-          {
-            keys = [ "XF86AudioPlay" ];
-            keyOptions = {
-              allow-when-locked = true;
-            };
-            bind = "spawn";
-            bindArgs = [ "dms" "ipc" "call" "mpris" "playPause" ];
-          }
 
           {
             keys = [ "Mod" "T" ];

@@ -3,7 +3,7 @@
     (import ./_hm.nix)
   ];
 
-  den.aspects.niri = {
+  den.aspects.niri = { host, ... }: {
     includes = with den.aspects.niri._; [
       binds
       rules
