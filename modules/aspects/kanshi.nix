@@ -77,6 +77,8 @@
         ];
       };
     };
+
+    moveHyprlandWorkspace = pkgs: "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor 1 \"desc:${mainMonitor}\"";
   in
   {
     provides = {
@@ -86,7 +88,7 @@
           dual-monitor-outputs
         ];
 
-        homeManager = { pkgs, ... }: {
+        homeManager = { config, pkgs, ... }: {
           services.kanshi = {
             enable = true;
 
@@ -106,8 +108,7 @@
                   name = "docked";
                   exec = [
                     "${setPrimaryMonitor pkgs} \"${mainMonitor}\""
-                    "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor 1 \"desc:${mainMonitor}\""
-                  ];
+                  ] ++ lib.optional config.wayland.windowManager.hyprland.enable (moveHyprlandWorkspace pkgs);
                   outputs = [
                     {
                       criteria = "$laptopScreen";
@@ -134,7 +135,7 @@
           dual-monitor-outputs
         ];
 
-        homeManager = { pkgs, ... }: {
+        homeManager = { config, pkgs, ... }: {
           services.kanshi = {
             enable = true;
 
@@ -144,8 +145,7 @@
                   name = "PC";
                   exec = [
                     "${setPrimaryMonitor pkgs} \"${mainMonitor}\""
-                    "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor 1 \"desc:${mainMonitor}\""
-                  ];
+                  ] ++ lib.optional config.wayland.windowManager.hyprland.enable (moveHyprlandWorkspace pkgs);
                   outputs = [
                     {
                       criteria = "$mainMonitor";
