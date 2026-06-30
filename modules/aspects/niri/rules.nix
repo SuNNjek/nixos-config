@@ -24,6 +24,20 @@ in
               open-floating = true;
             };
           }
+
+          {
+            matches = [
+              { app-id = "steam"; title = "^notificationtoasts_\\\\d+_desktop$"; }
+            ];
+
+            props = {
+              default-floating-position._props = {
+                x = 0;
+                y = 0;
+                relative-to = "bottom-right";
+              };
+            };
+          }
         ];
       in
       {
