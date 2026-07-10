@@ -10,6 +10,11 @@
       url = "github:AvengeMedia/danksearch/v0.3.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    dcal = {
+      url = "github:AvengeMedia/dankcalendar/v0.2.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   den.aspects.dms = {
@@ -99,6 +104,7 @@
         imports = [
           inputs.dms.homeModules.dank-material-shell
           inputs.dsearch.homeModules.default
+          inputs.dcal.homeModules.default
         ];
 
         home = {
@@ -131,6 +137,11 @@
                 }
               ];
             };
+          };
+
+          dank-calendar = {
+            enable = true;
+            systemd.enable = true;
           };
 
           kitty.extraConfig = ''

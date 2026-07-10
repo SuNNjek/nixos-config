@@ -8,6 +8,10 @@
       url = "github:SuNNjek/csd-titlebar-move";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dcal = {
+      url = "github:AvengeMedia/dankcalendar/v0.2.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     den.url = "github:denful/den/v0.17.0";
     disko = {
       url = "github:nix-community/disko/v1.12.0";
