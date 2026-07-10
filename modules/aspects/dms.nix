@@ -7,7 +7,7 @@
     };
     
     dsearch = {
-      url = "github:AvengeMedia/danksearch/v0.2.0";
+      url = "github:AvengeMedia/danksearch/v0.3.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
