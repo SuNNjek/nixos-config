@@ -57,6 +57,9 @@
 
         # Image viewer
         image-roll
+
+        # Resource monitor
+        mission-center
       ];
 
       programs = {
