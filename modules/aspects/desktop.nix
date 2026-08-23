@@ -39,6 +39,7 @@
           # Set default applications
           defaultApplicationPackages = with pkgs; [
             mpc-qt
+            zathura
             image-roll
           ];
         };
