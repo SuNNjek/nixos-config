@@ -1,4 +1,4 @@
-{ inputs, den, ... }:
+{ inputs, self, den, ... }:
 {
   den.aspects.robin-thinkpad = {
     includes = with den.aspects; [
@@ -23,9 +23,10 @@
       audio-editing
     ];
 
-    nixos = {
+    nixos = { pkgs, ... }: {
       imports = [
         inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480s
+        self.nixosModules.open-fprintd
       ];
 
       boot = {
@@ -49,6 +50,12 @@
 
       services = {
         power-profiles-daemon.enable = true;
+        open-fprintd = {
+          enable = true;
+          pamServices = [ "login" "greetd" ];
+
+          validity.enable = true;
+        };
       };
     };
   };
