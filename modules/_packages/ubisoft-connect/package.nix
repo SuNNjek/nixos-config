@@ -24,7 +24,7 @@ let
     |> addSpaceToPrefix;
 
   script = writeShellApplication {
-    name = "ubisoft-connect-wrapper";
+    name = "ubisoft-connect";
 
     runtimeInputs = [
       wget
@@ -92,6 +92,7 @@ in
 symlinkJoin {
   name = "ubisoft-connect";
   paths = [
+    script
     desktopItem
     icon
   ];
