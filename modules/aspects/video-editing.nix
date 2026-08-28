@@ -6,6 +6,7 @@
         home.packages = with pkgs; [
           kdePackages.kdenlive
           ffmpeg-full
+          handbrake
           ccextractor
         ];
       };
