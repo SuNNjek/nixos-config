@@ -144,7 +144,7 @@ in
                 allow-when-locked = true;
               };
               bind = "spawn";
-              bindArgs = [ "wpctl" "set-volume" "@DEFAULT_SINK@" "5%+" ];
+              bindArgs = [ "wpctl" "set-volume" "-l" "1.0" "@DEFAULT_SINK@" "5%+" ];
             }
             {
               keys = [ "XF86AudioLowerVolume" ];
@@ -152,7 +152,7 @@ in
                 allow-when-locked = true;
               };
               bind = "spawn";
-              bindArgs = [ "wpctl" "set-volume" "@DEFAULT_SINK@" "5%-" ];
+              bindArgs = [ "wpctl" "set-volume" "-l" "1.0" "@DEFAULT_SINK@" "5%-" ];
             }
             {
               keys = [ "XF86AudioMute" ];
