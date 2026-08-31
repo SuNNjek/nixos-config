@@ -42,14 +42,6 @@ in
             bind = "spawn";
             bindArgs = [ "dms" "ipc" "call" "powermenu" "toggle" ];
           }
-          {
-            keys = ["Mod" "L"];
-            keyOptions = {
-              repeat = false;
-            };
-            bind = "spawn";
-            bindArgs = [ "dms" "ipc" "call" "lock" "lock" ];
-          }
 
           {
             keys = ["Mod" "Space"];
@@ -58,40 +50,6 @@ in
             };
             bind = "spawn";
             bindArgs = [ "dms" "ipc" "call" "spotlight" "toggle" ];
-          }
-
-
-          {
-            keys = [ "XF86AudioRaiseVolume" ];
-            keyOptions = {
-              allow-when-locked = true;
-            };
-            bind = "spawn";
-            bindArgs = [ "dms" "ipc" "call" "audio" "increment" "5" ];
-          }
-          {
-            keys = [ "XF86AudioLowerVolume" ];
-            keyOptions = {
-              allow-when-locked = true;
-            };
-            bind = "spawn";
-            bindArgs = [ "dms" "ipc" "call" "audio" "decrement" "5" ];
-          }
-          {
-            keys = [ "XF86AudioMute" ];
-            keyOptions = {
-              allow-when-locked = true;
-            };
-            bind = "spawn";
-            bindArgs = [ "dms" "ipc" "call" "audio" "mute" ];
-          }
-          {
-            keys = [ "XF86AudioPlay" ];
-            keyOptions = {
-              allow-when-locked = true;
-            };
-            bind = "spawn";
-            bindArgs = [ "dms" "ipc" "call" "mpris" "playPause" ];
           }
         ];
       };

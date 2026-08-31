@@ -13,10 +13,15 @@
       programs.niri.enable = true;
     };
 
-    homeManager = {
+    homeManager = { pkgs, ... }: {
       systemd.user.sessionVariables = {
         NIXOS_OZONE_WL = "1";
       };
+
+      home.packages = with pkgs; [
+        wireplumber
+        playerctl
+      ];
 
       programs.niri = {
         enable = true;

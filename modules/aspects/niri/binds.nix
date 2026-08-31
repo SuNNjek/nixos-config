@@ -136,10 +136,45 @@ in
           };
 
           monitor = monitorLeft ++ monitorRight ++ monitorUp ++ monitorDown;
+
+          audioBinds = [
+            {
+              keys = [ "XF86AudioRaiseVolume" ];
+              keyOptions = {
+                allow-when-locked = true;
+              };
+              bind = "spawn";
+              bindArgs = [ "wpctl" "set-volume" "@DEFAULT_SINK@" "5%+" ];
+            }
+            {
+              keys = [ "XF86AudioLowerVolume" ];
+              keyOptions = {
+                allow-when-locked = true;
+              };
+              bind = "spawn";
+              bindArgs = [ "wpctl" "set-volume" "@DEFAULT_SINK@" "5%-" ];
+            }
+            {
+              keys = [ "XF86AudioMute" ];
+              keyOptions = {
+                allow-when-locked = true;
+              };
+              bind = "spawn";
+              bindArgs = [ "wpctl" "set-mute" "@DEFAULT_SINK@" "toggle" ];
+            }
+            {
+              keys = [ "XF86AudioPlay" ];
+              keyOptions = {
+                allow-when-locked = true;
+              };
+              bind = "spawn";
+              bindArgs = [ "playerctl" "play-pause" ];
+            }
+          ];
         in
         {
         _children = lib.map niriLib.toBind (
-          window ++ column ++ workspace ++ monitor ++ [
+          window ++ column ++ workspace ++ monitor ++ audioBinds ++ [
           {
             keys = ["Mod" "Q"];
             keyOptions = {
@@ -181,6 +216,15 @@ in
           {
             keys = ["Mod" "V"];
             bind = "toggle-window-floating";
+          }
+
+          {
+            keys = ["Mod" "L"];
+            keyOptions = {
+              repeat = false;
+            };
+            bind = "spawn";
+            bindArgs = [ "loginctl" "lock-session" ];
           }
 
           {
