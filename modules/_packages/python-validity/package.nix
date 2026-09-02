@@ -2,7 +2,8 @@
   fetchFromGitHub,
   python3Packages,
   wrapGAppsNoGuiHook,
-}: python3Packages.buildPythonApplication rec {
+}:
+python3Packages.buildPythonApplication rec {
   pname = "python-validity";
   version = "0.15";
 

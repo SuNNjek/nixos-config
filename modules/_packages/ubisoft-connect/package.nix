@@ -18,10 +18,7 @@
 let
   addSpaceToPrefix = p: if p == "" then "" else "${p} ";
 
-  launchPrefix =
-    (lib.optional useGamemode "gamemoderun")
-    |> lib.join " "
-    |> addSpaceToPrefix;
+  launchPrefix = (lib.optional useGamemode "gamemoderun") |> lib.join " " |> addSpaceToPrefix;
 
   script = writeShellApplication {
     name = "ubisoft-connect";
@@ -29,7 +26,8 @@ let
     runtimeInputs = [
       wget
       umu-launcher
-    ] ++ (lib.optional useGamemode gamemode);
+    ]
+    ++ (lib.optional useGamemode gamemode);
 
     runtimeEnv = {
       SETUP_URL = "https://ubistatic3-a.akamaihd.net/orbit/launcher_installer/UbisoftConnectInstaller.exe";

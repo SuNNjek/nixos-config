@@ -26,7 +26,8 @@
               };
             };
         };
-      in {
+      in
+      {
         # Equivalent (for now?)
         streaming.includes = [ obs ];
         recording.includes = [ obs ];

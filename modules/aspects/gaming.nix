@@ -9,7 +9,10 @@ in
 {
   den.aspects.gaming = {
     includes = [
-      (den.batteries.unfree [ "steam" "steam-unwrapped" ])
+      (den.batteries.unfree [
+        "steam"
+        "steam-unwrapped"
+      ])
 
       addUserToGamemodeGroup
     ];

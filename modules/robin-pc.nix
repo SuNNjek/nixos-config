@@ -44,7 +44,10 @@
 
       boot = {
         extraModulePackages = [ ];
-        kernelModules = [ "kvm-amd" "sg" ];
+        kernelModules = [
+          "kvm-amd"
+          "sg"
+        ];
 
         initrd = {
           availableKernelModules = [

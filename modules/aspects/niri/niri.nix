@@ -25,7 +25,7 @@
 
       programs.niri = {
         enable = true;
-        
+
         config = {
           prefer-no-csd = { };
 
@@ -37,13 +37,13 @@
 
           input = {
             touchpad = {
-              tap = {};
-              natural-scroll = {};
+              tap = { };
+              natural-scroll = { };
             };
           };
 
           hotkey-overlay = {
-            skip-at-startup = {};
+            skip-at-startup = { };
           };
 
           layout = {

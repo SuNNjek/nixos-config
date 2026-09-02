@@ -15,6 +15,7 @@ let
     ];
   };
 
-in {
+in
+{
   den.batteries.initial-password = initialPassword;
 }

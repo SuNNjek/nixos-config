@@ -24,9 +24,9 @@
     { pkgs, ... }:
     {
       packages = lib.mapAttrs' (
-        name:
-        host:
-          lib.nameValuePair "${name}-vm" (pkgs.writeShellApplication {
+        name: host:
+        lib.nameValuePair "${name}-vm" (
+          pkgs.writeShellApplication {
             name = "${name}-vm";
             text =
               let
@@ -35,7 +35,8 @@
               ''
                 ${config.system.build.vm}/bin/run-${config.networking.hostName}-vm "$@"
               '';
-          })
-        ) inputs.self.nixosConfigurations;
+          }
+        )
+      ) inputs.self.nixosConfigurations;
     };
 }

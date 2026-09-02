@@ -35,21 +35,40 @@ in
       binds = {
         _children = lib.map niriLib.toBind [
           {
-            keys = ["Mod" "Shift" "Q"];
+            keys = [
+              "Mod"
+              "Shift"
+              "Q"
+            ];
             keyOptions = {
               repeat = false;
             };
             bind = "spawn";
-            bindArgs = [ "dms" "ipc" "call" "powermenu" "toggle" ];
+            bindArgs = [
+              "dms"
+              "ipc"
+              "call"
+              "powermenu"
+              "toggle"
+            ];
           }
 
           {
-            keys = ["Mod" "Space"];
+            keys = [
+              "Mod"
+              "Space"
+            ];
             keyOptions = {
               repeat = false;
             };
             bind = "spawn";
-            bindArgs = [ "dms" "ipc" "call" "spotlight" "toggle" ];
+            bindArgs = [
+              "dms"
+              "ipc"
+              "call"
+              "spotlight"
+              "toggle"
+            ];
           }
         ];
       };

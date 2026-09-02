@@ -1,13 +1,16 @@
 { den, ... }: {
   den.aspects.desktop = {
-    includes = with den.aspects; [
-      pipewire
-      firefox
-      nemo
-      kitty
-    ] ++ (with den.batteries; [
-      allow-passwordless-sudo
-    ]);
+    includes =
+      with den.aspects;
+      [
+        pipewire
+        firefox
+        nemo
+        kitty
+      ]
+      ++ (with den.batteries; [
+        allow-passwordless-sudo
+      ]);
 
     nixos =
       { pkgs, ... }:

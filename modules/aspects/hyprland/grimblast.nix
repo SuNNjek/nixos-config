@@ -2,7 +2,12 @@
 {
   den.aspects.hyprland.provides.grimblast = {
     homeManager =
-      { config, lib, pkgs, ... }:
+      {
+        config,
+        lib,
+        pkgs,
+        ...
+      }:
       {
         home = {
           packages = [ pkgs.grimblast ];

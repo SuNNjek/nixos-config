@@ -5,7 +5,7 @@
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     dsearch = {
       url = "github:AvengeMedia/danksearch/v0.3.2";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -75,7 +75,7 @@
             '';
           };
         };
-    };
+      };
 
     homeManager =
       { config, pkgs, ... }:
@@ -206,9 +206,9 @@
           enable = true;
 
           defaultFonts = {
-            sansSerif = ["Roboto"];
-            serif = ["Roboto Slab"];
-            monospace = ["RobotoMono Nerd Font Mono"];
+            sansSerif = [ "Roboto" ];
+            serif = [ "Roboto Slab" ];
+            monospace = [ "RobotoMono Nerd Font Mono" ];
           };
         };
 

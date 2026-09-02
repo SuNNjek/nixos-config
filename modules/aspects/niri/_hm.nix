@@ -1,5 +1,10 @@
 # Custom home manager module until https://github.com/nix-community/home-manager/pull/8700 is merged
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.programs.niri;
 in
@@ -58,7 +63,7 @@ in
           inherit text;
           checkPhase = ''
             ${lib.getExe pkgs.niri} validate --config "$target"
-        '';
+          '';
         };
       };
   };

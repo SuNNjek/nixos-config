@@ -1,4 +1,9 @@
-{ inputs, self, den, ... }:
+{
+  inputs,
+  self,
+  den,
+  ...
+}:
 {
   den.aspects.robin-thinkpad = {
     includes = with den.aspects; [
@@ -52,7 +57,10 @@
         power-profiles-daemon.enable = true;
         open-fprintd = {
           enable = true;
-          pamServices = [ "login" "greetd" ];
+          pamServices = [
+            "login"
+            "greetd"
+          ];
 
           validity.enable = true;
         };

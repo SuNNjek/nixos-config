@@ -7,7 +7,10 @@ in
     includes = [
       (den.batteries.add-user-to-group "podman")
 
-      (den.batteries.unfree [ "jetbrains-toolbox" "vscode" ])
+      (den.batteries.unfree [
+        "jetbrains-toolbox"
+        "vscode"
+      ])
     ];
 
     nixos =

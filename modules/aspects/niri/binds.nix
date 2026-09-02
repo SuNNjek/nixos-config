@@ -3,30 +3,42 @@ let
   niriLib = import ./_lib.nix args;
 
   windowManagementBind =
-    { keys, focus, focusArgs ? [], move, moveArgs ? [] }:
-      keys
-      |> lib.map (combo: [
-          {
-            keys = ([ "Mod" ] ++ combo);
-            bind = focus;
-            bindArgs = focusArgs;
-          }
-          {
-            keys = [ "Mod" "Shift" ] ++ combo;
-            bind = move;
-            bindArgs = moveArgs;
-          }
-        ])
-      |> lib.flatten;
+    {
+      keys,
+      focus,
+      focusArgs ? [ ],
+      move,
+      moveArgs ? [ ],
+    }:
+    keys
+    |> lib.map (combo: [
+      {
+        keys = ([ "Mod" ] ++ combo);
+        bind = focus;
+        bindArgs = focusArgs;
+      }
+      {
+        keys = [
+          "Mod"
+          "Shift"
+        ]
+        ++ combo;
+        bind = move;
+        bindArgs = moveArgs;
+      }
+    ])
+    |> lib.flatten;
 
-  generateWorkspaceBinds = ws: windowManagementBind {
-    keys = [[(toString ws)]];
+  generateWorkspaceBinds =
+    ws:
+    windowManagementBind {
+      keys = [ [ (toString ws) ] ];
 
-    focus = "focus-workspace";
-    focusArgs = [(toString ws)];
-    move = "move-window-to-workspace";
-    moveArgs = [(toString ws)];
-  };
+      focus = "focus-workspace";
+      focusArgs = [ (toString ws) ];
+      move = "move-window-to-workspace";
+      moveArgs = [ (toString ws) ];
+    };
 in
 {
   den.aspects.niri.provides.binds = {
@@ -58,13 +70,19 @@ in
           numberedWorkspace = lib.flatten (lib.genList (ws: generateWorkspaceBinds (ws + 1)) 9);
 
           columnLeft = windowManagementBind {
-            keys = [ ["Left"] ["WheelScrollUp"] ];
+            keys = [
+              [ "Left" ]
+              [ "WheelScrollUp" ]
+            ];
             focus = "focus-column-left";
             move = "move-column-left";
           };
 
           columnRight = windowManagementBind {
-            keys = [ ["Right"] ["WheelScrollDown"] ];
+            keys = [
+              [ "Right" ]
+              [ "WheelScrollDown" ]
+            ];
             focus = "focus-column-right";
             move = "move-column-right";
           };
@@ -72,25 +90,25 @@ in
           column = columnLeft ++ columnRight;
 
           windowLeft = windowManagementBind {
-            keys = [ ["Comma"] ];
+            keys = [ [ "Comma" ] ];
             focus = "focus-window-up-or-column-left";
             move = "consume-or-expel-window-left";
           };
 
           windowRight = windowManagementBind {
-            keys = [ ["Period"] ];
+            keys = [ [ "Period" ] ];
             focus = "focus-window-down-or-column-right";
             move = "consume-or-expel-window-right";
           };
 
           windowUp = windowManagementBind {
-            keys = [ ["Up"] ];
+            keys = [ [ "Up" ] ];
             focus = "focus-window-up";
             move = "move-window-up";
           };
 
           windowDown = windowManagementBind {
-            keys = [ ["Down"] ];
+            keys = [ [ "Down" ] ];
             focus = "focus-window-down";
             move = "move-window-down";
           };
@@ -98,13 +116,19 @@ in
           window = windowLeft ++ windowRight ++ windowUp ++ windowDown;
 
           workspaceDown = windowManagementBind {
-            keys = [["Page_Down"] ["MouseBack"]];
+            keys = [
+              [ "Page_Down" ]
+              [ "MouseBack" ]
+            ];
             focus = "focus-workspace-down";
             move = "move-column-to-workspace-down";
           };
 
           workspaceUp = windowManagementBind {
-            keys = [["Page_Up"] ["MouseForward"]];
+            keys = [
+              [ "Page_Up" ]
+              [ "MouseForward" ]
+            ];
             focus = "focus-workspace-up";
             move = "move-column-to-workspace-up";
           };
@@ -112,25 +136,53 @@ in
           workspace = workspaceUp ++ workspaceDown ++ numberedWorkspace;
 
           monitorLeft = windowManagementBind {
-            keys = [[ "Alt" "Left" ] [ "Alt" "WheelScrollUp" ]];
+            keys = [
+              [
+                "Alt"
+                "Left"
+              ]
+              [
+                "Alt"
+                "WheelScrollUp"
+              ]
+            ];
             focus = "focus-monitor-left";
             move = "move-column-to-monitor-left";
           };
 
           monitorRight = windowManagementBind {
-            keys = [[ "Alt" "Right" ] [ "Alt" "WheelScrollDown" ]];
+            keys = [
+              [
+                "Alt"
+                "Right"
+              ]
+              [
+                "Alt"
+                "WheelScrollDown"
+              ]
+            ];
             focus = "focus-monitor-right";
             move = "move-column-to-monitor-right";
           };
 
           monitorUp = windowManagementBind {
-            keys = [[ "Alt" "Up" ]];
+            keys = [
+              [
+                "Alt"
+                "Up"
+              ]
+            ];
             focus = "focus-monitor-up";
             move = "move-column-to-monitor-up";
           };
 
           monitorDown = windowManagementBind {
-            keys = [[ "Alt" "Down" ]];
+            keys = [
+              [
+                "Alt"
+                "Down"
+              ]
+            ];
             focus = "focus-monitor-down";
             move = "move-column-to-monitor-down";
           };
@@ -144,7 +196,14 @@ in
                 allow-when-locked = true;
               };
               bind = "spawn";
-              bindArgs = [ "wpctl" "set-volume" "-l" "1.0" "@DEFAULT_SINK@" "5%+" ];
+              bindArgs = [
+                "wpctl"
+                "set-volume"
+                "-l"
+                "1.0"
+                "@DEFAULT_SINK@"
+                "5%+"
+              ];
             }
             {
               keys = [ "XF86AudioLowerVolume" ];
@@ -152,7 +211,14 @@ in
                 allow-when-locked = true;
               };
               bind = "spawn";
-              bindArgs = [ "wpctl" "set-volume" "-l" "1.0" "@DEFAULT_SINK@" "5%-" ];
+              bindArgs = [
+                "wpctl"
+                "set-volume"
+                "-l"
+                "1.0"
+                "@DEFAULT_SINK@"
+                "5%-"
+              ];
             }
             {
               keys = [ "XF86AudioMute" ];
@@ -160,7 +226,12 @@ in
                 allow-when-locked = true;
               };
               bind = "spawn";
-              bindArgs = [ "wpctl" "set-mute" "@DEFAULT_SINK@" "toggle" ];
+              bindArgs = [
+                "wpctl"
+                "set-mute"
+                "@DEFAULT_SINK@"
+                "toggle"
+              ];
             }
             {
               keys = [ "XF86AudioPlay" ];
@@ -168,84 +239,130 @@ in
                 allow-when-locked = true;
               };
               bind = "spawn";
-              bindArgs = [ "playerctl" "play-pause" ];
+              bindArgs = [
+                "playerctl"
+                "play-pause"
+              ];
             }
           ];
         in
         {
-        _children = lib.map niriLib.toBind (
-          window ++ column ++ workspace ++ monitor ++ audioBinds ++ [
-          {
-            keys = ["Mod" "Q"];
-            keyOptions = {
-              repeat = false;
-            };
-            bind = "close-window";
-          }
+          _children = lib.map niriLib.toBind (
+            window
+            ++ column
+            ++ workspace
+            ++ monitor
+            ++ audioBinds
+            ++ [
+              {
+                keys = [
+                  "Mod"
+                  "Q"
+                ];
+                keyOptions = {
+                  repeat = false;
+                };
+                bind = "close-window";
+              }
 
-          {
-            keys = ["Mod" "O"];
-            keyOptions = {
-              repeat = false;
-            };
-            bind = "toggle-overview";
-          }
+              {
+                keys = [
+                  "Mod"
+                  "O"
+                ];
+                keyOptions = {
+                  repeat = false;
+                };
+                bind = "toggle-overview";
+              }
 
-          {
-            keys = ["Mod" "C"];
-            bind = "center-column";
-          }
-          {
-            keys = ["Mod" "F"];
-            bind = "maximize-column";
-          }
-          {
-            keys = ["Mod" "Shift" "F"];
-            bind = "fullscreen-window";
-          }
+              {
+                keys = [
+                  "Mod"
+                  "C"
+                ];
+                bind = "center-column";
+              }
+              {
+                keys = [
+                  "Mod"
+                  "F"
+                ];
+                bind = "maximize-column";
+              }
+              {
+                keys = [
+                  "Mod"
+                  "Shift"
+                  "F"
+                ];
+                bind = "fullscreen-window";
+              }
 
-          {
-            keys = ["Mod" "R"];
-            bind = "switch-preset-column-width";
-          }
-          {
-            keys = ["Mod" "Shift" "R"];
-            bind = "switch-preset-column-width-back";
-          }
+              {
+                keys = [
+                  "Mod"
+                  "R"
+                ];
+                bind = "switch-preset-column-width";
+              }
+              {
+                keys = [
+                  "Mod"
+                  "Shift"
+                  "R"
+                ];
+                bind = "switch-preset-column-width-back";
+              }
 
-          {
-            keys = ["Mod" "V"];
-            bind = "toggle-window-floating";
-          }
+              {
+                keys = [
+                  "Mod"
+                  "V"
+                ];
+                bind = "toggle-window-floating";
+              }
 
-          {
-            keys = ["Mod" "L"];
-            keyOptions = {
-              repeat = false;
-            };
-            bind = "spawn";
-            bindArgs = [ "loginctl" "lock-session" ];
-          }
+              {
+                keys = [
+                  "Mod"
+                  "L"
+                ];
+                keyOptions = {
+                  repeat = false;
+                };
+                bind = "spawn";
+                bindArgs = [
+                  "loginctl"
+                  "lock-session"
+                ];
+              }
 
-          {
-            keys = ["Print"];
-            bind = "screenshot";
-          }
+              {
+                keys = [ "Print" ];
+                bind = "screenshot";
+              }
 
+              {
+                keys = [
+                  "Mod"
+                  "T"
+                ];
+                bind = "spawn";
+                bindArgs = [ "kitty" ];
+              }
 
-          {
-            keys = [ "Mod" "T" ];
-            bind = "spawn";
-            bindArgs = [ "kitty" ];
-          }
-
-          {
-            keys = [ "Mod" "B" ];
-            bind = "spawn";
-            bindArgs = [ "firefox" ];
-          }
-        ]);
-      };
+              {
+                keys = [
+                  "Mod"
+                  "B"
+                ];
+                bind = "spawn";
+                bindArgs = [ "firefox" ];
+              }
+            ]
+          );
+        };
     };
   };
 }

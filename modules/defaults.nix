@@ -1,7 +1,7 @@
 { lib, den, ... }:
-let 
+let
   stateVersion = "25.05";
-in 
+in
 {
   # enable hm by default
   den.schema.user = {
@@ -10,8 +10,11 @@ in
   };
 
   den.default.includes =
-    (with den.batteries; [ hostname host-aspects ]) ++
-    (with den.aspects; [ overlays ]);
+    (with den.batteries; [
+      hostname
+      host-aspects
+    ])
+    ++ (with den.aspects; [ overlays ]);
 
   den.default.nixos = { config, pkgs, ... }: {
     system = { inherit stateVersion; };

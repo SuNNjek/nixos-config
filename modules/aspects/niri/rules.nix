@@ -1,13 +1,15 @@
 { lib, ... }:
 let
-  toWindowRule = {
-    matches,
-    props,
-  }: {
-    window-rule = {
-      _children = (lib.map (m: { match._props = m; }) matches) ++ [props];
+  toWindowRule =
+    {
+      matches,
+      props,
+    }:
+    {
+      window-rule = {
+        _children = (lib.map (m: { match._props = m; }) matches) ++ [ props ];
+      };
     };
-  };
 in
 {
   den.aspects.niri.provides.rules = {
@@ -16,8 +18,14 @@ in
         rules = lib.map toWindowRule [
           {
             matches = [
-              { app-id = "firefox$"; title = "^Picture-in-Picture$"; }
-              { app-id = "firefox$"; title = "^Bild-im-Bild$"; }
+              {
+                app-id = "firefox$";
+                title = "^Picture-in-Picture$";
+              }
+              {
+                app-id = "firefox$";
+                title = "^Bild-im-Bild$";
+              }
             ];
 
             props = {
@@ -27,7 +35,10 @@ in
 
           {
             matches = [
-              { app-id = "steam"; title = "^notificationtoasts_\\\\d+_desktop$"; }
+              {
+                app-id = "steam";
+                title = "^notificationtoasts_\\\\d+_desktop$";
+              }
             ];
 
             props = {
