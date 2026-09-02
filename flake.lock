@@ -264,7 +264,28 @@
         "home-manager": "home-manager",
         "import-tree": "import-tree",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "rotate-plugin": "rotate-plugin"
+      }
+    },
+    "rotate-plugin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1788814910,
+        "narHash": "sha256-O2Pg3S3CPYGMQLvkhchuVvCmT0I+sQw6y8bc8+XK0Uk=",
+        "owner": "SuNNjek",
+        "repo": "rotate-plugin",
+        "rev": "4ea47a29cbf90537bec06ce1fd27960ce65a729f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "SuNNjek",
+        "repo": "rotate-plugin",
+        "type": "github"
       }
     }
   },

@@ -1,0 +1,13 @@
+diff --git a/src/avisynth/avssources.h b/src/avisynth/avssources.h
+index 73a972b..25145b8 100644
+--- a/src/avisynth/avssources.h
++++ b/src/avisynth/avssources.h
+@@ -25,7 +25,7 @@
+ #ifdef _WIN32
+ #include <windows.h>
+ #endif
+-#include <avisynth.h>
++#include <avisynth/avisynth.h>
+ #include "ffms.h"
+ 
+ struct ErrorInfo : FFMS_ErrorInfo {

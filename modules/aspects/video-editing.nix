@@ -1,5 +1,23 @@
-{
+{ self, inputs, ... }: {
+  flake-file.inputs = {
+    rotate-plugin = {
+      url = "github:SuNNjek/rotate-plugin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
   den.aspects.video-editing = {
+    nixos = { pkgs, ... }: {
+      nixpkgs.overlays = [self.overlays.ffms2];
+
+      environment.systemPackages = with pkgs; [
+        avisynthplus
+        ffms
+
+        inputs.rotate-plugin.packages.${pkgs.stdenv.hostPlatform.system}.default
+      ];
+    };
+
     homeManager =
       { pkgs, ... }:
       {

@@ -37,5 +37,9 @@
     import-tree.url = "github:vic/import-tree";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz";
+    rotate-plugin = {
+      url = "github:SuNNjek/rotate-plugin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }
