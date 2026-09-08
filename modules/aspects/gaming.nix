@@ -49,7 +49,7 @@ in
         steamAutostart = pkgs.makeDesktopItem {
           name = "steam";
           desktopName = "Steam";
-          exec = "${lib.getExe pkgs.steam} -nochatui -nofriendsui -silent";
+          exec = "steam -nochatui -nofriendsui -silent";
         };
       in
       {
