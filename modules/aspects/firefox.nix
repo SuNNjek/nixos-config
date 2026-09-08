@@ -17,6 +17,8 @@
             SponsoredStories = false;
           };
         };
+
+        nativeMessagingHosts = with pkgs; [ pywalfox ];
       };
 
       xdg.mimeApps.defaultApplicationPackages = [

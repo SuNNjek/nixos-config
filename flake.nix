@@ -9,20 +9,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dcal = {
-      url = "github:AvengeMedia/dankcalendar/v0.2.2";
+      url = "github:AvengeMedia/dankcalendar/v1.6.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     den.url = "github:denful/den/v0.17.0";
     disko = {
       url = "github:nix-community/disko/v1.12.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    dms = {
-      url = "github:AvengeMedia/DankMaterialShell/stable";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    dsearch = {
-      url = "github:AvengeMedia/danksearch/v0.3.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-file.url = "github:vic/flake-file";

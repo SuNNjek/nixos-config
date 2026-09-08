@@ -1,18 +1,8 @@
 { lib, inputs, ... }:
 {
   flake-file.inputs = {
-    dms = {
-      url = "github:AvengeMedia/DankMaterialShell/stable";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    dsearch = {
-      url = "github:AvengeMedia/danksearch/v0.3.2";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     dcal = {
-      url = "github:AvengeMedia/dankcalendar/v0.2.2";
+      url = "github:AvengeMedia/dankcalendar/v1.6.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -28,16 +18,37 @@
         };
       in
       {
-        imports = [
-          inputs.dms.nixosModules.greeter
-        ];
-
         environment.sessionVariables = {
           XDG_DATA_DIRS = [ "${cursorCfg.package}/share" ];
           XCURSOR_PATH = [ "${cursorCfg.package}/share/icons" ];
         };
 
-        programs.dank-material-shell.greeter = {
+        programs = {
+          dms-shell = {
+            enable = true;
+
+            systemd = {
+              enable = true;
+              restartIfChanged = true;
+            };
+            
+            enableSystemMonitoring = true;
+            enableVPN = true;
+            enableDynamicTheming = true;
+            enableAudioWavelength = true;
+            enableCalendarEvents = true;
+          };
+
+          dsearch = {
+            enable = true;
+
+            systemd = {
+              enable = true;
+            };
+          };
+        };
+
+        services.displayManager.dms-greeter = {
           enable = true;
 
           compositor = {
@@ -99,11 +110,11 @@
         extraCss = ''
           @import url("dank-colors.css");
         '';
+
+        tomlFormat = pkgs.formats.toml { };
       in
       {
         imports = [
-          inputs.dms.homeModules.dank-material-shell
-          inputs.dsearch.homeModules.default
           inputs.dcal.homeModules.default
         ];
 
@@ -120,25 +131,6 @@
         };
 
         programs = {
-          dank-material-shell = {
-            enable = true;
-            systemd.enable = true;
-          };
-
-          dsearch = {
-            enable = true;
-
-            config = {
-              indexPaths = [
-                {
-                  path = config.xdg.userDirs.pictures;
-                  max_depth = 0;
-                  extract_exif = true;
-                }
-              ];
-            };
-          };
-
           dank-calendar = {
             enable = true;
             systemd.enable = true;
@@ -212,16 +204,27 @@
           };
         };
 
-        programs.firefox.nativeMessagingHosts = with pkgs; [ pywalfox ];
         xdg.cacheFile."wal/colors.json".source =
           config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.cache/wal/dank-pywalfox.json";
+
+        xdg.configFile."danksearch/config.toml" = {
+          source = tomlFormat.generate "dsearch.config.toml" {
+            indexPaths = [
+              {
+                path = config.xdg.userDirs.pictures;
+                max_depth = 0;
+                extract_exif = true;
+              }
+            ];
+          };
+        };
       };
 
     provides = {
       greeter-user = {
         includes = [
           ({ user, host, ... }: {
-            nixos.programs.dank-material-shell.greeter.configHome = "/home/${user.userName}";
+            nixos.services.displayManager.dms-greeter.configHome = "/home/${user.userName}";
           })
         ];
       };

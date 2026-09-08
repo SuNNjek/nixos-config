@@ -5,7 +5,7 @@ in
 {
   den.aspects.niri.provides.dms = { host, ... }: {
     nixos = {
-      programs.dank-material-shell.greeter.compositor = {
+      services.displayManager.dms-greeter.compositor = {
         name = lib.mkForce "niri";
         customConfig = lib.mkForce ''
           input {
