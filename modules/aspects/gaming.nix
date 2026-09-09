@@ -53,14 +53,29 @@ in
         };
       in
       {
-        home.packages = with pkgs; [
-          protonup-rs
-          prismlauncher
-          ubisoft-connect
-          uwu-launch
-        ];
+        home = {
+          packages = with pkgs; [
+            protonup-rs
+            prismlauncher
+            ubisoft-connect
+            uwu-launch
+          ];
 
-        programs.mangohud.enable = true;
+          sessionVariables = {
+            PROTON_ENABLE_WAYLAND = 1;
+          };
+        };
+
+        programs.mangohud = {
+          enable = true;
+          enableSessionWide = true;
+
+          settings = {
+            no_display = true;
+            wine = true;
+            display_server = true;
+          };
+        };
 
         xdg.autostart.entries = [
           "${steamAutostart}/share/applications/steam.desktop"
