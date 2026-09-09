@@ -281,8 +281,25 @@ in
                   "Mod"
                   "C"
                 ];
-                bind = "center-column";
+                bind = "set-dynamic-cast-window";
               }
+              {
+                keys = [
+                  "Mod"
+                  "Alt"
+                  "C"
+                ];
+                bind = "set-dynamic-cast-monitor";
+              }
+              {
+                keys = [
+                  "Mod"
+                  "Ctrl"
+                  "C"
+                ];
+                bind = "clear-dynamic-cast-target";
+              }
+
               {
                 keys = [
                   "Mod"
