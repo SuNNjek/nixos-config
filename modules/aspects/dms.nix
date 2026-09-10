@@ -127,7 +127,9 @@
             nerd-fonts.roboto-mono
           ];
 
-          pointerCursor = cursorTheme;
+          pointerCursor = cursorTheme // {
+            enable = true;
+          };
         };
 
         programs = {

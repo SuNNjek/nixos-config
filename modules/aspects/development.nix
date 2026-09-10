@@ -21,9 +21,9 @@ in
         ];
 
         virtualisation = {
-          containers.registries.search = [
-            "docker.io"
-          ];
+          containers.registries.settings = {
+            unqualified-search-registries = ["docker.io"];
+          };
 
           podman = {
             enable = true;
