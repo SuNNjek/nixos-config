@@ -4,9 +4,10 @@ final: prev: {
       final.avisynthplus
     ];
 
-    patches = [
-      ./avs.patch
-    ];
+    postPatch = ''
+      substituteInPlace src/avisynth/avssources.h \
+        --replace-fail "<avisynth.h>" "<avisynth/avisynth.h>"
+    '';
 
     postInstall = final.lib.concatLines [
       old.postInstall
