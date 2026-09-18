@@ -32,7 +32,6 @@
               restartIfChanged = true;
             };
             
-            enableSystemMonitoring = true;
             enableVPN = true;
             enableDynamicTheming = true;
             enableAudioWavelength = true;
