@@ -59,6 +59,9 @@
         mpc-qt
         vlc
 
+        mediainfo
+        mediainfo-gui
+
         # Image viewer
         image-roll
 
@@ -88,6 +91,16 @@
           };
         };
       };
+    };
+
+    nemo.actions.mediainfo = {
+      Name = "MediaInfo";
+      Comment = "Show info in MediaInfo";
+      Exec = "mediainfo-gui %F";
+      Icon-Name = "mediainfo";
+      Selection = "s";
+      Mimetypes = [ "video/*" "audio/*" ];
+      Dependencies = [ "mediainfo-gui" ];
     };
   };
 }
