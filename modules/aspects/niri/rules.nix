@@ -42,6 +42,9 @@ in
             ];
 
             props = {
+              open-floating = true;
+              open-focused = false;
+
               default-floating-position._props = {
                 x = 0;
                 y = 0;
