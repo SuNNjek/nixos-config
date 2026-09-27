@@ -22,7 +22,7 @@ in
 
         virtualisation = {
           containers.registries.settings = {
-            unqualified-search-registries = ["docker.io"];
+            unqualified-search-registries = [ "docker.io" ];
           };
 
           podman = {

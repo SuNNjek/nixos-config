@@ -30,7 +30,7 @@ in
 
             # Enable wayland by default on proton (only for steam though)
             package = pkgs.steam.override (prev: {
-              extraEnv = (prev.extraEnv or {}) // {
+              extraEnv = (prev.extraEnv or { }) // {
                 PROTON_ENABLE_WAYLAND = 1;
               };
             });
@@ -61,11 +61,11 @@ in
       in
       {
         home.packages = with pkgs; [
-            protonup-rs
-            prismlauncher
-            ubisoft-connect
-            uwu-launch
-          ];
+          protonup-rs
+          prismlauncher
+          ubisoft-connect
+          uwu-launch
+        ];
 
         programs.mangohud = {
           enable = true;

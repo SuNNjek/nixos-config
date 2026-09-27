@@ -18,6 +18,6 @@ final: prev: {
       ''
     ];
 
-    configureFlags = ["--enable-avisynth"];
+    configureFlags = [ "--enable-avisynth" ];
   });
 }

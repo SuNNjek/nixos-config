@@ -8,7 +8,7 @@
 
   den.aspects.video-editing = {
     nixos = { pkgs, ... }: {
-      nixpkgs.overlays = [self.overlays.ffms2];
+      nixpkgs.overlays = [ self.overlays.ffms2 ];
 
       environment.systemPackages = with pkgs; [
         avisynthplus

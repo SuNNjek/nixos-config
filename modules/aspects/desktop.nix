@@ -99,7 +99,10 @@
       Exec = "mediainfo-gui %F";
       Icon-Name = "mediainfo";
       Selection = "s";
-      Mimetypes = [ "video/*" "audio/*" ];
+      Mimetypes = [
+        "video/*"
+        "audio/*"
+      ];
       Dependencies = [ "mediainfo-gui" ];
     };
   };
