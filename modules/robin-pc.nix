@@ -12,12 +12,14 @@
 
       locale-de
       desktop
-      #hyprland
       niri
       niri._.dms
       kanshi._.pc
       dms
       howdy
+
+      matugen
+      matugen._.openrgb
 
       development
       gaming
