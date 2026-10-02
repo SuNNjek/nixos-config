@@ -41,6 +41,10 @@
                 package = pkgs.obs-studio.override {
                   cudaSupport = osConfig.hardware.nvidia.enabled;
                 };
+
+                plugins = with pkgs.obs-studio-plugins; [
+                  obs-backgroundremoval
+                ];
               };
             };
         };
