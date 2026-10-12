@@ -83,15 +83,54 @@ in
 
     provides = {
       openrgb = {
-        homeManager = { lib, pkgs, ... }: {
-          services.matugen = {
-            templates = {
-              openrgb = {
-                post_hook = "${lib.getExe pkgs.openrgb} -m static -c {{colors.source_color.default.hex_stripped}}";
+        homeManager =
+          { lib, pkgs, ... }:
+          let
+            openrgbMatugen = pkgs.writeShellApplication {
+              name = "openrgb-matugen";
+
+              runtimeInputs = with pkgs; [
+                toml2json
+                jq
+                openrgb
+              ];
+
+              text = ''
+                CONFIG_PATH="$HOME/.config/matugen/openrgb.toml"
+                COLOR="$(toml2json "$CONFIG_PATH" | jq -r ".color")"
+
+                openrgb -m static -c "$COLOR"
+              '';
+            };
+
+            openrgbInput = pkgs.writeText "openrgb-input" ''
+              color = "{{colors.source_color.default.hex_stripped}}"
+            '';
+          in {
+            services.matugen = {
+              templates = {
+                openrgb = {
+                  input_path = openrgbInput;
+                  output_path = "~/.config/matugen/openrgb.toml";
+                  post_hook = "${lib.getExe openrgbMatugen}";
+                };
+              };
+            };
+
+            systemd.user.services = {
+              openrgb-matugen = {
+                Unit = {
+                  Description = "Calls OpenRGB with color from Matugen";
+                  ConditionPathExists = "%h/.config/matugen/openrgb.toml";
+                };
+            
+                Service = {
+                  Type = "oneshot";
+                  ExecStart = lib.getExe openrgbMatugen;
+                };
               };
             };
           };
-        };
       };
     };
   };
