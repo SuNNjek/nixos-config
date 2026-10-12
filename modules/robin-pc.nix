@@ -18,7 +18,6 @@
       dms
       howdy
 
-      matugen
       matugen._.openrgb
 
       development

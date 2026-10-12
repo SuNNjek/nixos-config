@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+{ den, self, inputs, ... }: {
   flake-file.inputs = {
     rotate-plugin = {
       url = "github:SuNNjek/rotate-plugin";
@@ -32,6 +32,10 @@
     provides =
       let
         obs = {
+          includes = with den.aspects; [
+            matugen._.obs
+          ];
+
           homeManager =
             { osConfig, pkgs, ... }:
             {

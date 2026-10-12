@@ -72,6 +72,17 @@ let
         ];
       };
     };
+
+    getThemes =
+      pkgs:
+      pkgs.fetchFromGitHub {
+        owner = "InioX";
+        repo = "matugen-themes";
+        rev = "707c7b7d3550c9c21c0a8d72186748b1d205b88b";
+        hash = "sha256-nUfF1KyKK2BherOwPwai6JzsrykP/zKxiAmoi7TTlvw=";
+      };
+
+    getTemplate = pkgs: name: "${getThemes pkgs}/templates/${name}";
 in
 {
   den.aspects.matugen = {
@@ -108,12 +119,10 @@ in
             '';
           in {
             services.matugen = {
-              templates = {
-                openrgb = {
-                  input_path = openrgbInput;
-                  output_path = "~/.config/matugen/openrgb.toml";
-                  post_hook = "${lib.getExe openrgbMatugen}";
-                };
+              templates.openrgb = {
+                input_path = openrgbInput;
+                output_path = "~/.config/matugen/openrgb.toml";
+                post_hook = "${lib.getExe openrgbMatugen}";
               };
             };
 
@@ -128,6 +137,37 @@ in
                   Type = "oneshot";
                   ExecStart = lib.getExe openrgbMatugen;
                 };
+              };
+            };
+          };
+      };
+
+      obs = {
+        homeManager =
+          { pkgs, ... }:
+          {
+            services.matugen = {
+              templates.obs = {
+                input_path = getTemplate pkgs "matugen.obt";
+                output_path = "~/.config/obs-studio/themes/matugen.obt";
+              };
+            };
+          };
+      };
+
+      steam = {
+        homeManager =
+          { pkgs, ... }:
+          {
+            home.packages = with pkgs; [
+              adwsteamgtk
+            ];
+
+            services.matugen = {
+              templates.steam = {
+                input_path = getTemplate pkgs "steam.css";
+                output_path = "~/.config/AdwSteamGtk/custom.css";
+                post_hook =  "adwaita-steam-gtk -i";
               };
             };
           };

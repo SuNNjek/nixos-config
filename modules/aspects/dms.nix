@@ -1,4 +1,4 @@
-{ lib, inputs, ... }:
+{ den, lib, inputs, ... }:
 {
   flake-file.inputs = {
     dcal = {
@@ -8,6 +8,10 @@
   };
 
   den.aspects.dms = {
+    includes = with den.aspects; [
+      matugen
+    ];
+
     nixos =
       { pkgs, ... }:
       let

@@ -15,6 +15,8 @@ in
       ])
 
       addUserToGamemodeGroup
+
+      den.aspects.matugen._.steam
     ];
 
     nixos =
