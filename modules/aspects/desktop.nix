@@ -34,6 +34,7 @@
 
     homeManager = { pkgs, ... }: {
       xdg = {
+        enable = true;
         autostart.enable = true;
 
         mimeApps = {
