@@ -34,7 +34,7 @@
       (den.batteries.unfree [ "makemkv" ])
     ];
 
-    nixos = {
+    nixos = { ... }: {
       imports = with inputs.nixos-hardware.nixosModules; [
         common-cpu-amd
         common-cpu-amd-pstate
@@ -72,6 +72,7 @@
 
       hardware = {
         bluetooth.enable = true;
+        keyboard.qmk.enable = true;
       };
 
       services.hardware.openrgb.enable = true;
