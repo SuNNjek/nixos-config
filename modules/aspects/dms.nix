@@ -1,4 +1,9 @@
-{ den, lib, inputs, ... }:
+{
+  den,
+  lib,
+  inputs,
+  ...
+}:
 {
   flake-file.inputs = {
     dcal = {

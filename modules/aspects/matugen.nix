@@ -65,7 +65,7 @@ let
         };
       };
 
-      config = mkIf (cfg.enable && cfg.templates != {}) {
+      config = mkIf (cfg.enable && cfg.templates != { }) {
         xdg.configFile."matugen/config.toml".source = lib.pipe configContent [
           (lib.filterAttrsRecursive (_k: v: v != null))
           (tomlFormat.generate "matugen.toml")
@@ -73,7 +73,7 @@ let
       };
     };
 
-    getTemplate = name: "${inputs.matugen-themes}/templates/${name}";
+  getTemplate = name: "${inputs.matugen-themes}/templates/${name}";
 in
 {
   flake-file.inputs = {
@@ -115,7 +115,8 @@ in
             openrgbInput = pkgs.writeText "openrgb-input" ''
               color = "{{colors.source_color.default.hex_stripped}}"
             '';
-          in {
+          in
+          {
             services.matugen = {
               templates.openrgb = {
                 input_path = openrgbInput;
@@ -130,7 +131,7 @@ in
                   Description = "Calls OpenRGB with color from Matugen";
                   ConditionPathExists = "%h/.config/matugen/openrgb.toml";
                 };
-            
+
                 Service = {
                   Type = "oneshot";
                   ExecStart = lib.getExe openrgbMatugen;
@@ -165,7 +166,7 @@ in
               templates.steam = {
                 input_path = getTemplate "steam.css";
                 output_path = "~/.config/AdwSteamGtk/custom.css";
-                post_hook =  "adwaita-steam-gtk -i";
+                post_hook = "adwaita-steam-gtk -i";
               };
             };
           };

@@ -1,4 +1,10 @@
-{ den, self, inputs, ... }: {
+{
+  den,
+  self,
+  inputs,
+  ...
+}:
+{
   flake-file.inputs = {
     rotate-plugin = {
       url = "github:SuNNjek/rotate-plugin";
