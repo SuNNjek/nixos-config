@@ -154,14 +154,30 @@
       "locked": {
         "lastModified": 1788467110,
         "narHash": "sha256-ljEMTXP/rH0tOvDzc9gzwww6KcHRPRnEHzd9lK48V7s=",
-        "owner": "vic",
+        "owner": "denful",
         "repo": "import-tree",
         "rev": "eb1b52eaecc57f7c136d07ae8a93e724dfecac46",
         "type": "github"
       },
       "original": {
-        "owner": "vic",
+        "owner": "denful",
         "repo": "import-tree",
+        "type": "github"
+      }
+    },
+    "matugen-themes": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1787988654,
+        "narHash": "sha256-nUfF1KyKK2BherOwPwai6JzsrykP/zKxiAmoi7TTlvw=",
+        "owner": "InioX",
+        "repo": "matugen-themes",
+        "rev": "707c7b7d3550c9c21c0a8d72186748b1d205b88b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "InioX",
+        "repo": "matugen-themes",
         "type": "github"
       }
     },
@@ -198,15 +214,15 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1790769526,
-        "narHash": "sha256-6j4yqqBUvIbBn29k0y/2jqlv/YJd8CRkTBYhfm5Z/8c=",
-        "rev": "c9fe7d12cd78d1adcd12dd15e24432dde5b155a0",
+        "lastModified": 1791487292,
+        "narHash": "sha256-6BIvCXtdLW4HQwsOGkgH444aB3vCbHypE9TA78ireh8=",
+        "rev": "8edc0c72e3a38faf5434e40d1f19431125fe4b30",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1082837.c9fe7d12cd78/nixexprs.tar.xz"
+        "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1088030.8edc0c72e3a3/nixexprs.tar.zst"
       },
       "original": {
         "type": "tarball",
-        "url": "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz"
+        "url": "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst"
       }
     },
     "root": {
@@ -219,6 +235,7 @@
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "import-tree": "import-tree",
+        "matugen-themes": "matugen-themes",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "rotate-plugin": "rotate-plugin"

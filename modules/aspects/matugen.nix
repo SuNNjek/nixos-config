@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, ... }:
 let
   homeManagerModule =
     {
@@ -65,7 +65,7 @@ let
         };
       };
 
-      config = mkIf cfg.enable {
+      config = mkIf (cfg.enable && cfg.templates != {}) {
         xdg.configFile."matugen/config.toml".source = lib.pipe configContent [
           (lib.filterAttrsRecursive (_k: v: v != null))
           (tomlFormat.generate "matugen.toml")
@@ -73,18 +73,16 @@ let
       };
     };
 
-    getThemes =
-      pkgs:
-      pkgs.fetchFromGitHub {
-        owner = "InioX";
-        repo = "matugen-themes";
-        rev = "707c7b7d3550c9c21c0a8d72186748b1d205b88b";
-        hash = "sha256-nUfF1KyKK2BherOwPwai6JzsrykP/zKxiAmoi7TTlvw=";
-      };
-
-    getTemplate = pkgs: name: "${getThemes pkgs}/templates/${name}";
+    getTemplate = name: "${inputs.matugen-themes}/templates/${name}";
 in
 {
+  flake-file.inputs = {
+    matugen-themes = {
+      url = "github:InioX/matugen-themes";
+      flake = false;
+    };
+  };
+
   den.aspects.matugen = {
     homeManager = {
       imports = [ homeManagerModule ];
@@ -144,11 +142,11 @@ in
 
       obs = {
         homeManager =
-          { pkgs, ... }:
+          { ... }:
           {
             services.matugen = {
               templates.obs = {
-                input_path = getTemplate pkgs "matugen.obt";
+                input_path = getTemplate "matugen.obt";
                 output_path = "~/.config/obs-studio/themes/matugen.obt";
               };
             };
@@ -165,7 +163,7 @@ in
 
             services.matugen = {
               templates.steam = {
-                input_path = getTemplate pkgs "steam.css";
+                input_path = getTemplate "steam.css";
                 output_path = "~/.config/AdwSteamGtk/custom.css";
                 post_hook =  "adwaita-steam-gtk -i";
               };
