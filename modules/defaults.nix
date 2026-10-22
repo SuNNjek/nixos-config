@@ -14,7 +14,10 @@ in
       hostname
       host-aspects
     ])
-    ++ (with den.aspects; [ overlays ]);
+    ++ (with den.aspects; [
+      overlays
+      distrust-emudhra
+    ]);
 
   den.default.nixos = { config, pkgs, ... }: {
     system = { inherit stateVersion; };
