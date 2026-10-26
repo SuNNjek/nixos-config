@@ -1,6 +1,5 @@
 {
   inputs,
-  self,
   den,
   ...
 }:
@@ -17,6 +16,7 @@
 
       locale-de
       desktop
+      fprintd._.validity
       niri
       niri._.dux
       kanshi._.laptop
@@ -27,10 +27,9 @@
       audio-editing
     ];
 
-    nixos = { pkgs, ... }: {
+    nixos = { ... }: {
       imports = [
         inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480s
-        self.nixosModules.open-fprintd
       ];
 
       boot = {
@@ -54,15 +53,6 @@
 
       services = {
         power-profiles-daemon.enable = true;
-        open-fprintd = {
-          enable = true;
-          pamServices = [
-            "login"
-            "greetd"
-          ];
-
-          validity.enable = true;
-        };
       };
     };
   };
