@@ -46,7 +46,6 @@ in
     ];
 
     console = {
-      earlySetup = config.boot.initrd.systemd.enable;
       font = "Lat2-Terminus16";
     };
 
