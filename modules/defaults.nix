@@ -16,7 +16,6 @@ in
     ])
     ++ (with den.aspects; [
       overlays
-      distrust-emudhra
     ]);
 
   den.default.nixos = { config, pkgs, ... }: {
