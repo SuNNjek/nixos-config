@@ -13,9 +13,9 @@
       locale-de
       desktop
       niri
-      niri._.dms
+      niri._.dux
       kanshi._.pc
-      dms
+      dux
       howdy
 
       matugen._.openrgb

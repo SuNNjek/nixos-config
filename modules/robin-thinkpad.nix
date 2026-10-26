@@ -18,9 +18,9 @@
       locale-de
       desktop
       niri
-      niri._.dms
+      niri._.dux
       kanshi._.laptop
-      dms
+      dux
 
       development
       image-editing

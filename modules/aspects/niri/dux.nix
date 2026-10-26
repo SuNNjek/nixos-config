@@ -3,9 +3,9 @@ let
   niriLib = import ./_lib.nix { inherit lib; };
 in
 {
-  den.aspects.niri.provides.dms = { host, ... }: {
+  den.aspects.niri.provides.dux = { host, ... }: {
     nixos = {
-      services.displayManager.dms-greeter.compositor = {
+      services.displayManager.dux-greeter.compositor = {
         name = lib.mkForce "niri";
         customConfig = lib.mkForce ''
           input {

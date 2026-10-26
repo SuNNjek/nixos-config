@@ -13,7 +13,7 @@
 
       # Aspects
       (with den.aspects; [
-        dms._.greeter-user
+        dux._.greeter-user
 
         fastfetch
         vesktop

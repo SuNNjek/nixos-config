@@ -1,18 +1,10 @@
 {
   den,
   lib,
-  inputs,
   ...
 }:
 {
-  flake-file.inputs = {
-    dcal = {
-      url = "github:AvengeMedia/dankcalendar/v1.6.1";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-  };
-
-  den.aspects.dms = {
+  den.aspects.dux = {
     includes = with den.aspects; [
       matugen
     ];
@@ -33,7 +25,7 @@
         };
 
         programs = {
-          dms-shell = {
+          dux-shell = {
             enable = true;
 
             systemd = {
@@ -42,7 +34,7 @@
             };
           };
 
-          dsearch = {
+          dux-search = {
             enable = true;
 
             systemd = {
@@ -51,7 +43,7 @@
           };
         };
 
-        services.displayManager.dms-greeter = {
+        services.displayManager.dux-greeter = {
           enable = true;
 
           compositor = {
@@ -117,10 +109,6 @@
         tomlFormat = pkgs.formats.toml { };
       in
       {
-        imports = [
-          inputs.dcal.homeModules.default
-        ];
-
         home = {
           packages = with pkgs; [
             pywalfox-native
@@ -136,11 +124,6 @@
         };
 
         programs = {
-          dank-calendar = {
-            enable = true;
-            systemd.enable = true;
-          };
-
           kitty.extraConfig = ''
             include dank-theme.conf
             include dank-tabs.conf
@@ -229,7 +212,7 @@
       greeter-user = {
         includes = [
           ({ user, host, ... }: {
-            nixos.services.displayManager.dms-greeter.configHome = "/home/${user.userName}";
+            nixos.services.displayManager.dux-greeter.configHome = "/home/${user.userName}";
           })
         ];
       };
