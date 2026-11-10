@@ -20,6 +20,7 @@
       plymouth
       zram
       bluetooth
+      nvidia
 
       locale._.de
       desktop
@@ -38,7 +39,6 @@
     nixos = { ... }: {
       imports = with inputs.nixos-hardware.nixosModules; [
         common-cpu-intel
-        common-gpu-nvidia-nonprime
         common-pc
         common-pc-ssd
       ];
@@ -62,11 +62,6 @@
 
       hardware = {
         bluetooth.enable = true;
-
-        nvidia = {
-          open = true;
-          nvidiaSettings = true;
-        };
       };
 
       services.hardware.openrgb.enable = true;
