@@ -29,10 +29,12 @@ let
     };
 in
 {
-  den.aspects.locale-de = localeDef {
-    locale = "de_DE.UTF-8";
-    keyMap = "de-latin1-nodeadkeys";
-    timeZone = "Europe/Berlin";
-    xkbLayout = "de";
+  den.aspects.locale.provides = {
+    de = localeDef {
+      locale = "de_DE.UTF-8";
+      keyMap = "de-latin1-nodeadkeys";
+      timeZone = "Europe/Berlin";
+      xkbLayout = "de";
+    };
   };
 }

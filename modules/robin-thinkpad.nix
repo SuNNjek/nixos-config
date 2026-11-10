@@ -14,7 +14,7 @@
       zram
       bluetooth
 
-      locale-de
+      locale._.de
       desktop
       fprintd._.validity
       niri

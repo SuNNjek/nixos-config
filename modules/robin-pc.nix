@@ -10,7 +10,7 @@
       zram
       bluetooth
 
-      locale-de
+      locale._.de
       desktop
       niri
       niri._.dux
