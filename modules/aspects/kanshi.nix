@@ -41,7 +41,7 @@
           '';
         };
 
-      setPrimaryMonitor = pkgs: lib.getExe <| pkgs.callPackage setPrimaryMonitorDrv { };
+      setPrimaryMonitor = pkgs: lib.getExe (pkgs.callPackage setPrimaryMonitorDrv { });
 
       laptop-output = { host }: {
         homeManager = {
