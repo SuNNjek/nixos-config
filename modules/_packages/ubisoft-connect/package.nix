@@ -18,7 +18,10 @@
 let
   addSpaceToPrefix = p: if p == "" then "" else "${p} ";
 
-  launchPrefix = (lib.optional useGamemode "gamemoderun") |> lib.join " " |> addSpaceToPrefix;
+  launchPrefix = lib.pipe (lib.optional useGamemode "gamemoderun") [
+    (lib.join " ")
+    addSpaceToPrefix
+  ];
 
   script = writeShellApplication {
     name = "ubisoft-connect";

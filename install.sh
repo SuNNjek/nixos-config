@@ -25,7 +25,7 @@ fi
 echo "Installing host config \"$HOST\"..."
 
 # Format the drive
-nix --experimental-features "nix-command flakes pipe-operators" \
+nix --experimental-features "nix-command flakes" \
 	run 'github:nix-community/disko/latest' -- \
 	--mode destroy,format,mount --flake ".#$HOST"
 

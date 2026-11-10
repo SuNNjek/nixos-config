@@ -10,24 +10,27 @@ let
       move,
       moveArgs ? [ ],
     }:
-    keys
-    |> lib.map (combo: [
-      {
-        keys = ([ "Mod" ] ++ combo);
-        bind = focus;
-        bindArgs = focusArgs;
-      }
-      {
-        keys = [
-          "Mod"
-          "Shift"
-        ]
-        ++ combo;
-        bind = move;
-        bindArgs = moveArgs;
-      }
-    ])
-    |> lib.flatten;
+    lib.pipe keys [
+      (
+        lib.map (combo: [
+          {
+            keys = ([ "Mod" ] ++ combo);
+            bind = focus;
+            bindArgs = focusArgs;
+          }
+          {
+            keys = [
+              "Mod"
+              "Shift"
+            ]
+            ++ combo;
+            bind = move;
+            bindArgs = moveArgs;
+          }
+        ])
+      )
+      lib.flatten
+    ];
 
   generateWorkspaceBinds =
     ws:

@@ -32,7 +32,6 @@ in
     nix.settings.experimental-features = [
       "nix-command"
       "flakes"
-      "pipe-operators"
     ];
 
     environment.systemPackages = with pkgs; [
