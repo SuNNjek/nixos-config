@@ -21,6 +21,7 @@
       matugen._.openrgb
 
       development
+      podman
       gaming
 
       video-editing

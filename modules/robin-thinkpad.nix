@@ -23,6 +23,7 @@
       dux
 
       development
+      podman
       image-editing
       audio-editing
     ];

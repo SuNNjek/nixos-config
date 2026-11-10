@@ -1,40 +1,12 @@
 { den, ... }:
-let
-
-in
 {
   den.aspects.development = {
     includes = [
-      (den.batteries.add-user-to-group "podman")
-
       (den.batteries.unfree [
         "jetbrains-toolbox"
         "vscode"
       ])
     ];
-
-    nixos =
-      { pkgs, ... }:
-      {
-        environment.systemPackages = with pkgs; [
-          podman-compose
-        ];
-
-        virtualisation = {
-          containers.registries.settings = {
-            unqualified-search-registries = [ "docker.io" ];
-          };
-
-          podman = {
-            enable = true;
-
-            dockerSocket.enable = true;
-            dockerCompat = true;
-
-            autoPrune.enable = true;
-          };
-        };
-      };
 
     homeManager =
       { pkgs, ... }:
