@@ -21,10 +21,12 @@
               nemoCfg = (lib.mergeAttrsList nemo);
 
               iniFormat = pkgs.formats.ini {
-                listToValue = atoms: lib.pipe atoms [
-                  (lib.map (atom: "${atom};"))
-                  lib.concatStrings
-                ];
+                listToValue =
+                  atoms:
+                  lib.pipe atoms [
+                    (lib.map (atom: "${atom};"))
+                    lib.concatStrings
+                  ];
               };
 
               mapAction = (
