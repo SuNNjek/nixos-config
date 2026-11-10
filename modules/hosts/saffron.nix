@@ -1,11 +1,17 @@
 { inputs, den, ... }:
 {
-  den.hosts.x86_64-linux.robin-pc = {
+  #
+  # "The biggest city in Kanto, shining with a golden light."
+  #
+  # Main PC with the biggest specs in config, shining with some RGB.
+  #
+
+  den.hosts.x86_64-linux.saffron = {
     rootDrive = "/dev/nvme1n1";
     users.robin = { };
   };
 
-  den.aspects.robin-pc = {
+  den.aspects.saffron = {
     includes = with den.aspects; [
       disko
       disko._.btrfs-root
@@ -68,12 +74,6 @@
             "sr_mod"
           ];
         };
-
-        loader.limine.extraEntries = ''
-          /Windows
-            protocol: efi
-            path: uuid(7006ed1b-b7fa-40ec-92af-fd0fae8ef4e2):/EFI/Microsoft/Boot/bootmgfw.efi
-        '';
       };
 
       hardware = {

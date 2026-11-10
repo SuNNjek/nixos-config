@@ -4,12 +4,18 @@
   ...
 }:
 {
-  den.hosts.x86_64-linux.robin-thinkpad = {
+  #
+  # "A quiet city nestled between rugged mountains and rocks."
+  #
+  # My Thinkpad, nestled between PC host configs.
+  #
+
+  den.hosts.x86_64-linux.pewter = {
     rootDrive = "/dev/nvme0n1";
     users.robin = { };
   };
 
-  den.aspects.robin-thinkpad = {
+  den.aspects.pewter = {
     includes = with den.aspects; [
       disko
       disko._.btrfs-root
