@@ -1,5 +1,10 @@
 { inputs, den, ... }:
 {
+  den.hosts.x86_64-linux.robin-pc = {
+    rootDrive = "/dev/nvme1n1";
+    users.robin = { };
+  };
+
   den.aspects.robin-pc = {
     includes = with den.aspects; [
       disko

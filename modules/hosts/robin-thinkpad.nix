@@ -4,6 +4,11 @@
   ...
 }:
 {
+  den.hosts.x86_64-linux.robin-thinkpad = {
+    rootDrive = "/dev/nvme0n1";
+    users.robin = { };
+  };
+
   den.aspects.robin-thinkpad = {
     includes = with den.aspects; [
       disko
