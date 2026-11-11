@@ -7,7 +7,7 @@
   #
 
   den.hosts.x86_64-linux.fuchsia = {
-    rootDrive = "/dev/nvme1n1";
+    rootDrive = "/dev/nvme0n1";
     users.robin = { };
   };
 

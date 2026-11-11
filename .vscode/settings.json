@@ -5,11 +5,11 @@
         "nixd": {
             "options": {
                 "nixos": {
-                    "expr": "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.robin-pc.options"
+                    "expr": "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.saffron.options"
                 },
 
                 "home-manager": {
-                    "expr": "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.robin-pc.options.home-manager.users.type.getSubOptions []"
+                    "expr": "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.saffron.options.home-manager.users.type.getSubOptions []"
                 }
             }
         }

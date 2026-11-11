@@ -13,6 +13,12 @@
         common-gpu-nvidia-nonprime
       ];
 
+      boot.kernelModules = [
+        "nvidia"
+        "nvidia_modeset"
+        "nvidia_drm"
+      ];
+
       hardware.nvidia = {
         open = true;
         nvidiaSettings = true;
