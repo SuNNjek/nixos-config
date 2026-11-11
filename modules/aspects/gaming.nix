@@ -65,8 +65,7 @@ in
         home.packages = with pkgs; [
           protonup-rs
           prismlauncher
-          ubisoft-connect
-          uwu-launch
+          faugus-launcher
         ];
 
         programs.mangohud = {
