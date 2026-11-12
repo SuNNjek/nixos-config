@@ -12,6 +12,8 @@ in
       (den.batteries.unfree [
         "steam"
         "steam-unwrapped"
+        "lsfg-vk"
+        "lsfg-vk-ui"
       ])
 
       addUserToGamemodeGroup
@@ -65,7 +67,13 @@ in
         home.packages = with pkgs; [
           protonup-rs
           prismlauncher
-          faugus-launcher
+
+          lsfg-vk
+          lsfg-vk-ui
+
+          (faugus-launcher.override {
+            lsfgSupport = true;
+          })
         ];
 
         programs.mangohud = {
