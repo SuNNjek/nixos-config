@@ -28,6 +28,12 @@
           gvfs.enable = true;
         };
 
+        # Kill processes in the app slice if system is in danger of OOM
+        systemd.user.slices.app.sliceConfig = {
+          ManagedOOMMemoryPressure = "kill";
+          ManagedOOMMemoryPressureLimit = "80%";
+        };
+
         # Use NetworkManager on desktop
         networking.networkmanager.enable = true;
       };
